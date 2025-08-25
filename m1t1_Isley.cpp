@@ -26,6 +26,7 @@ int main()
 {
     //sfx: greet user
     cout << "Hello, user!" << endl;
+    cout << "This is a C++ program choom!" << endl;
 
     //output
     return 0; //no errors

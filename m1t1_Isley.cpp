@@ -25,7 +25,13 @@ using namespace std;
 int main()
 {
     //sfx: greet user
-    cout << "Hello, user!" << endl;
+
+    //strings hold words
+    string first_name = "Mattea";
+
+
+
+    cout << "Hello, " << first_name << endl;
     cout << "This is a C++ program choom!" << endl;
 
     //output

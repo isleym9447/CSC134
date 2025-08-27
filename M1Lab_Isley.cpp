@@ -26,9 +26,17 @@ using namespace std;
 
 int main()
 {
+
+    string item1 = "eva foam"; //replace with your item(s)
+    string item2 = "drimmel";
+    string item3 = "heat gun";
+    string item4 = "exacto blade";
     
 
 
+    
+    cout << "Hello user!" << endl;
+    cout << "Welcome to the " << item1 << " store!" << endl;
 
 
 
@@ -37,8 +45,9 @@ int main()
 
 
 
-//output
-return 0; //no errors
+
+    //output
+    return 0; //no errors
 
 
 

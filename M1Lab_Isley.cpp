@@ -34,7 +34,7 @@ int main()
 
     int num_item1 = 10;
     double cost_per = 250.75;
-    
+    int num_wanted;
 
 
     // give our sales pitch
@@ -44,21 +44,29 @@ int main()
     cout << "----------" << endl;
 
     cout << "We sell " << item1_name << "s " << "and " << item2_name << "s" << "!" << endl;
-    cout << "We are only selling " << item1_name << "s" << " today!" << endl;
+    cout << "We are only selling " << item1_name << "s" << " today on accout of a recent rogue theft." << endl;
 
     cout << "----------" << endl;
 
-    cout << "We have " << num_item1 << " total." << endl;
+    cout << "We have " << num_item1 << " total in stock." << endl;
     cout << "Each " << item1_name << " is $" << cost_per << " coins" << endl;
 
     cout << "----------" << endl;
     cout << "----------" << endl;
 
-    cout << "How many " << item1_name << "s do you want to purchase?" << endl;
+    cout << "How many " << item1_name << "s do you wish to purchase?: " << endl;
+
+
+    cin >> num_wanted;
+
+
 
     // do the processing
-    double total_cost = num_item1 * cost_per;
+    double total_cost = num_wanted * cost_per;
     
+
+    //output
+    cout << "Your total for " << num_wanted << " " << item1_name << "(s) is $" << total_cost << " coins" << endl;
 
 
 

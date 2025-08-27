@@ -26,33 +26,25 @@ using namespace std;
 int main()
 {
    
-    string movie_title = "The Theory of Everything"
-    int release_year = 2014
-    double budget = "15.0"
-    double gross = "123.7"
-    double 
+    string movie_title = "The Theory of Everything";
+    int release_year = 2014;
+    double budget = 15.0;
+    double gross = 123.7;
+    
 
-    cout << movie_title << "is a film released in " << release_year << "by Universal Pictures." << endl;
+    cout << movie_title << " is a film released in " << release_year << " by Universal Pictures." << endl;
     cout << "Director James Marsh blends unique camera angles with brilliant pacing to tell the story of" <<
-    "Stephen Hawking and his journey through acedemic breakthroughs, knowledge expansions, health struggles and familial changes." << 
-    "Eddie Redmayne and Felicity Jones star is this groundbreaking film of trust, fear, love, and knowledge accompanied by the" <<
-    "incredible score from Jóhann Jóhannsson." << endl;
+    " Stephen Hawking and his journey through acedemic breakthroughs, knowledge expansions, health struggles and familial changes." << 
+    " Eddie Redmayne and Felicity Jones star is this groundbreaking film of trust, fear, love, and knowledge accompanied by the" <<
+    " incredible score from Jóhann Jóhannsson." << endl;
+    
+    string line = "              ---------------------------------------------------";
 
-
-
-
-
-
-
-
-    //output
-    return 0; //no errors
-
-
-
-
-
-
+    cout << line << endl;
+    cout << "'However bad life may seem, there is always something you can do, and succeed at." << endl; 
+    cout << "                      While there's life, there is hope.'" << endl;
+    cout << "                                 ― Stephen Hawking" << endl;
+    cout << line << endl;
 
 
 

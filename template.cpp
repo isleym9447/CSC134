@@ -3,12 +3,13 @@
 
 CSC 134
 Mattea Isley
-//
+ / /
 
 
-INPUT: run the program
+INPUT: 
 PROCESSING: 
-OUTPUT: return 0 (no error)
+OUTPUT: 
+return 0 (no error)
 SPECIAL FX:
 
 

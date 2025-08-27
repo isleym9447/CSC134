@@ -32,7 +32,7 @@ int main()
 
 
     cout << "Hello, " << first_name << endl;
-    cout << "This is a C++ program choom!" << endl;
+    cout << "This is a C++ program, choom!" << endl;
 
     //output
     return 0; //no errors

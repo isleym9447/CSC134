@@ -27,6 +27,8 @@ using namespace std;
 int main()
 {
 
+
+//establish and assign variables
     string item1_name = "sword"; //replace with your item
     string item2_name = "staff";
     string item3_name = "mace";
@@ -37,7 +39,7 @@ int main()
     int num_wanted;
 
 
-    // give our sales pitch
+//talk to the user (give our sales pitch)
     cout << "Greetings traveler!" << endl;
     cout << "Welcome to the Owlbear's Talon!" << endl;
 
@@ -51,21 +53,25 @@ int main()
     cout << "We have " << num_item1 << " total in stock." << endl;
     cout << "Each " << item1_name << " is $" << cost_per << " coins" << endl;
 
+
     cout << "----------" << endl;
-    cout << "----------" << endl;
+    
 
     cout << "How many " << item1_name << "s do you wish to purchase?: " << endl;
 
 
+//input
+    //how many the user wants to purchase
     cin >> num_wanted;
 
 
 
-    // do the processing
+//processing
     double total_cost = num_wanted * cost_per;
     
-
-    //output
+    
+//output
+    cout << "----------" << endl;
     cout << "Your total for " << num_wanted << " " << item1_name << "(s) is $" << total_cost << " coins" << endl;
 
 

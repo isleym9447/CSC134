@@ -33,7 +33,7 @@ int main()
     
     
     cout << movie_title << " is a film released in " << release_year << " by Universal Pictures." << endl;
-    cout << "The film's budget was " << budget <<  << endl;
+    cout << "The film's budget was $" << budget << " billion. and the film grossed a total of $" << gross << " billion." << endl;
     cout << "Director James Marsh blends unique camera angles with brilliant pacing to tell the story of" <<
     " Stephen Hawking and his journey through acedemic breakthroughs, knowledge expansions, health struggles and familial changes." << 
     " Eddie Redmayne and Felicity Jones star is this groundbreaking film of trust, fear, love, and knowledge accompanied by the" <<

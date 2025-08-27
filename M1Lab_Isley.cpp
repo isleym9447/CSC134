@@ -27,16 +27,17 @@ using namespace std;
 int main()
 {
 
-    string item1 = "eva foam"; //replace with your item(s)
-    string item2 = "drimmel";
-    string item3 = "heat gun";
-    string item4 = "exacto blade";
+    string item_name = "sword"; //replace with your item
+    int num_items = 10;
+    double cost_per = 0.25;
     
 
 
     
     cout << "Hello user!" << endl;
-    cout << "Welcome to the " << item1 << " store!" << endl;
+    cout << "Welcome to the " << item_name << " store!" << endl;
+
+     cout << "How many " << item_name << "s do you want to purchase?" << endl;
 
 
 

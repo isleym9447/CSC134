@@ -3,10 +3,10 @@
 
 CSC 134
 Mattea Isley
-8/27/2025
+9/3/2025
 
 M1Lab 
-Goal: program to calculate sales
+Goal: program to calculate sales improved
 
 INPUT: run the program
 PROCESSING: calculations and evals
@@ -23,7 +23,6 @@ SPECIAL FX:
 
 #include <iostream>
 using namespace std;
-
 int main()
 {
 
@@ -37,6 +36,7 @@ int main()
     int num_item1 = 10;
     double cost_per = 250.75;
     int num_wanted;
+    double faerun_tax = 0.07;
 
 
 //talk to the user (give our sales pitch)
@@ -55,7 +55,7 @@ int main()
 
     cout << "----------" << endl;
 
-    cout << "We have " << num_item1 << " left in stock." << endl;
+    cout << "We have " << num_item1 << " " << item1_name  << "s" << " left in stock." << endl;
     cout << "Each " << item1_name << " is $" << cost_per << " coins" << endl;
 
 
@@ -69,15 +69,34 @@ int main()
     //how many the user wants to purchase
     cin >> num_wanted;
 
+    //will later create an if else branch asking for add ons depending on what weapon they select. oil for axes, extra string for bows etc.
+    // if addon is yes then add price to total and name of addon to cart
+    //cout << "Would you like to include a grinding stone in your cart for only $638 coins?" << endl;
+    //cout << "Y for yes" << endl;
+    //cout << "N for no" << endl;
+
+    //cin >> 
+
+    //if (addon_choice = Y) {
+
+    }
+
+
 
 
 //processing
     //calculating the cost for the input
-    double total_cost = num_wanted * cost_per;
+    double subtotal = num_wanted * cost_per;
+    double tax_total = subtotal * faerun_tax;
+    double total_cost = subtotal + tax_total;
     
     
 //output
     cout << "----------" << endl;
+    cout << "Subtotal: " << item1_name << " x " << num_wanted << " = $" << subtotal << endl;
+    cout << "Faerun tax: " << faerun_tax << endl;
+    cout << "Tax amount: " << tax_total << endl;
+    cout << " - " << endl;
     cout << "Your total for " << num_wanted << " " << item1_name << "(s) is $" << total_cost << " coins" << endl;
     
 

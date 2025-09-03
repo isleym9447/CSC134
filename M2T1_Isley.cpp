@@ -85,16 +85,23 @@ int main()
 
     double subtotal = num_wanted * cost_per;
 
+    double subtotal_addon = subtotal + stone;
+
+    double tax_total = subtotal * faerun_tax;
+    
+    double total_cost = subtotal + tax_total;
+
+
+    /*
     if (addon_choice == 'Y' || 'y') {
         subtotal += stone;
     } else if (addon_choice == 'N' || 'n') {
-        // do nothing
+        // do nothing  
     } else {
         cout << "Invalid entry" << endl;
     }
+    */ 
 
-    double tax_total = subtotal * faerun_tax;
-    double total_cost = subtotal + tax_total;
 
     
     
@@ -102,7 +109,7 @@ int main()
 //output
     cout << "----------" << endl;
     if (addon_choice == 'Y' || 'y') {
-        cout << "Subtotal: " << item1_name << " x " << num_wanted << " + " << "Grinding stone x 1" << " = $" << subtotal << endl;
+        cout << "Subtotal: " << item1_name << " x " << num_wanted << " + " << "Grinding stone x 1" << " = $" << subtotal_addon << endl;
     } else if (addon_choice == 'N' || 'n') {
         cout << "Subtotal: " << item1_name << " x " << num_wanted << " = $" << subtotal << endl;
     } else {

@@ -37,7 +37,8 @@ int main()
     double cost_per = 250.75;
     int num_wanted;
     double faerun_tax = 0.07;
-
+    char addon_choice;
+    double stone = 683;
 
 //talk to the user (give our sales pitch)
     cout << "Greetings traveler!" << endl;
@@ -71,16 +72,11 @@ int main()
 
     //will later create an if else branch asking for add ons depending on what weapon they select. oil for axes, extra string for bows etc.
     // if addon is yes then add price to total and name of addon to cart
-    //cout << "Would you like to include a grinding stone in your cart for only $638 coins?" << endl;
-    //cout << "Y for yes" << endl;
-    //cout << "N for no" << endl;
+    cout << "Would you like to include a grinding stone in your cart for only $638 coins?" << endl;
+    cout << "Y for yes" << endl;
+    cout << "N for no" << endl;
 
-    //cin >> 
-
-    //if (addon_choice = Y) {
-
-    }
-
+    cin >> addon_choice;
 
 
 
@@ -89,6 +85,14 @@ int main()
     double subtotal = num_wanted * cost_per;
     double tax_total = subtotal * faerun_tax;
     double total_cost = subtotal + tax_total;
+
+    if (addon_choice = "Y" || "y") {
+        subtotal = subtotal + stone;
+    } else if (addon_choice = "N" || "n") {
+        // do nothing
+    } else {
+        cout << "Invalid entry" << endl;
+    }
     
     
 //output

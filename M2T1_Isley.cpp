@@ -85,9 +85,9 @@ int main()
 
     double subtotal = num_wanted * cost_per;
 
-    if (addon_choice = "Y" || "y") {
+    if (addon_choice == 'Y' || 'y') {
         subtotal += stone;
-    } else if (addon_choice = "N" || "n") {
+    } else if (addon_choice == 'N' || 'n') {
         // do nothing
     } else {
         cout << "Invalid entry" << endl;
@@ -101,9 +101,9 @@ int main()
     
 //output
     cout << "----------" << endl;
-    if (addon_choice = "Y" || "y") {
+    if (addon_choice == 'Y' || 'y') {
         cout << "Subtotal: " << item1_name << " x " << num_wanted << " + " << "Grinding stone x 1" << " = $" << subtotal << endl;
-    } else if (addon_choice = "N" || "n") {
+    } else if (addon_choice == 'N' || 'n') {
         cout << "Subtotal: " << item1_name << " x " << num_wanted << " = $" << subtotal << endl;
     } else {
         cout << "Invalid entry" << endl;

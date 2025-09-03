@@ -38,7 +38,7 @@ int main()
     int num_wanted;
     double faerun_tax = 0.07;
     char addon_choice;
-    double stone = 683;
+    double stone = 638;
 
 //talk to the user (give our sales pitch)
     cout << "Greetings traveler!" << endl;
@@ -82,22 +82,34 @@ int main()
 
 //processing
     //calculating the cost for the input
+
     double subtotal = num_wanted * cost_per;
-    double tax_total = subtotal * faerun_tax;
-    double total_cost = subtotal + tax_total;
 
     if (addon_choice = "Y" || "y") {
-        subtotal = subtotal + stone;
+        subtotal += stone;
     } else if (addon_choice = "N" || "n") {
         // do nothing
     } else {
         cout << "Invalid entry" << endl;
     }
+
+    double tax_total = subtotal * faerun_tax;
+    double total_cost = subtotal + tax_total;
+
+    
     
     
 //output
     cout << "----------" << endl;
-    cout << "Subtotal: " << item1_name << " x " << num_wanted << " = $" << subtotal << endl;
+    if (addon_choice = "Y" || "y") {
+        cout << "Subtotal: " << item1_name << " x " << num_wanted << " + " << "Grinding stone x 1" << " = $" << subtotal << endl;
+    } else if (addon_choice = "N" || "n") {
+        cout << "Subtotal: " << item1_name << " x " << num_wanted << " = $" << subtotal << endl;
+    } else {
+        cout << "Invalid entry" << endl;
+    }
+
+
     cout << "Faerun tax: " << faerun_tax << endl;
     cout << "Tax amount: " << tax_total << endl;
     cout << " - " << endl;

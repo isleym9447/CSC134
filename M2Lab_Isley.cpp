@@ -37,24 +37,28 @@ int main()
 
    
 //input 
-
+    cout << "************************" << endl;
     cout << "** Crate Expectations **" << endl;
-    cout << "*** Crates & boxes ***" << endl;
+    cout << "*** Crates & Boxes ***" << endl;
     cout << "************************" << endl;
     cout << endl;
 
     cout << "Wecome to the online order system." << endl;
+    cout << endl;
+
     cout << "Enter the dimensions of your create to get your quote!" << endl;
 
-    cout << "Enter length: " << endl;
+    cout << "Enter length in ft: " << endl;
     cin >> length;
 
-    cout << "Enter width: " << endl;
+    cout << "Enter width in ft: " << endl;
     cin >> width;
 
-    cout << "Enter height: " << endl;
+    cout << "Enter height in ft: " << endl;
     cin >> height;
 
+    cout << endl;
+    cout << "Calculating..." << endl;
 
 //processing
 

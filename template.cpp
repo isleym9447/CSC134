@@ -26,10 +26,16 @@ using namespace std;
 int main()
 {
    
+//input 
+
+//processing
 
 
 
-    //output
+
+
+
+//output
     return 0; //no errors
 
 

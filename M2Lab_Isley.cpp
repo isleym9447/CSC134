@@ -29,6 +29,7 @@ int main()
     const double COST_PER_CUBIC_FOOT = 0.23; //business cost per ft
     const double CHARGE_PER_CUBIC_FOOT = 0.5; //customer cost per ft
     double length, width, height; //size of crate
+    double volume;
     double cost_to_make, charge_to_customer; //pricing 
     double profit; //money made
 
@@ -53,13 +54,12 @@ int main()
     cin >> height;
 
 
-
-
-
-
-
-
 //processing
+
+    volume = length * width * height;
+    cost_to_make = volume * COST_PER_CUBIC_FOOT;
+    charge_to_customer = volume * CHARGE_PER_CUBIC_FOOT;
+    profit = charge_to_customer - cost_to_make;
 
 
 

@@ -43,8 +43,18 @@ int main()
     cout << "Wecome to the online order system." << endl;
     cout << "Enter the dimensions of your create to get your quote!" << endl;
 
-    cout 
-    cin 
+    cout << "Enter length: " << endl;
+    cin >> length;
+
+    cout << "Enter width: " << endl;
+    cin >> width;
+
+    cout << "Enter height: " << endl;
+    cin >> height;
+
+
+
+
 
 
 

@@ -21,6 +21,8 @@ using namespace std;
 
 int main()
 {
+
+//variables
    
 //input 
 

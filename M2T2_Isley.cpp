@@ -22,9 +22,20 @@ using namespace std;
 int main()
 {
    
+//variables
+    const double TAX = 0.08; //tax
+    double cost = 5.99; //meal cost
+
+   
+
+
 //input 
 
+
+
 //processing
+
+    cout << "Price: " << cost
 
 
 

@@ -1,6 +1,4 @@
 /*
-
-
 CSC 134
 Mattea Isley
 M2Lab1 - Crates of Wrath
@@ -12,8 +10,6 @@ PROCESSING:
 OUTPUT: 
 return 0 (no error)
 SPECIAL FX:
-
-
 */
 
 

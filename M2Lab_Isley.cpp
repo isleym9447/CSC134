@@ -40,6 +40,8 @@ int main()
 
     cout << "** Crate Expectations **" << endl;
     cout << "*** Crates & boxes ***" << endl;
+    cout << "************************" << endl;
+    cout << endl;
 
     cout << "Wecome to the online order system." << endl;
     cout << "Enter the dimensions of your create to get your quote!" << endl;
@@ -65,6 +67,25 @@ int main()
 
 
 //output
+    cout << endl;
+    cout << "Your crate dimensions are: " << length << " x " << width << " x " << height << endl;
+    cout << "Your crate is " << volume << " cubic feet." << endl;
+    cout << endl;
+    cout << "Price: $" << charge_to_customer << endl;
+
+    cout << endl;
+    cout << "*****************************************" << endl;
+    cout << "** FOR BUSINESS **" << endl;
+    cout << "Cost to build: $" << cost_to_make << endl;
+    cout << "Profit: $ " << profit << endl;
+
+
+
+
+
+
+
+
     return 0; //no errors
 
 

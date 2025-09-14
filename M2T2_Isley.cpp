@@ -43,6 +43,7 @@ int main()
     cout << "Tax: " << TAX << endl;
     cout << "Taxed: " << tax_amount << endl;
     cout << "Total: $" << total << endl;
+    cout << endl;
 
 
 

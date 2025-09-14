@@ -39,10 +39,10 @@ int main()
     cout << "Items:" << endl;
     cout << "SANDWHICH MEAL (TURKEY) $5.99" << endl;
     cout << endl;
-    cout << "Subtotal: " << subtotal << endl;
+    cout << "Subtotal: $" << subtotal << endl;
     cout << "Tax: " << TAX << endl;
     cout << "Taxed: " << tax_amount << endl;
-    cout << "Total" << total << endl;
+    cout << "Total: $" << total << endl;
 
 
 

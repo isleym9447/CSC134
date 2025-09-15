@@ -24,10 +24,11 @@ int main()
 {
    
 //variables
-    const double TAX = 0.08; //tax
-    double subtotal = 5.99; //meal cost
+    const double TAX = 0.18; //tax
+    double subtotal = 13.99; //meal cost
+    double upcharge = 0.50; // because its night city and they can
     double tax_amount = subtotal * TAX; //tax amount
-    double total = subtotal + tax_amount; //final total
+    double total = subtotal + upcharge + tax_amount; //final total
     string item = "BACON CHEESEBURGER MEAL";
     string mod1 = "-MEDIUM WELL";
     string mod2 = "-EXTRA CHEESE";
@@ -38,14 +39,15 @@ int main()
    
 
 
-    cout << "=================" << endl;
-    cout << "===Tom's Diner===" << endl;
-    cout << "=================" << endl;
-    cout << "Watson, Night City" << endl;
+    cout << "===============================" << endl;
+    cout << "|      ---Tom's Diner---      |" << endl;
+    cout << "===============================" << endl;
+    cout << "----- Watson, Night City ------" << endl;
     cout << endl;
     cout << "DATE: 9/20/2077     TIME: 22:47" << endl;
     cout << endl;
     cout << "CASHIER:  REG-MAIN 1" << endl;
+    cout << endl;
     cout << "Items:" << endl;
     cout << "- " << item << "\t" << "$13.99" << endl;
     cout << "\t" << mod1 << endl;

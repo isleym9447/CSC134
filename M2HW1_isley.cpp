@@ -19,15 +19,53 @@ SPECIAL FX:
 #include <iostream>
 using namespace std;
 
-int main()
+void option1() { // Bank Account Balance
+cout << endl;
+cout << "The Counting House Banking System" << endl;
+
+
+}
+
+
+
+void option2() { // Crate Expectations
+cout << endl;
+cout << "" << endl;
+
+
+}
+
+
+void option3() { // Pizza Party
+cout << endl;
+cout << "" << endl;
+
+
+}
+
+
+
+void option4() { // School Cheer
+cout << endl;
+cout << "" << endl;
+
+
+}
+
+
+void option5() { //exit
+cout << "Thank you for using. Goodbye." << endl;
+}
+
+
+
+int main() //main menu
 {
-
-//variables
-
 
 cout << "Gold" << endl;
 cout << endl;
 cout << "Please make a selection" << endl;
+cout << "=======================" << endl;
 cout << "1: Bank Account Balance" << endl;
 cout << "2: Crate Expectations" << endl;
 cout << "3: Pizza Party" << endl;
@@ -35,9 +73,24 @@ cout << "4: School Cheer" << endl;
 cout << "5: Exit" << endl;
 
 
-   
+   question1();
+   question2();
 
-//input 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

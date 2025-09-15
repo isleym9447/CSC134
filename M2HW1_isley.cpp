@@ -20,10 +20,40 @@ SPECIAL FX:
 using namespace std;
 #include <iomanip>
 
+
+
+
 void option1() { // Bank Account Balance
+
+// variables
+string name;
+double acc_balance;
+double deposit;
+double withdrawal;
+double final_balance;
+
+double acc_num;
+
+
+
+
+
+
 cout << endl;
 cout << "The Counting House Banking System" << endl;
 cout << endl;
+
+cout << "Account Info" << endl;
+cout << "User Name: " << endl;
+cin >> name;
+cin >> acc_balance;
+cin >> deposit;
+cin >> withdrawal;
+
+
+
+
+
 
 
 

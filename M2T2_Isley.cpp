@@ -17,7 +17,7 @@ SPECIAL FX:
 //beginning with the magic words
 
 #include <iostream>
-#include <ctime>
+#include <iomanip>
 using namespace std;
 
 int main()
@@ -28,7 +28,7 @@ int main()
     double subtotal = 5.99; //meal cost
     double tax_amount = subtotal * TAX; //tax amount
     double total = subtotal + tax_amount; //final total
-    string item = "BACON CHEESE BURGER MEAL";
+    string item = "BACON CHEESEBURGER MEAL";
     string mod1 = "-MEDIUM WELL";
     string mod2 = "-EXTRA CHEESE";
     string side = "FRIES";
@@ -58,11 +58,12 @@ int main()
 
 
 
-
-    cout << "Subtotal: " << "\t$" << subtotal << endl;
-    cout << "Tax: " << TAX << endl;
-    cout << "Taxed: " << tax_amount << endl;
-    cout << "Total: " << total << endl;
+    cout << setprecision(2) << fixed; //requires "#include <iomanip>"
+    cout << "Subtotal: " << "\t\t$" << subtotal << endl;
+    cout << "Tax: " << "\t\t\t$" << TAX << endl;
+    cout << "Taxed: " << "\t\t\t$" << tax_amount << endl;
+    cout << "-------" << endl;
+    cout << "Total: " << "\t\t\t$" << total << endl;
     cout << endl;
     cout << "Items in transaction: 1" << endl;
 

@@ -18,10 +18,22 @@ SPECIAL FX:
 
 #include <iostream>
 using namespace std;
+#include <iomanip>
 
 void option1() { // Bank Account Balance
 cout << endl;
 cout << "The Counting House Banking System" << endl;
+cout << endl;
+
+
+
+double cost = 8.0;
+
+
+cout << setprecision(2) << fixed; //requires "#include <iomanip>"
+cout << "The cost is: $" << cost << endl;
+
+
 
 
 }

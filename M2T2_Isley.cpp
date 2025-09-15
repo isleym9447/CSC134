@@ -33,12 +33,13 @@ int main()
     string mod1 = "-MEDIUM WELL";
     string mod2 = "-EXTRA CHEESE";
     string side = "FRIES";
+    string bev = "NICOLA";
 
 
 
    
 
-
+// print out receipt 
     cout << "===============================" << endl;
     cout << "|      ---Tom's Diner---      |" << endl;
     cout << "===============================" << endl;
@@ -52,8 +53,9 @@ int main()
     cout << "- " << item << "\t" << "$13.99" << endl;
     cout << "\t" << mod1 << endl;
     cout << "\t" << mod2 << endl;
-    cout << "- " << side << " \t\t\t $0.50" << endl;
-    cout << "\t" << "-UPCHARGE" << endl;
+    cout << "- " << side << " \t\t\t $0.00" << endl;
+    cout << "- " << bev << " \t\t\t $0.50" << endl;
+    cout << "\t" << "-LRG SIZE UPCHARGE" << endl;
 
     cout << "----------------------------" << endl;
 
@@ -67,7 +69,7 @@ int main()
     cout << "-------" << endl;
     cout << "Total: " << "\t\t\t$" << total << endl;
     cout << endl;
-    cout << "Items in transaction: 1" << endl;
+    cout << "Items in transaction: 3" << endl;
 
 
 

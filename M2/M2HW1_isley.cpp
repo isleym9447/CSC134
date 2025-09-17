@@ -177,8 +177,10 @@ void option3() { // Pizza Party
     cout << "~~~~~~~~~~~~~~~~~~~~~~~" << endl;
     
 
-    cout << "How many friends ya inviting?";
+    cout << "HOW MANY FRIENDS YA INVITING?";
     cin >> people;
+    cout << "***AS OF 7/10/2078, THIS LOCATION IS ONLY SERVING MEDIUM PIES***" << endl;
+    
 
 // if people == 1 and pizzas >1, cout "no judgement"
 // if people == >5, cout "Ya might want to add some breadsticks"

@@ -26,42 +26,40 @@ using namespace std;
 void option1() { // Bank Account Balance
 
 // variables
-string name;
-double acc_balance;
-double deposit;
-double withdrawal;
-double final_balance;
+    string name;
+    double acc_balance;
+    double deposit;
+    double withdrawal;
+    double final_balance = (acc_balance + deposit) - withdrawal;
 
-double acc_num;
-
-
+    double acc_num = rand() % 129843;
 
 
+    cout << endl;
+    cout << "The Counting House Banking System" << endl;
+    cout << endl;
 
+    cout << "Account Info" << endl;
+    cout << "User Name: ";
+    cin >> name;
+    cout << "Balance: $";
+    cin >> acc_balance;
+    cout << "Deposit: $";
+    cin >> deposit;
+    cout << "Withdrawal: $";
+    cin >> withdrawal;
 
-cout << endl;
-cout << "The Counting House Banking System" << endl;
-cout << endl;
+    cout << endl;
+    cout << "CONTACTING DATABASE..." << endl;
+    cout << endl;
 
-cout << "Account Info" << endl;
-cout << "User Name: " << endl;
-cin >> name;
-cout << "Balance: " << endl;
-cin >> acc_balance;
-cout << "Deposit: " << endl;
-cin >> deposit;
-cout << "Withdrawal: " << endl;
-cin >> withdrawal;
-
-cout << "CONTACTING DATABASE..." << endl;
-cout << endl;
-
-cout << "The Counting House" << endl;
-cout << "Account Holder: " << "\t\t" << name << endl;
-cout << endl;
-cout << "Account num:  " << "\t\t" << acc_num << endl;
-cout << endl;
-cout << "Balance: " << "\t\t" << final_balance << endl;
+    cout << "The Counting House" << endl;
+    cout << "Account Holder: " << "\t\t" << name << endl;
+    cout << endl;
+    cout << "Account num:  " << "\t\t\t" << acc_num << endl;
+    cout << endl;
+    cout << "Balance: " << "\t\t" << final_balance << endl;
+    cout << endl;
 
 
 
@@ -84,10 +82,10 @@ cout << "The cost is: $" << cost << endl;
 
 
 void option2() { // Crate Expectations
-cout << endl;
-cout << "" << endl;
+    cout << endl;
+    cout << "" << endl;
 
-const double COST_PER_CUBIC_FOOT = 0.23; //business cost per ft
+    const double COST_PER_CUBIC_FOOT = 0.23; //business cost per ft
     const double CHARGE_PER_CUBIC_FOOT = 0.5; //customer cost per ft
     double length, width, height; //size of crate
     double volume;
@@ -154,47 +152,72 @@ const double COST_PER_CUBIC_FOOT = 0.23; //business cost per ft
 
 
 void option3() { // Pizza Party
-cout << endl;
-cout << "" << endl;
+    cout << endl;
+    cout << "" << endl;
 
 
-}
+    }
 
 
 
-void option4() { // School Cheer
-cout << endl;
-cout << "" << endl;
+    void option4() { // School Cheer
+    cout << endl;
+    cout << "" << endl;
 
 
-}
+    }
 
 
-void option5() { //exit
-cout << "Thank you for using. Goodbye." << endl;
-}
+    void option5() { //exit
+    cout << "Thank you for using. Goodbye." << endl;
+    }
 
 
 
 int main() //main menu
 {
 
-cout << "Gold" << endl;
-cout << endl;
-cout << "Please make a selection" << endl;
-cout << "=======================" << endl;
-cout << "1: Bank Account Balance" << endl;
-cout << "2: Crate Expectations" << endl;
-cout << "3: Pizza Party" << endl;
-cout << "4: School Cheer" << endl;
-cout << "5: Exit" << endl;
+    int choice;
+
+   
+    cout << endl;
+    cout << "=======Gold Menu=======" << endl;
+    cout << "=======================" << endl;
+    cout << "1: Bank Account Balance" << endl;
+    cout << "2: Crate Expectations" << endl;
+    cout << "3: Pizza Party" << endl;
+    cout << "4: School Cheer" << endl;
+    cout << "5: Exit" << endl;
+    cout << "=======================" << endl;
+    cout << "Please make a selection: ";
+    cin >> choice;
 
 
-   option1();
-   option2();
-   option3();
-   option4();
-   option5();
+
+
+    if (choice == 1) {
+        option1();
+    }
+    
+    if (choice == 2) {
+        option2();
+    }
+    
+    if (choice == 3) {
+        option3();
+    }
+
+    if (choice == 4) {
+        option4();
+    }
+
+    if (choice == 5) {
+        option5();
+    }
+    
+    else {
+        cout << "Invalid. Try again." << endl;
+    }
 
 
 

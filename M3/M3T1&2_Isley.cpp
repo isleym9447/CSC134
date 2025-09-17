@@ -37,6 +37,9 @@ int main() {
 
     // Find the area
 
+    area1 = len1 * wid1;
+    area2 = len2 * wid2;
+
     // Print the area
 
     return 0;

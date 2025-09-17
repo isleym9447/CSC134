@@ -19,33 +19,25 @@ SPECIAL FX:
 #include <iostream>
 using namespace std;
 
-int main()
-{
+int main() {
 
+    // Variables
+    double len1, wid1, len2, wid2; 
+    double area1, area2;
 
+    // Ask user for the length and width
+    cout << "What's the length of the first rectangle? ";
+    cin >> len1;
+    cout << "What's the width of the first rectangle? ";
+    cin >> wid1;
+    cout << "What's the length of the second rectangle? ";
+    cin >> len2;
+    cout << "What's the width of the second rectangle? ";
+    cin >> wid2;
 
+    // Find the area
 
+    // Print the area
 
-
-
-
-
-
-
-
-
-//output
-    return 0; //no errors
-
-
-
-
-
-
-
-
-
-
-
-
+    return 0;
 }

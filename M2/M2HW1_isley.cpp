@@ -30,7 +30,7 @@ void option1() { // Bank Account Balance
     double acc_balance;
     double deposit;
     double withdrawal;
-    double final_balance = (acc_balance + deposit) - withdrawal;
+    
 
     double acc_num = rand() % 129843;
 
@@ -53,28 +53,24 @@ void option1() { // Bank Account Balance
     cout << "CONTACTING DATABASE..." << endl;
     cout << endl;
 
+    double final_balance = (acc_balance + deposit) - withdrawal;
+
     cout << "The Counting House" << endl;
+    cout << "==================" << endl;
     cout << "Account Holder: " << "\t\t" << name << endl;
     cout << endl;
     cout << "Account num:  " << "\t\t\t" << acc_num << endl;
     cout << endl;
-    cout << "Balance: " << "\t\t" << final_balance << endl;
-    cout << endl;
 
+    if (acc_balance || deposit || final_balance >= 0){
+        cout << "Balance: " << "\t\t\t" << "$" << final_balance << endl;
+        cout << endl; 
+    }
 
-
-
-
-
-
-/*
-double cost = 8.0;
-
-
-cout << setprecision(2) << fixed; //requires "#include <iomanip>"
-cout << "The cost is: $" << cost << endl;
-*/
-
+    if (final_balance < 0){
+        cout << "You do not have the available funds to continue with your request. Goodbye." << endl;
+        cout << endl;
+    }
 
 
 }
@@ -85,8 +81,8 @@ void option2() { // Crate Expectations
     cout << endl;
     cout << "" << endl;
 
-    const double COST_PER_CUBIC_FOOT = 0.23; //business cost per ft
-    const double CHARGE_PER_CUBIC_FOOT = 0.5; //customer cost per ft
+    const double COST_PER_CUBIC_FOOT = 0.30; //business cost per ft
+    const double CHARGE_PER_CUBIC_FOOT = 0.52; //customer cost per ft
     double length, width, height; //size of crate
     double volume;
     double cost_to_make, charge_to_customer; //pricing 
@@ -152,8 +148,45 @@ void option2() { // Crate Expectations
 
 
 void option3() { // Pizza Party
+
+    //variables
+    int people;
+    
+
+
+
+
     cout << endl;
-    cout << "" << endl;
+    cout << "~~BUCK-A-SLICE~~~~~~~~~" << endl;
+    cout << "~~~~~~~~~~~~MENU~~~~~~~" << endl;
+    cout << endl;
+    cout << "~~~~~~~~~PIZZA~~~~~~~~~" << endl;
+    cout << "SMALL PIE (4 SLICES)\t $8.99" << endl;
+    cout << "MEDIUM PIE (6 SLICES)\t $10.99" << endl;
+    cout << "LARGE PIE (8 SLICES)\t $15.99" << endl;
+    cout << "HUGE PIE (120 SLICES)\t $56.99" << endl;
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    cout << endl;
+    cout << "~~~~~~SIDES + BEVS~~~~~" << endl;
+    cout << "BREADSTICKS\t $7.99" << endl;
+    cout << "CHEESESTICKS\t $8.99" << endl;
+    cout << "~~" << endl;
+    cout << "NICOLA\t $2.99" << endl;
+    cout << "TIANCHA\t $2.99" << endl;
+    cout << "CHROMANTICORE\t $4.99" << endl;
+    cout << "~~~~~~~~~~~~~~~~~~~~~~~" << endl;
+    
+
+    cout << "How many friends ya inviting?";
+    cin >> people;
+
+// if people == 1 and pizzas >1, cout "no judgement"
+// if people == >5, cout "Ya might want to add some breadsticks"
+
+
+
+
+
 
 
     }
@@ -199,19 +232,19 @@ int main() //main menu
         option1();
     }
     
-    if (choice == 2) {
+    else if (choice == 2) {
         option2();
     }
     
-    if (choice == 3) {
+    else if (choice == 3) {
         option3();
     }
 
-    if (choice == 4) {
+    else if (choice == 4) {
         option4();
     }
 
-    if (choice == 5) {
+    else if (choice == 5) {
         option5();
     }
     

@@ -49,5 +49,27 @@ int main() {
     cout << "The area of the second rectangle is: " << area2 << endl;
     cout << "-----------------------------------" << endl;
 
+
+    if (area1 > area2) {
+        cout << "The first rectangle is larger." << endl;
+
+    }
+
+    if (area2 > area1) {
+        cout << "The second rectangle is larger." << endl;
+        
+    }
+
+    if (area1 == area2) {
+        cout << "The rectangles are equal!" << endl;
+        
+    }
+
+
+
+
+
+
+
     return 0;
 }

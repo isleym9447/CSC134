@@ -78,54 +78,46 @@ void option1() { // Bank Account Balance
 
 
 void option2() { // Crate Expectations
-    cout << endl;
-    cout << "" << endl;
-
-    const double COST_PER_CUBIC_FOOT = 0.30; //business cost per ft
-    const double CHARGE_PER_CUBIC_FOOT = 0.52; //customer cost per ft
-    double length, width, height; //size of crate
+    const double COST_PER_CUBIC_FOOT = 0.30;   // business cost per ft
+    const double CHARGE_PER_CUBIC_FOOT = 0.52; // customer cost per ft
+    double length, width, height;              // size of crate
     double volume;
-    double cost_to_make, charge_to_customer; //pricing 
-    double profit; //money made
+    double cost_to_make, charge_to_customer;   // pricing 
+    double profit;                             // money made
 
-
-
-   
-//input 
+    // input 
     cout << "************************" << endl;
     cout << "** Crate Expectations **" << endl;
     cout << "*** Crates & Boxes ***" << endl;
     cout << "************************" << endl;
     cout << endl;
 
-    cout << "Wecome to the online order system." << endl;
+    cout << "Welcome to the online order system." << endl;
     cout << endl;
 
-    cout << "Enter the dimensions of your create to get your quote!" << endl;
+    cout << "Enter the dimensions of your crate to get your quote!" << endl;
 
-    cout << "Enter length in ft: " << endl;
+    cout << "Enter length in ft: ";
     cin >> length;
 
-    cout << "Enter width in ft: " << endl;
+    cout << "Enter width in ft: ";
     cin >> width;
 
-    cout << "Enter height in ft: " << endl;
+    cout << "Enter height in ft: ";
     cin >> height;
 
     cout << endl;
     cout << "Calculating..." << endl;
 
-//processing
-
+    // processing
     volume = length * width * height;
     cost_to_make = volume * COST_PER_CUBIC_FOOT;
     charge_to_customer = volume * CHARGE_PER_CUBIC_FOOT;
     profit = charge_to_customer - cost_to_make;
 
+    // output with two decimal places
+    cout << fixed << setprecision(2);
 
-
-
-//output
     cout << endl;
     cout << "Your crate dimensions are: " << length << " x " << width << " x " << height << endl;
     cout << "Your crate is " << volume << " cubic feet." << endl;
@@ -136,7 +128,9 @@ void option2() { // Crate Expectations
     cout << "*****************************************" << endl;
     cout << "** FOR BUSINESS **" << endl;
     cout << "Cost to build: $" << cost_to_make << endl;
-    cout << "Profit: $ " << profit << endl;
+    cout << "Profit: $" << profit << endl;
+
+    
 
 
 

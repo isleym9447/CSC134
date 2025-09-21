@@ -145,6 +145,16 @@ void option3() { // Pizza Party
 
     //variables
     int people;
+    int pizzas;
+    int slices;
+    int totalslices;
+    double totalcost;
+    char addon;
+
+    double med_price = 10.99;
+    double breadsticks_price = 7.99;
+
+
     
 
 
@@ -163,7 +173,6 @@ void option3() { // Pizza Party
     cout << endl;
     cout << "~~~~~~SIDES + BEVS~~~~~" << endl;
     cout << "BREADSTICKS\t $7.99" << endl;
-    cout << "CHEESESTICKS\t $8.99" << endl;
     cout << "~~" << endl;
     cout << "NICOLA\t $2.99" << endl;
     cout << "TIANCHA\t $2.99" << endl;
@@ -171,14 +180,46 @@ void option3() { // Pizza Party
     cout << "~~~~~~~~~~~~~~~~~~~~~~~" << endl;
     
 
-    cout << "HOW MANY FRIENDS YA INVITING?";
-    cin >> people;
+   
     cout << "***AS OF 7/10/2078, THIS LOCATION IS ONLY SERVING MEDIUM PIES***" << endl;
-    
+    cout << "HOW MANY PIZZAS YA ORDERING?" << endl;
+    cin >> pizzas;
 
-// if people == 1 and pizzas >1, cout "no judgement"
-// if people == >5, cout "Ya might want to add some breadsticks"
+    cout << "HOW MANY SLICES YOU NEEDING? ";
+    cin >> slices;
 
+    cout << "HOW MANY FRIENDS YA INVITING? ";
+    cin >> people;
+
+    totalslices = pizzas * slices;
+    totalcost = pizzas * med_price;
+
+    if (people > 3){
+        cout << "YOUVE GOT ALOTTA FRIENDS! ADD BREADSTICKS FOR $7.99? (Y/N)" << endl;
+        cin >> addon;
+
+        if (addon == 'y' || addon == 'Y'){
+            totalcost += breadsticks_price;
+            cout << "BREADSTICKS ADDED!" << endl;
+        }
+        else {
+            cout << "NO BREADSTICKS ADDED." << endl;
+
+        }
+    }
+
+    cout << fixed << setprecision(2);
+    cout << endl;
+    cout << "ORDER SUMMARY" << endl;
+    cout << "=============" << endl;
+    cout << "PIZZAS\t" << pizzas << endl;
+    cout << "SLICES\t" << totalslices << endl;
+
+        if (addon == 'y' || addon == 'Y') {
+            cout << "BREADSTICKS" << endl;
+        }
+
+    cout << "TOTAL:\t" << "$" << totalcost;
 
 
 

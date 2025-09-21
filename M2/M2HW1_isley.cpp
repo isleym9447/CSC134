@@ -231,8 +231,22 @@ void option3() { // Pizza Party
 
 
     void option4() { // School Cheer
-    cout << endl;
-    cout << "" << endl;
+    
+    string school, team, letsgo;
+    string cheerone, cheertwo;
+
+    letsgo = "Lets go ";
+    school = "FTCC";
+    team = "Trojans";
+
+    cheerone = letsgo + school;
+    cheertwo = letsgo + team;
+
+    cout << cheerone << "!" << endl;
+    cout << cheerone << "!" << endl;
+    cout << cheerone << "!" << endl;
+    cout << cheertwo << "!" << endl;
+
 
 
     }

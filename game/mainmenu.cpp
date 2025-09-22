@@ -7,11 +7,15 @@ Mattea Isley
  //beginning with the magic words
  
  #include <iostream>
+ #include "charcreate.h"
  using namespace std;
 
 
 void newgame(){
+    cout << ">>NEW GAME START<<" << endl;
 
+    //character creation 
+    charcreate();
     
 }
 

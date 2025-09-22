@@ -150,7 +150,10 @@ void charcreate(){
     /////////////////////////////////////////////////////////////////////////////////////////////////
     // SUMMARY
     
-
+    cout << ">>>Character Summary<<<" << endl;
+    cout << "Hair: " << haircolor(haircolorchoice) << hairstyle(hairstylechoice) << endl;
+    cout << "Eyes: " << eyecolor(eyecolorchoice) << endl;
+    cout << "Life Path: " << lifepath(lifepathchoice) << endl;
 
 
 

@@ -78,54 +78,110 @@ void charcreate(){
     cout << "<<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>" << endl;
     cout << "CHARACTER CREATOR INITIATED" << endl;
 
+    
     //hair color
-    cout << "Choose your hair color" << endl;
-    cout << "1. Black" << endl;
-    cout << "2. Blonde" << endl;
-    cout << "3. Brown" << endl;
-    cout << "4. Pink" << endl;
-    cout << "5. Purple" << endl;
-    cout << "6. Green" << endl;
+    do {
+        cout << "Choose your hair color" << endl;
+        cout << "1. Black" << endl;
+        cout << "2. Blonde" << endl;
+        cout << "3. Brown" << endl;
+        cout << "4. Pink" << endl;
+        cout << "5. Purple" << endl;
+        cout << "6. Green" << endl;
 
-    cout << "Enter choice" << endl;
-    cin >> haircolorchoice;
+        cout << "Enter choice" << endl;
+        cin >> haircolorchoice;
+
+        if (haircolorchoice < 1 || haircolorchoice > 6) {
+            cout << endl;
+            cout << "!!!!!!!!!!!!!!" endl;
+            cout << ">ERROR<" << endl;
+            cout << "INVALID ENTRY. TRY AGAIN." << endl;
+            cout << endl;
+        }
+    } while (haircolorchoice < 1 || haircolorchoice > 6);
+
+
+
+
+
 
     //hair style
-    cout << "Choose your hair style" << endl;
-    cout << "1. Short" << endl;
-    cout << "2. Long" << endl;
-    cout << "3. Braids" << endl;
-    cout << "4. Mohawk" << endl;
-    cout << "5. Buzzed" << endl;
+    do {
+        cout << "Choose your hair style" << endl;
+        cout << "1. Short" << endl;
+        cout << "2. Long" << endl;
+        cout << "3. Braids" << endl;
+        cout << "4. Mohawk" << endl;
+        cout << "5. Buzzed" << endl;
 
-    cout << "Enter choice" << endl;
-    cin >> hairstylechoice;
+        cout << "Enter choice" << endl;
+        cin >> hairstylechoice;
+
+         if (eyecolorchoice < 1 || eyecolorchoice > 4) {
+            cout << endl;
+            cout << "!!!!!!!!!!!!!!" endl;
+            cout << ">ERROR<" << endl;
+            cout << "INVALID ENTRY. TRY AGAIN." << endl;
+            cout << endl;
+        }
+
+    } while (hairstylechoice < 1 || hairstylechoice > 5);
+
+
 
     //eye color
-    cout << "Choose your eye color" << endl;
-    cout << "1. Brown" << endl;
-    cout << "2. Cyber silver" << endl;
-    cout << "3. Neon green" << endl;
-    cout << "4. Black w/ pink hearts" << endl;
+    do {
+        cout << "Choose your eye color" << endl;
+        cout << "1. Brown" << endl;
+        cout << "2. Cyber silver" << endl;
+        cout << "3. Neon green" << endl;
+        cout << "4. Black w/ pink hearts" << endl;
 
-    cout << "Enter choice" << endl;
-    cin >> eyecolorchoice;
+        cout << "Enter choice" << endl;
+        cin >> eyecolorchoice;
+
+        if (eyecolorchoice < 1 || eyecolorchoice > 4) {
+            cout << endl;
+            cout << "!!!!!!!!!!!!!!" endl;
+            cout << ">ERROR<" << endl;
+            cout << "INVALID ENTRY. TRY AGAIN." << endl;
+            cout << endl;
+        }
+
+    } while (eyecolorchoice < 1 || eyecolorchoice > 4);
+
+
+
     
     //life path
-    cout << "Choose your life path" << endl;
-    cout << "1. Nomad" << endl;
-    cout << "2. Streetkid" << endl;
-    cout << "3. Corpo" << endl;
-    
-                                                                 //add descriptions??
-    cout << "Enter choice" << endl;
-    cin >> lifepathchoice;
 
-    //inventory
-    inventory.clear();
-    inventory.push_back("Airhypo");
-    inventory.push_back("Apartment keycard");
-    corpoinfluence = false; //reset
+    do {
+        cout << "Choose your life path" << endl;
+        cout << "1. Nomad" << endl;
+        cout << "2. Streetkid" << endl;
+        cout << "3. Corpo" << endl;
+        
+                                                                    //add descriptions??
+        cout << "Enter choice" << endl;
+        cin >> lifepathchoice;
+
+        //inventory
+        inventory.clear();
+        inventory.push_back("Airhypo");
+        inventory.push_back("Apartment keycard");
+        corpoinfluence = false; //reset
+
+         if (lifepathchoice < 1 || lifepathchoice > 3) {
+            cout << endl;
+            cout << "!!!!!!!!!!!!!!" endl;
+            cout << ">ERROR<" << endl;
+            cout << "INVALID ENTRY. TRY AGAIN." << endl;
+            cout << endl;
+        }
+
+    } while (lifepathchoice < 1 || lifepathchoice > 3);
+    
 
     //lifepath specific inventory and stats
     switch(lifepathchoice){

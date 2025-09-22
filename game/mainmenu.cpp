@@ -22,7 +22,7 @@ void settings(){
 
 void credits(){
    
-   cout << "\n\n===== CREDITS =====\n\n\n";
+   cout << "\n\n===== CREDITS =====\n\n";
    cout << "This project is a fan-made game inspired by the world of *Cyberpunk 2077* © CD PROJEKT RED" << endl;
    cout << "." << endl;
    cout << "All official characters, settings, and world-building elements are the property of CD PROJEKT RED." << endl;
@@ -35,13 +35,16 @@ void credits(){
    cout << "." << endl;
    cout << "No corpos were harmed in the making of this game." << endl;
    cout << "." << endl;
+   cout << "============================================================================================================================\n\n" << endl;
 
 }
 
 void quitgame(){
-
+   cout << endl;
+   cout << "<<>><<>><<>><<>><<>><<>><<" << endl;
    cout << "Thanks for playing chooms!" << endl;
-   
+   cout << "<<>><<>><<>><<>><<>><<>><<" << endl;
+   cout << endl;
 
 }
 
@@ -54,12 +57,15 @@ void quitgame(){
     while (true) {
 
       
-        cout << "<<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>" << endl;
+        cout << "<<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<" << endl;
        
-        cout << "1. New Game\n";
-        cout << "2. Settings\n";
-        cout << "3. Credits\n";
-        cout << "4. Quit\n";
+        cout << "\t1. New Game\n";
+        cout << "\t\t2. Settings\n";
+        cout << "\t\t\t3. Credits\n";
+        cout << "\t\t\t\t4. Quit\n";
+      
+        cout << "<<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<" << endl;
+
         cout << ">> Enter choice: ";
         cin >> mmchoice;
 

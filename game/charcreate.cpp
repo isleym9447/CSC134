@@ -81,6 +81,7 @@ void charcreate(){
     
     //hair color
     do {
+        cout << "<<>><<>><<>><<>><<>><<>>\n" << endl;
         cout << "Choose your hair color" << endl;
         cout << "1. Black" << endl;
         cout << "2. Blonde" << endl;
@@ -103,11 +104,9 @@ void charcreate(){
 
 
 
-
-
-
     //hair style
     do {
+        cout << "<<>><<>><<>><<>><<>><<>>\n" << endl;
         cout << "Choose your hair style" << endl;
         cout << "1. Short" << endl;
         cout << "2. Long" << endl;
@@ -132,6 +131,7 @@ void charcreate(){
 
     //eye color
     do {
+        cout << "<<>><<>><<>><<>><<>><<>>\n" << endl;
         cout << "Choose your eye color" << endl;
         cout << "1. Brown" << endl;
         cout << "2. Cyber silver" << endl;
@@ -157,11 +157,24 @@ void charcreate(){
     //life path
 
     do {
+        cout << "<<>><<>><<>><<>><<>><<>>\n" << endl;
         cout << "Choose your life path" << endl;
+
         cout << "1. Nomad" << endl;
+        cout << "\t Roaming The Badlands. looting scrapyards. raiding fuel depots\
+                - life on the road wasn't easy. But growing up in a nomad clan has its perks. Honesty,\
+                integrity, and a love of freedom - qualities that few in Night City possess, and no amount of money can buy." << endl;
+
         cout << "2. Streetkid" << endl;
+        cout << "\t They say If you wanna understand the streets, you gotta live em. Gangs. fixers, dolls. small-time pushers\
+                - you were raised by them all. Down here, the law of the jungle dictates the weak serve the strong\
+                - the only law in Night City you have yet to break" << endl;
+
         cout << "3. Corpo" << endl;
-        
+        cout << "\t Few leave the corporate world with their lives - fewer still with their souls intact.\
+                You’ve been there - you've bent the rules, exploited secrets, and weaponized Information.\
+                There's no such thing as a fair game, only winners and losers." << endl;
+
                                                                     //add descriptions??
         cout << "Enter choice" << endl;
         cin >> lifepathchoice;
@@ -215,11 +228,13 @@ void charcreate(){
 
     /////////////////////////////////////////////////////////////////////////////////////////////////
     // SUMMARY
-    
+    cout << endl;
+    cout << "<<>><<>><<>><<>><<>><<>>\n" << endl;
     cout << ">>>Character Summary<<<" << endl;
     cout << "Hair: " << haircolor(haircolorchoice) << " " << hairstyle(hairstylechoice) << endl;
     cout << "Eyes: " << eyecolor(eyecolorchoice) << endl;
     cout << "Life Path: " << lifepath(lifepathchoice) << endl;
+    cout << "<<>><<>><<>><<>><<>><<>>\n" << endl;
 
 
 

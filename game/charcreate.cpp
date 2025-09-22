@@ -160,20 +160,24 @@ void charcreate(){
         cout << "<<>><<>><<>><<>><<>><<>>\n" << endl;
         cout << "Choose your life path" << endl;
 
-        cout << "1. Nomad" << endl;
-        cout << "\t Roaming The Badlands. looting scrapyards. raiding fuel depots\
-                - life on the road wasn't easy. But growing up in a nomad clan has its perks. Honesty,\
-                integrity, and a love of freedom - qualities that few in Night City possess, and no amount of money can buy." << endl;
+        cout << "1. Nomad\n";
+        cout << "\tRoaming the Badlands. Looting scrapyards. Raiding fuel depots.\n";
+        cout << "\tLife on the road wasn't easy. But growing up in a nomad clan\n";
+        cout << "\thas its perks: honesty, integrity, and a love of freedom—\n";
+        cout << "\tqualities that few in Night City possess, and no amount of\n";
+        cout << "\tmoney can buy.\n\n";
 
-        cout << "2. Streetkid" << endl;
-        cout << "\t They say If you wanna understand the streets, you gotta live em. Gangs. fixers, dolls. small-time pushers\
-                - you were raised by them all. Down here, the law of the jungle dictates the weak serve the strong\
-                - the only law in Night City you have yet to break" << endl;
+        cout << "2. Streetkid\n";
+        cout << "\tThey say if you wanna understand the streets, you gotta live 'em.\n";
+        cout << "\tGangs. Fixers. Dolls. Small-time pushers—you were raised by them all.\n";
+        cout << "\tDown here, the law of the jungle dictates the weak serve the strong—\n";
+        cout << "\tthe only law in Night City you have yet to break.\n\n";
 
-        cout << "3. Corpo" << endl;
-        cout << "\t Few leave the corporate world with their lives - fewer still with their souls intact.\
-                You’ve been there - you've bent the rules, exploited secrets, and weaponized Information.\
-                There's no such thing as a fair game, only winners and losers." << endl;
+        cout << "3. Corpo\n";
+        cout << "\tFew leave the corporate world with their lives—fewer still with\n";
+        cout << "\ttheir souls intact. You've been there: bent the rules, exploited\n";
+        cout << "\tsecrets, and weaponized information. There's no such thing as a\n";
+        cout << "\tfair game, only winners and losers.\n\n";
 
                                                                     //add descriptions??
         cout << "Enter choice" << endl;

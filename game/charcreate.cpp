@@ -94,7 +94,7 @@ void charcreate(){
 
         if (haircolorchoice < 1 || haircolorchoice > 6) {
             cout << endl;
-            cout << "!!!!!!!!!!!!!!" endl;
+            cout << "!!!!!!!!!!!!!!" << endl;
             cout << ">ERROR<" << endl;
             cout << "INVALID ENTRY. TRY AGAIN." << endl;
             cout << endl;
@@ -120,7 +120,7 @@ void charcreate(){
 
          if (eyecolorchoice < 1 || eyecolorchoice > 4) {
             cout << endl;
-            cout << "!!!!!!!!!!!!!!" endl;
+            cout << "!!!!!!!!!!!!!!" << endl;
             cout << ">ERROR<" << endl;
             cout << "INVALID ENTRY. TRY AGAIN." << endl;
             cout << endl;
@@ -143,7 +143,7 @@ void charcreate(){
 
         if (eyecolorchoice < 1 || eyecolorchoice > 4) {
             cout << endl;
-            cout << "!!!!!!!!!!!!!!" endl;
+            cout << "!!!!!!!!!!!!!!" << endl;
             cout << ">ERROR<" << endl;
             cout << "INVALID ENTRY. TRY AGAIN." << endl;
             cout << endl;
@@ -174,7 +174,7 @@ void charcreate(){
 
          if (lifepathchoice < 1 || lifepathchoice > 3) {
             cout << endl;
-            cout << "!!!!!!!!!!!!!!" endl;
+            cout << "!!!!!!!!!!!!!!" << endl;
             cout << ">ERROR<" << endl;
             cout << "INVALID ENTRY. TRY AGAIN." << endl;
             cout << endl;

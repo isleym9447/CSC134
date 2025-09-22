@@ -20,8 +20,12 @@ void newgame(){
 }
 
 void settings(){
-
-
+    cout << endl;
+    cout << "IMMERSION: ON" << endl;
+    cout << "SOUND: ON" << endl;
+    cout << "RAY TRACING: ULTRA" << endl;
+    cout << "SAMURAI: WOKEN TF UP" << endl;
+    cout << endl;
 
 }
 

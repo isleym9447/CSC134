@@ -9,8 +9,8 @@
 using namespace std;
 
 // ===== GLOBAL VARIABLES =====
-extern int haircolorChoice;
-extern int eyecolorChoice;
+extern int haircolorchoice;
+extern int eyecolorchoice;
 extern int hairstylechoice;
 extern int lifepathchoice;
 

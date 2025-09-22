@@ -30,6 +30,7 @@ string haircolor(int haircolorchoice){
         case 4: return "Pink";
         case 5: return "Purple";
         case 6: return "Green";
+        default: return "Unknown";
     }
 }
 
@@ -40,16 +41,18 @@ string hairstyle(int hairstylechoice){
         case 3: return "Braids";
         case 4: return "Mohawk";
         case 5: return "Buzzed";
+        default: return "Unknown";
     }
 }
 
 
 string eyecolor(int eyecolorchoice){
-    switch (haircolorchoice){
+    switch (eyecolorchoice){
         case 1: return "Brown";
         case 2: return "Cyber Silver";
         case 3: return "Neon Green";
         case 4: return "Black w/ pink hearts";
+        default: return "Unknown";
     }
 }
 
@@ -143,6 +146,12 @@ void charcreate(){
             inventory.push_back("Arasaka Office Keycard");
             corpoinfluence = true;
             break;
+        default:
+            streetcred = 0;
+            eddies = 0;
+            vehicle = "None";
+            break;
+
     
 
     }

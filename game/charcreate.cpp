@@ -25,13 +25,41 @@ bool corpoinfluence = false; //flag for corpo life path
 string haircolor(int haircolorchoice){
     switch (haircolorchoice){
         case 1: return "Black";
-        case 1: return "Black";
-        case 1: return "Black";
-        case 1: return "Black";
-        case 1: return "Black";
+        case 2: return "Blonde";
+        case 3: return "Brown";
+        case 4: return "Pink";
+        case 5: return "Purple";
+        case 6: return "Green";
     }
 }
 
+string hairstyle(int hairstylechoice){
+    switch (hairstylechoice){
+        case 1: return "Short";
+        case 2: return "Long";
+        case 3: return "Braids";
+        case 4: return "Mohawk";
+        case 5: return "Buzzed";
+    }
+}
+
+
+string eyecolor(int eyecolorchoice){
+    switch (haircolorchoice){
+        case 1: return "Brown";
+        case 2: return "Cyber Silver";
+        case 3: return "Neon Green";
+        case 4: return "Black w/ pink hearts";
+    }
+}
+
+string lifepath(int lifepathchoice){
+    switch (lifepathchoice){
+        case 1: return "Nomad";
+        case 2: return "Streetkid";
+        case 3: return "Corpo";
+    }
+}
 
 
 

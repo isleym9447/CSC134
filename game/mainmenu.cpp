@@ -12,7 +12,16 @@ Mattea Isley
 
 
 void newgame(){
+
+    cout << endl;
+    cout << endl;
+    cout << endl;
+
     cout << ">>NEW GAME START<<" << endl;
+
+    cout << endl;
+    cout << endl;
+    cout << endl;
 
     //character creation 
     charcreate();

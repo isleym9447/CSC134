@@ -75,6 +75,7 @@ string lifepath(int lifepathchoice){
 void charcreate(){
     int choice;
 
+    cout << "<<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>" << endl;
     cout << "CHARACTER CREATOR INITIATED" << endl;
 
     //hair color

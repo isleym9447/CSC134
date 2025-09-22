@@ -21,8 +21,8 @@ CXXFLAGS = -Wall -g
 # Output program name
 TARGET = game
 
-# Source files
-SRCS = mainmenu.cpp charcreate.cpp
+# Source files (all .cpp files in this folder)
+SRCS = $(wildcard *.cpp)
 OBJS = $(SRCS:.cpp=.o)
 
 # Default target

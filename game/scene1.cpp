@@ -8,7 +8,8 @@ using namespace std;
 
 
 void mirror(){
-    cout << "You look in the mirror" << endl;
+    cout << "You enter the bathroom and look into the dimly lit mirror. Your " << eyecolorchoice << " eyes stare back at you." << endl; 
+    cout << "The light above you flickers, shining on your " << haircolorchoice << hairstylechoice << " typical Night City electricity." << endl;
 }
 
 void baginventory(){
@@ -43,7 +44,7 @@ void scene1(){
 
     cout << "The sounds of bustling Night City wake you up from your sleep. With a yawn, your eyes fully open to meet a" << endl;
     cout << " yellowing stain on the celing above the bed. You remind yourself to clean that later and to always make sure" << endl;
-    cout << " to open your NiCola orange in the kitchen and not in the bed.";
+    cout << " to open your NiCola orange in the kitchen and *not* in the bed.";
     cout << endl;
     cout << "Deciding its probably best to start your day you sit up and..." << endl;
 

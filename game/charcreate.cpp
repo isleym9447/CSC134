@@ -75,7 +75,7 @@ string lifepath(int lifepathchoice){
 void charcreate(){
     int choice;
 
-    cout << "<<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>" << endl;
+    cout << "<<>><<>><<>><<>><<>><<>>\n" << endl;
     cout << "CHARACTER CREATOR INITIATED" << endl;
 
     
@@ -204,6 +204,7 @@ void charcreate(){
         case 1: //nomad
             streetcred = 0;
             eddies = 100;
+            inventory.push_back("Car Keys");
             vehicle = "Quadra Type-66 Avenger";
             break;
         case 2: //streetkid

@@ -1,8 +1,12 @@
 
 
 # make        # compiles everything into "game"
-# ./game      # runs your program
+
 # make clean  # deletes object files + the game executable
+
+# ./game      # runs your program
+
+
 
 
 

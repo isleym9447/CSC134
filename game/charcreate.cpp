@@ -117,7 +117,7 @@ void charcreate(){
         cout << "Enter choice" << endl;
         cin >> hairstylechoice;
 
-         if (eyecolorchoice < 1 || eyecolorchoice > 4) {
+         if (hairstylechoice < 1 || hairstylechoice > 5) {
             cout << endl;
             cout << "!!!!!!!!!!!!!!" << endl;
             cout << ">ERROR<" << endl;

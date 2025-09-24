@@ -8,8 +8,8 @@ using namespace std;
 
 
 void mirror(){
-    cout << "You enter the bathroom and look into the dimly lit mirror. Your " << eyecolorchoice << " eyes stare back at you." << endl; 
-    cout << "The light above you flickers, shining on your " << haircolorchoice << hairstylechoice << " typical Night City electricity." << endl;
+    cout << "You enter the bathroom and look into the dimly lit mirror. Your " << eyecolor(eyecolorchoice) << " eyes stare back at you." << endl; 
+    cout << "The light above you flickers, shining on your " << haircolor(haircolorchoice) << hairstyle(hairstylechoice) << " typical Night City electricity." << endl;
 }
 
 void baginventory(){

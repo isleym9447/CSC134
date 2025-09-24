@@ -8,6 +8,7 @@ Mattea Isley
  
  #include <iostream>
  #include "charcreate.h"
+ #include "scene1.h"
  using namespace std;
 
 
@@ -25,6 +26,7 @@ void newgame(){
 
     //character creation 
     charcreate();
+    scene1();
     
 }
 

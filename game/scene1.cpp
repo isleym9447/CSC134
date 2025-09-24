@@ -41,7 +41,11 @@ void scene1(){
 
     int scene1choice;
 
-    cout << "You wake up..." << endl;
+    cout << "The sounds of bustling Night City wake you up from your sleep. With a yawn, your eyes fully open to meet a" << endl;
+    cout << " yellowing stain on the celing above the bed. You remind yourself to clean that later and to always make sure" << endl;
+    cout << " to open your NiCola orange in the kitchen and not in the bed.";
+    cout << endl;
+    cout << "Deciding its probably best to start your day you sit up and..." << endl;
 
 
 

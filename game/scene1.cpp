@@ -56,21 +56,29 @@ void scene1(){
     }
 
 
-        
-
-
-
-
-
-
-
-
-
 
 }
 
 
+void mirror(){
+    cout << "You look in the mirror" << endl;
+}
 
+void baginventory(){
+    cout << "You open your bag" << endl;
+}
+
+void eatsomething(){
+    cout << "You walk into the kitchen" << endl;
+}
+
+void checkemail(){
+    cout << "You sit down at your computer" << endl;
+}
+
+void backtobed(){
+    cout << "You shut your eyes again and drift back to sleep" << endl;
+}
 
 
    

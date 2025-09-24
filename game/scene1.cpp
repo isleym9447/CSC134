@@ -42,7 +42,7 @@ void eatsomething(){
     cin >> foodchoice;
 
         if (foodchoice == 1) {
-            cout << "The apple is sweet. As sweet as a synthetic, genetically modified fruit can be." << endl;
+            cout << "The apple is sweet. As sweet as a synthetic, genetically modified fruit in 2077 can be." << endl;
         }
         else if (foodchoice == 2) {
             cout << "You drink the flat ChroManticore. It probably was better when it was carbonated." << endl;

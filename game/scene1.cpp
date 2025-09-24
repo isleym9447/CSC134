@@ -13,18 +13,59 @@ void mirror(){
 }
 
 void baginventory(){
-    cout << "You open your bag" << endl;
+    cout << endl;
+    cout << endl;
+    cout << "Walking to your kitchen counter where you unload your pockets, crumbled " << endl;
+    cout << "beside an old burrito wrapper is: \n" << endl;
+    // list inventory (will change based on lifepath selection)
+    for (const auto& str : inventory) {
+        cout << str << endl;
+    }
 }
 
 void eatsomething(){
-    cout << "You walk into the kitchen" << endl;
+
+    int foodchoice;
+
+
+
+    cout << endl;
+    cout << endl;
+    cout << "You walk into the kitchen and open your fridge. Apple, half empty Chromanticore, " << endl;
+    cout << "and hamburger from last night." << endl;
+    cout << endl;
+    cout << "What do you reach for?" << endl;
+    cout << endl;
+    cout << "1. Apple" << endl;
+    cout << "2. Half empty ChroManticore" << endl;
+    cout << "3. Last night's hamburger" << endl;
+    cin >> foodchoice;
+
+        if (foodchoice == 1) {
+            cout << "The apple is sweet. As sweet as a synthetic, genetically modified fruit can be." << endl;
+        }
+        else if (foodchoice == 2) {
+            cout << "You drink the flat ChroManticore. It probably was better when it was carbonated." << endl;
+        }
+        else if (foodchoice == 3) {
+            cout << "Cold, wilted lettuce, stiff synthbeef patty. Still slaps." << endl;
+        }
+        else {
+            cout << "\nInvalid. Try again.\n\n";
+        }
+
+
 }
 
 void checkemail(){
+    cout << endl;
+    cout << endl;
     cout << "You sit down at your computer" << endl;
 }
 
 void backtobed(){
+    cout << endl;
+    cout << endl;
     cout << "You shut your eyes again and drift back to sleep" << endl;
 }
 
@@ -42,11 +83,12 @@ void scene1(){
 
     int scene1choice;
 
-    cout << "The sounds of bustling Night City wake you up from your sleep. With a yawn, your eyes fully open to meet a" << endl;
-    cout << " yellowing stain on the celing above the bed. You remind yourself to clean that later and to always make sure" << endl;
-    cout << " to open your NiCola orange in the kitchen and *not* in the bed.";
+    cout << "The sounds of bustling Night City wake you up from your sleep. With a yawn, your eyes fully open to meet a " << endl;
+    cout << "yellowing stain on the celing above the bed. You remind yourself to clean that later and to always make sure " << endl;
+    cout << "to open your NiCola orange in the kitchen and *not* in the bed.";
     cout << endl;
-    cout << "Deciding its probably best to start your day you sit up and..." << endl;
+    cout << "Deciding its probably best to start your day you stand up and..." << endl;
+    cout << endl;
 
 
 

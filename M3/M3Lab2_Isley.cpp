@@ -10,6 +10,10 @@ return 0 (no error)
 SPECIAL FX:
 
 
+*************************************
+letter grader and combat sim
+
+
  */
 
 
@@ -145,7 +149,64 @@ void lettergrader() {
 }
 
     
-void combat();
+void combat(){
+
+    // attack roll + stat bonus >= ac? = hit, else miss
+                                                        // ...unless youre shadowheart and MISS even with a 99% crit rate...
+
+    int attackroll, attackbonus, enemyac;
+
+    cout << "You are fighting a goblin." << endl;
+    cout << endl;
+    cout << "Enter your roll: " << endl;
+
+    cin >> attackroll;
+
+    cout << "Enter your attack bonus: " << endl;
+
+    cin >> attackbonus;
+
+    cout << "What is the goblin's AC?: " << endl;
+    cout << endl;
+    cin >> enemyac;
+
+
+
+    // roll to hit
+    cout << "Roll: " << attackroll << " + " << attackbonus << " = " << attackroll + attackbonus << endl;
+
+    if (attackroll + attackbonus >= enemyac) {
+        cout << "Hit!" << endl;
+
+    }
+
+    else {
+        cout << "Miss!" << endl;
+
+    }
+
+    // try again?
+    cout << "Again!? (y/n)";
+
+    string again;
+    cin >> again;
+
+    if (again == "y"){
+        //call fuction again!
+        combat();
+    }
+
+
+
+
+
+
+
+    
+}
+
+
+    
 
 
 
@@ -157,9 +218,9 @@ void combat();
 
 int main(){
 
-    lettergrader();
+    //lettergrader();
 
-    //combat();
+    combat();
 
 
 

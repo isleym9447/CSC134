@@ -1,3 +1,16 @@
+
+
+ideas: me 
+compiling and structuring: ai buddy
+
+
+
+
+
+
+
+
+
 want to create an overarching "quit" option. like press 9 at any time to quit 
 
 

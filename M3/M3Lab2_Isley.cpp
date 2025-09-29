@@ -173,6 +173,9 @@ void combat(){
 
 
     // roll to hit
+
+    attackroll = roll();
+
     cout << "Roll: " << attackroll << " + " << attackbonus << " = " << attackroll + attackbonus << endl;
 
     if (attackroll + attackbonus >= enemyac) {
@@ -209,7 +212,12 @@ void combat(){
     
 
 
-
+int roll() {
+    const int SIDES = 20;
+    int myroll;
+    myroll = (rand() % SIDES) + 1;
+    return myroll;
+}
 
 
 
@@ -221,6 +229,8 @@ int main(){
     //lettergrader();
 
     combat();
+
+    
 
 
 

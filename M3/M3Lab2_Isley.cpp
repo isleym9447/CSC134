@@ -148,6 +148,14 @@ void lettergrader() {
 
 }
 
+int roll() {
+    const int SIDES = 20;
+    int myroll;
+    myroll = (rand() % SIDES) + 1;
+    return myroll;
+}
+
+
     
 void combat(){
 
@@ -169,8 +177,6 @@ void combat(){
     cout << "What is the goblin's AC?: " << endl;
     cout << endl;
     cin >> enemyac;
-
-
 
     // roll to hit
 
@@ -212,12 +218,6 @@ void combat(){
     
 
 
-int roll() {
-    const int SIDES = 20;
-    int myroll;
-    myroll = (rand() % SIDES) + 1;
-    return myroll;
-}
 
 
 

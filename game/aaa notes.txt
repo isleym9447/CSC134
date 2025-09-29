@@ -1,0 +1,543 @@
+want to create an overarching "quit" option. like press 9 at any time to quit 
+
+
+
+
+********* Cyberpunk CYOA — Complete Story & Systems Map *********
+
+
+Global Systems: (active after scene1())
+
+- Always-on HUD: show HEALTH and STREET CRED at top of each screen/step.
+
+- 0 = Check Stats (available in every menu after scene1()):
+
+- 9 = Quit Game from any menu after scene1() (clean exit).
+
+- Inventory (items, cyberware shards, tattoos)
+
+    Street Cred
+
+    Eddies
+
+    Health
+
+    Vehicle (Nomad only; otherwise “None”)
+
+    Romance (only shows unlocked romances; e.g., shows Juno = 2 if you’ve flirted with Juno; does not list others at 0)
+
+
+- Romance System
+
+    Juno: romance rises via phone [Flirt] choices (unlocked on 2nd call).
+
+    Rafe: romance rises via phone [Flirt] choices (unlocked on 2nd call).
+
+    Viktor: romance rises via clinic visits (not calls). At 5th visit, a scapegoat fork appears:
+
+    All three romance tracks can progress in the same playthrough.
+
+
+***************************************************************
+mainmenu()
+
+    - New Game → charcreate()
+
+    - Settings (flavor/immersion):
+
+        “Kiroshi Overlay Prefs” (HUD glow on/off, voice: female/male/silent, text speed, display mode)
+
+        “Cyberware Diagnostics” (animated checks)
+
+        “Difficulty” labels (Streetrat/Merc/Cyberpsycho) — can be cosmetic
+
+    - Credits (fan work disclaimer; CD PROJEKT RED IP note; your authorship)
+
+    - Exit (quit)
+
+***************************************************************
+
+charcreate()
+
+    - Appearance:
+
+        Hair color, Hairstyle, Eye color (can be randomized for mirror scenes)
+
+        Life Path (affects starting state):
+
+        Streetkid → pistol, some eddies, +street cred
+
+        Corpo → more eddies, corpo influence, no weapon
+
+        Nomad → vehicle, 0 street cred, no weapon
+
+→ proceed to scene1()
+
+scene1()
+ — Apartment Wake-Up (loop until “Leave apartment”)
+
+
+    - Menu (loops):
+
+        1 Look in mirror (appearance lines escalate with repetition)
+
+            1st: “You look in the mirror. Your hair is messy but salvageable.”
+
+            2nd: “Still the same face staring back.”
+
+            3rd+: “…nothing’s changed since you checked last time.”
+
+        2 Check inventory
+
+            1st: “Basic kit, nothing fancy.”
+
+            2nd: “Yep, still the same stuff.”
+
+            3rd+: “Stop obsessing. Your gear hasn’t magically changed.”
+
+        3 Eat something (limited uses)
+
+            1st: “Synth-noodle cup. Warm and salty.” → HEALTH + small
+
+            2nd: “Another meal? Guess you were hungrier than you thought.” → HEALTH + tiny
+
+            3rd+: “You rummage around but realize you’re out of food.”
+
+        
+        4 Check email (flavor; spam, fixers, Trauma Team promos)
+
+        5 Go back to bed → Game Over quip: “Wake the fuck up, Samurai.”
+
+        6 Leave apartment → scene2()
+
+***************************************************************
+
+*** From here onward: 0 = Check Stats, 9 = Quit Game always available. ***
+
+scene2()
+ — The Fixer Call
+        Fixer offers a job: Recover data from a warehouse.
+
+        Accept → travel choices → scene3()
+
+        Deny → (TBD: currently returns/loops; you can later route to free-roam/downtime if desired)
+
+
+
+    Travel Options
+        -Metro (free; flavor)
+
+        -Delamain (Eddies –cost, 200)
+
+        -Walk (flavor; possible later risk/event hook)
+
+        -Drive (Nomad only)
+
+            If not Nomad: “You don’t own a car, choom.” → return to travel menu
+
+    → Arrive at warehouse → scene3()
+
+
+***************************************************************
+
+scene3()
+ — Warehouse Job
+
+
+Exterior: neon cams, patrolling guards, locked doors.
+
+
+
+    Approach:
+
+        Guns blazing
+
+            Streetkid only (has pistol): combat → HEALTH –, STREET CRED ++
+
+            “You’re bleeding, but people talk when you’re bold.”
+
+            Corpo/Nomad: “You don’t have a weapon for this. Stealth it is.” → redirect to Stealth
+
+        Stealth
+
+            “The shadows swallow you as you circle the warehouse.”
+
+            Stealth Sub-choices (all succeed; different flavor):
+
+            Hack the cameras (future mini-game hook)
+
+            Distract guards (toss can)
+
+            Crawl through vents
+
+
+
+    Shard Acquisition
+
+        “Blue glow, humming with encrypted code.”
+
+
+
+    Delivery to Fixer
+
+        Pays out; you hand off the shard.
+
+        Pop-ups:
+
+            Combat path:
+
+                >> EDDIES: +500
+                >> STREET CRED: +2
+                >> DATA SHARD: removed from inventory
+                >> HEALTH: updated
+
+
+
+
+            Stealth path (smaller cred, minimal/no damage):
+
+
+                >> EDDIES: +500
+                >> STREET CRED: +1
+                >> DATA SHARD: removed from inventory
+
+
+
+    “Might want to see a ripper” line if health low.
+
+→ scene4()
+
+
+***************************************************************
+
+
+scene4()
+ — Post-Job Sandbox
+
+
+Narration: the city hums; night is young.
+
+
+
+    Menu (loops until you choose a path that transitions):
+
+        Visit a Ripperdoc
+
+            Viktor Vektor (discount installs; warm gruff vibe)
+
+            Kaia Gregory (OC) (full price; clinical, efficient)
+
+        At either ripper:
+
+        Check-up → HEALTH restored, cyberware list recap (life-path flavor)
+
+        Install Kiroshi Optics
+
+        Viktor (discount):
+
+
+            >> CYBERWARE: Kiroshi Optics [Model V2] installed
+            >> EDDIES: -300
+
+
+        Kaia (full price):
+
+            >> CYBERWARE: Kiroshi Optics [Model V2] installed
+            >> EDDIES: -500
+
+
+        If insufficient funds: “Come back when you’ve got the cash, choom.”
+
+Leave clinic → immediate Fixer call checks optics:
+
+    If Kiroshi installed → offered Kiroshi Gig → kiroshigig()
+
+    If no Kiroshi → offered Non-Kiroshi Gig → nonkiroshigig()
+
+        Viktor — Secret Romance specifics
+
+        Track visitsToVik.
+
+        On visit #5:
+
+        Viktor: “…startin’ to think you like comin’ here for more than cyberware installation.”
+
+        Player fork:
+
+        [Flirt] “Is it that obvious, doc?” → unlock Viktor romance; adds future [Flirt]/[Confide] options in clinic/phone; romance points start accumulating.
+
+        “No… I just have cheap cyberware.” → keep things platonic; romance does not start.
+
+        Later (romance threshold, e.g., ≥7): unlock [Hug Viktor] during clinic visits (special scene; slow-burn intimacy).
+
+    Go to a Bar (flavor/world-building; no stats)
+
+        Lizzie’s (Mox neon, dancers, vibe)
+
+        Totentanz (loud, chaotic, gang energy)
+
+        Afterlife (merc legends’ haunt; Rogue sighting)
+
+    Get a Tattoo (cosmetic side quest)
+
+        Choose: Flower / Lion / Butterfly / Heart
+
+        >> Tattoo [Lion] added to character profile
+
+
+    Loops back to scene4() menu.
+
+    Return to Apartment (available from many hubs; see Apartment/Day Off flow below)
+
+
+
+    ***************************************************************
+
+kiroshigig()
+
+
+ — Optics Job w/ Juno Vale
+ 
+Juno calls: “Upgraded? Good. I’ve got a corp server job; your optics tag the access points.”
+
+Meet Juno in Kabuki; cool, capable netrunner.
+
+
+
+Mission Options
+
+Use Kiroshi scan (smart infiltration; safest)
+
+Ignore scan; go loud (works but you take HEALTH –; Juno teases you)
+
+
+
+Data Phase
+
+You slot hardware; Juno decrypts.
+
+
+>> DATA SHARD: [Encrypted Net Traffic] added to inventory
+
+
+Wrap
+
+Eddies + Cred:
+
+
+
+>> EDDIES: +600
+>> STREET CRED: +2
+>> DATA SHARD: removed from inventory
+
+
+>> CONTACT UNLOCKED: Juno Vale
+
+
+
+Juno recommends Rafe: “A Solo named Rafe Moreno. Reliable muscle. You two should meet.”
+
+
+
+Post-Juno Hub (immediately after)
+
+Use Phone
+
+Call Rafe → starts nonkiroshigig()
+
+Call Juno → “Can’t get enough of me, huh?” → First Call tree (no [Flirt])
+
+Call Vik → ripper flavor/mentorship/clinic slot
+
+Go to a Bar
+
+Go back to Apartment (see Apartment/Day Off flow)
+
+nonkiroshigig()
+ — Muscle Job w/ 
+Rafe Moreno
+Rafe calls (or is recommended by Juno if optics path first): “Need backup. Gang hideout, stolen shipment.”
+
+
+
+Approach
+
+Fight alongside Rafe (intended; HEALTH –, STREET CRED +)
+
+Try to sneak (fails into combat mid-way; Rafe quips)
+
+
+
+Loot Phase
+
+Recover crates + manifest shard.
+
+>> DATA SHARD: [Shipment Manifest] added to inventory
+
+
+Wrap
+
+Eddies + Cred:
+
+>> EDDIES: +500
+>> STREET CRED: +1
+>> DATA SHARD: removed from inventory
+
+>> CONTACT UNLOCKED: Rafe Moreno
+
+
+Rafe recommends Juno: “Netrunner named Juno. She’ll want you rocking decent optics.”
+
+
+
+Post-Rafe Hub (immediately after)
+
+Use Phone
+
+Call Rafe → “Forget somethin’, choom?” → First Call tree (no [Flirt])
+
+Call Juno
+
+If no Kiroshi: “Need fresh optics. Call me back after you’ve gotten them.” (blocks her gig)
+
+If Kiroshi installed: launches kiroshigig()
+
+Call Vik → ripper flavor/mentorship/clinic slot
+
+Go to a Ripper (to buy Kiroshi; Juno auto-calls after install → launches kiroshigig())
+
+Go to a Bar
+
+Go back to Apartment (see Apartment/Day Off flow)
+
+Phone Systems (Contacts)
+
+
+Juno Vale — Phone
+After kiroshigig() completion (or later unlock via Rafe → optics purchase):
+
+First Call (no [Flirt])
+
+Ask about her work → loops
+
+Night City rumors → loops
+
+Be friendly → loops
+
+Hint line: “Not bad talking to you. Guess I wouldn’t mind if you called again.”
+
+Second Call+
+
+Work → loops
+
+Rumors → loops
+
+Be friendly → loops
+
+[Flirt] → “Careful, choom. Keep talking like that, and I might start to like you.” → Romance +1 (stays unlocked thereafter)
+
+Blocked case (called after Rafe but without Kiroshi): “Need fresh optics. Call me back after you’ve gotten them.” (no menu; ends)
+
+
+
+Rafe Moreno — Phone
+After nonkiroshigig() completion (or unlock via Juno first path):
+
+First Call (no [Flirt])
+
+Ask about merc work → loops
+
+Ask about worst job → loops
+
+Be friendly → loops
+
+Hint line: “You’re alright, choom. Hit me up sometime.”
+
+Second Call+
+
+Merc work → loops
+
+Worst job → loops
+
+Be friendly → loops
+
+[Flirt] → “Oh, so that’s where this is going, huh? Thought you’d never.” → Romance +1
+
+
+
+Viktor Vektor — Phone
+Always callable (mentor vibes). Before romance:
+
+Ask about cyberware → loops
+
+Night City rumors → loops
+
+Be friendly → loops
+
+After clinic romance unlock (visit #5 + [Flirt] opt-in):
+
+Adds:
+
+4) [Confide] → deepen trust/romance
+
+5) [Flirt] → slow burn responses; Romance +1 per flirt (you may also count Confide)
+
+Apartment / 
+dayoff()
+ (whenever “Go back to apartment” is chosen)
+
+
+On selecting Go back to apartment (from any hub/menu):
+
+Confirm: “Is this really what you want?”
+
+No → return to the previous menu you came from.
+
+Yes → enter dayoff() (pure flavor; no stat changes).
+
+
+
+dayoff() menu (loops):
+
+Watch a BD (flavor)
+
+Practice with a katana (flavor)
+
+Play with Nibbles 🐱 (flavor)
+
+Check email (optional flavor)
+
+Go to Sleep → ends game, calls credits()
+
+>> ALL IN A DAY’S WORK, CHOOMBA.
+
+
+credits()
+ (on game end via sleep)
+Fan project statement.
+
+IP attribution to CD PROJEKT RED / Cyberpunk 2077.
+
+“Original characters and code by me.”
+
+Non-commercial/educational note.
+
+State/Flags Summary (conceptual)
+Life Path: Streetkid / Corpo / Nomad (affects weapon, eddies, vehicle, cred/influence)
+
+Kiroshi Installed: yes/no (gates kiroshigig())
+
+Contacts Unlocked: Juno / Rafe / Viktor (Vik is default reachable; formal unlock pop-ups for Juno/Rafe)
+
+Gigs Done: didKiroshiGig, didNonKiroshiGig
+
+Romance: Juno, Rafe, Viktor (only shown on Stats after initiation)
+
+Viktor Visits Counter: unlocks secret romance prompt at ≥5 visits
+
+Health / Street Cred / Eddies / Inventory / Tattoos / Vehicle
+
+
+
+
+

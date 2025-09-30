@@ -102,75 +102,75 @@ void checkemail(){
     
     int emailchoice; 
 
-    cout << endl;
-    cout << endl;
-    cout << "You sit down at your computer and click open your email" << endl;
-    cout << endl;
+    while (true) {
+        cout << endl;
+        cout << "You sit down at your computer and click open your email" << endl;
+        cout << endl;
 
-
-
-    cout << "┎━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┐" << endl;
-    cout << "│       You have [3] new emails          │" << endl;
-    cout << "└━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚" << endl;
-    cout << "1" << endl;
-    cout << "┎━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┐" << endl;
-    cout << "│**SANDEVISTAN FOR CHEAP** **NO SCAM**   │" << endl;
-    cout << "│-DOWNTOWN WATSON RIPPERDOC HAS CHEAP... │" << endl;
-    cout << "└━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚" << endl;
-    cout << "2" << endl;
-    cout << "┎━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┐" << endl;
-    cout << "│**NEW MESSAGE FROM FIXER**              │" << endl;
-    cout << "│ -Client needs a quiet hand in Japantown│" << endl;
-    cout << "└━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚" << endl;
-    cout << "3" << endl;
-    cout << "┎━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┐" << endl;
-    cout << "│**[AD] New Drinks @ Lizzie’s**          │" << endl;
-    cout << "│ -Half off braindances this weekend     │" << endl;
-    cout << "└━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚" << endl;
-
-    cout << "Open email? 1-3";
-    cin >> emailchoice;
-
-    if (emailchoice == 1) {
         cout << "┎━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┐" << endl;
-        cout << "│From: WATSONGIRL7855                    │" << endl;
-        cout << "│Subject: **SANDEVISTAN FOR CHEAP**      │" << endl;
-        cout << "│ -------------------------------------- │" << endl;
-        cout << "│Hey choom, heard you were lookin’ for a │" << endl;
-        cout << "│Sandevistan. I got a guy in Watson, no  │" << endl;
-        cout << "│scams, just eddies upfront.             │" << endl;
+        cout << "│       You have [3] new emails          │" << endl;
         cout << "└━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚" << endl;
 
-    }
-    else if (emailchoice == 2) {
+        cout << "1" << endl;
         cout << "┎━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┐" << endl;
-        cout << "│From: [REDACTED]                        │" << endl;
-        cout << "│Subject: **Job in Japantown**           │" << endl;
-        cout << "│ -------------------------------------- │" << endl;
-        cout << "│Client wants a quiet hand. Discretion   │" << endl;
-        cout << "│is key. Meet at the pachinko parlor,    │" << endl;
-        cout << "│bring your own iron. Payment on site.   │" << endl;
+        cout << "│**SANDEVISTAN FOR CHEAP** **NO SCAM**   │" << endl;
+        cout << "│-DOWNTOWN WATSON RIPPERDOC HAS CHEAP... │" << endl;
         cout << "└━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚" << endl;
 
-    }
-    else if (emailchoice == 3) {
+        cout << "2" << endl;
         cout << "┎━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┐" << endl;
-        cout << "│From: LIZZIES_PROMO                     │" << endl;
-        cout << "│Subject: **Half Off Braindances**       │" << endl;
-        cout << "│ -------------------------------------- │" << endl;
-        cout << "│This weekend only! All braindances half │" << endl;
-        cout << "│off with purchase of 2 drinks. Don’t    │" << endl;
-        cout << "│miss the party, choom.                  │" << endl;
+        cout << "│**NEW MESSAGE FROM FIXER**              │" << endl;
+        cout << "│ -Client needs a quiet hand in Japantown│" << endl;
         cout << "└━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚" << endl;
 
+        cout << "3" << endl;
+        cout << "┎━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┐" << endl;
+        cout << "│**[AD] New Drinks @ Lizzie’s**          │" << endl;
+        cout << "│ -Half off braindances this weekend     │" << endl;
+        cout << "└━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚" << endl;
+
+        cout << "Open email? (1–3)" << endl;
+        cout << "Press 4 to close email inbox" << endl;
+        cin >> emailchoice;
+
+        if (emailchoice == 1) {
+            cout << "┎━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┐" << endl;
+            cout << "│From: WATSONGIRL7855                    │" << endl;
+            cout << "│Subject: **SANDEVISTAN FOR CHEAP**      │" << endl;
+            cout << "│ -------------------------------------- │" << endl;
+            cout << "│Hey choom, heard you were lookin’ for a │" << endl;
+            cout << "│Sandevistan. I got a guy in Watson, no  │" << endl;
+            cout << "│scams, just eddies upfront.             │" << endl;
+            cout << "└━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚" << endl;
+        }
+        else if (emailchoice == 2) {
+            cout << "┎━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┐" << endl;
+            cout << "│From: [REDACTED]                        │" << endl;
+            cout << "│Subject: **Job in Japantown**           │" << endl;
+            cout << "│ -------------------------------------- │" << endl;
+            cout << "│Client wants a quiet hand. Discretion   │" << endl;
+            cout << "│is key. Meet at the pachinko parlor,    │" << endl;
+            cout << "│bring your own iron. Payment on site.   │" << endl;
+            cout << "└━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚" << endl;
+        }
+        else if (emailchoice == 3) {
+            cout << "┎━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┐" << endl;
+            cout << "│From: LIZZIES_PROMO                     │" << endl;
+            cout << "│Subject: **Half Off Braindances**       │" << endl;
+            cout << "│ -------------------------------------- │" << endl;
+            cout << "│This weekend only! All braindances half │" << endl;
+            cout << "│off with purchase of 2 drinks. Don’t    │" << endl;
+            cout << "│miss the party, choom.                  │" << endl;
+            cout << "└━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚" << endl;
+        }
+        else if (emailchoice == 4) {
+            cout << "You close your email inbox." << endl;
+            break;  // return to scene1 menu
+        }
+        else {
+            cout << "\nInvalid. Try again.\n\n";
+        }
     }
-    else {
-        cout << "\nInvalid. Try again.\n\n";
-    }
-
-
-
-
 }
 
 void backtobed(){

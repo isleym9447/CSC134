@@ -32,7 +32,7 @@ void eatsomething(){
     cout << endl;
     cout << endl;
     cout << "You walk into the kitchen and open your fridge. Apple, half empty Chromanticore, " << endl;
-    cout << "and hamburger from last night." << endl;
+    cout << "and a hamburger from last night." << endl;
     cout << endl;
     cout << "What do you reach for?" << endl;
     cout << endl;
@@ -45,10 +45,10 @@ void eatsomething(){
             cout << "The apple is sweet. As sweet as a synthetic, genetically modified fruit in 2077 can be." << endl;
         }
         else if (foodchoice == 2) {
-            cout << "You drink the flat ChroManticore. It probably was better when it was carbonated." << endl;
+            cout << "You drink the flat ChroManticore. It probably was better when it was still carbonated." << endl;
         }
         else if (foodchoice == 3) {
-            cout << "Cold, wilted lettuce, stiff synthbeef patty. Still slaps." << endl;
+            cout << "Cold, wilted lettuce, stiff synthbeef patty. Still hits the spot." << endl;
         }
         else {
             cout << "\nInvalid. Try again.\n\n";
@@ -60,7 +60,73 @@ void eatsomething(){
 void checkemail(){
     cout << endl;
     cout << endl;
-    cout << "You sit down at your computer" << endl;
+    cout << "You sit down at your computer and click open your email" << endl;
+    cout << endl;
+
+
+
+    cout << "┎━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┐" << endl;
+    cout << "│       You have [3] new emails          │" << endl;
+    cout << "└━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚" << endl;
+    cout << "1" << endl;
+    cout << "┎━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┐" << endl;
+    cout << "│**SANDEVISTAN FOR CHEAP** **NO SCAM**   │" << endl;
+    cout << "│-DOWNTOWN WATSON RIPPERDOC HAS CHEAP... │" << endl;
+    cout << "└━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚" << endl;
+    cout << "2" << endl;
+    cout << "┎━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┐" << endl;
+    cout << "│**NEW MESSAGE FROM FIXER**              │" << endl;
+    cout << "│ -Client needs a quiet hand in Japantown│" << endl;
+    cout << "└━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚" << endl;
+    cout << "3" << endl;
+    cout << "┎━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┐" << endl;
+    cout << "│**[AD] New Drinks @ Lizzie’s**          │" << endl;
+    cout << "│ -Half off braindances this weekend     │" << endl;
+    cout << "└━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚" << endl;
+
+    cout << "Open email? 1-3";
+    cin >> emailchoice;
+
+    if (emailchoice == 1) {
+        cout << "┎━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┐" << endl;
+        cout << "│From: WATSONGIRL7855                    │" << endl;
+        cout << "│Subject: **SANDEVISTAN FOR CHEAP**      │" << endl;
+        cout << "│ -------------------------------------- │" << endl;
+        cout << "│Hey choom, heard you were lookin’ for a │" << endl;
+        cout << "│Sandevistan. I got a guy in Watson, no  │" << endl;
+        cout << "│scams, just eddies upfront.             │" << endl;
+        cout << "└━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚" << endl;
+
+    }
+    else if (emailchoice == 2) {
+        cout << "┎━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┐" << endl;
+        cout << "│From: [REDACTED]                        │" << endl;
+        cout << "│Subject: **Job in Japantown**           │" << endl;
+        cout << "│ -------------------------------------- │" << endl;
+        cout << "│Client wants a quiet hand. Discretion   │" << endl;
+        cout << "│is key. Meet at the pachinko parlor,    │" << endl;
+        cout << "│bring your own iron. Payment on site.   │" << endl;
+        cout << "└━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚" << endl;
+
+    }
+    else if (emailchoice == 3) {
+        cout << "┎━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┐" << endl;
+        cout << "│From: LIZZIES_PROMO                     │" << endl;
+        cout << "│Subject: **Half Off Braindances**       │" << endl;
+        cout << "│ -------------------------------------- │" << endl;
+        cout << "│This weekend only! All braindances half │" << endl;
+        cout << "│off with purchase of 2 drinks. Don’t    │" << endl;
+        cout << "│miss the party, choom.                  │" << endl;
+        cout << "└━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚" << endl;
+
+    }
+    else {
+        cout << "\nInvalid. Try again.\n\n";
+    }
+
+
+
+
 }
 
 void backtobed(){

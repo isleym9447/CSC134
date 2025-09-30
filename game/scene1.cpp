@@ -232,8 +232,7 @@ void scene1(){
             eatsomething();
         }
         else if (scene1choice == 4) {
-            checkemail();
-            break; 
+            checkemail(); 
         }
         else if (scene1choice == 5) {
             backtobed();

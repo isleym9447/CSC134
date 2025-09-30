@@ -1,5 +1,7 @@
 
 
+# cd /workspaces/CSC134/game
+
 # make        # compiles everything into "game"
 
 # make clean  # deletes object files + the game executable

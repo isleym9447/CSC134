@@ -9,7 +9,7 @@ using namespace std;
 
 void mirror(){
     cout << "You enter the bathroom and look into the dimly lit mirror. Your " << eyecolor(eyecolorchoice) << " eyes stare back at you." << endl; 
-    cout << "The light above you flickers, shining on your " << haircolor(haircolorchoice) << hairstyle(hairstylechoice) << " typical Night City electricity." << endl;
+    cout << "The light above you flickers, shining on your " << haircolor(haircolorchoice) << " " << hairstyle(hairstylechoice) << ". Typical Night City electricity." << endl;
 }
 
 void baginventory(){
@@ -25,39 +25,83 @@ void baginventory(){
 
 void eatsomething(){
 
+    static bool appleeaten = false;
+    static bool chromanticoreeaten = false;
+    static bool burgereaten = false;
+    
     int foodchoice;
 
+    cout << endl;
+    cout << endl;
+    cout << "You walk into the kitchen and open your fridge." << endl;
+
+    while (true) {
+
+        
+        
+
+        if (appleeaten && chromanticoreeaten && burgereaten) {
+            cout << "The fridge is empty. Time for a grocery run." << endl;
+            break; // exit eatsomething once all food is gone
+        }
+
+        cout << "What's inside:" << endl;
+        if (!appleeaten) cout << "1. Apple" << endl;
+        if (!chromanticoreeaten) cout << "2. Half empty ChroManticore" << endl;
+        if (!burgereaten) cout << "3. Last night's hamburger" << endl;
+        cout << "4. Close fridge" << endl;
 
 
-    cout << endl;
-    cout << endl;
-    cout << "You walk into the kitchen and open your fridge. Apple, half empty Chromanticore, " << endl;
-    cout << "and a hamburger from last night." << endl;
-    cout << endl;
-    cout << "What do you reach for?" << endl;
-    cout << endl;
-    cout << "1. Apple" << endl;
-    cout << "2. Half empty ChroManticore" << endl;
-    cout << "3. Last night's hamburger" << endl;
-    cin >> foodchoice;
+        cout << endl;
+        cout << "What do you reach for?" << endl;
+        cout << endl;
+        cin >> foodchoice;
 
         if (foodchoice == 1) {
-            cout << "The apple is sweet. As sweet as a synthetic, genetically modified fruit in 2077 can be." << endl;
+            if (!appleeaten) {
+                cout << "The apple is sweet. As sweet as a synthetic, genetically modified fruit in 2077 can be." << endl; 
+                appleeaten = true; 
+            } else {
+                cout << "The apple’s already eaten. Nothing left but the core. You can eat that I guess, if you want..." << endl;
+            }
+            
+            
         }
         else if (foodchoice == 2) {
-            cout << "You drink the flat ChroManticore. It probably was better when it was still carbonated." << endl;
+            if (!chromanticoreeaten) {
+                cout << "Yep. Flat ChroManticore. It probably was better when it was still carbonated." << endl; 
+                chromanticoreeaten = true; 
+            } else {
+                cout << "The ChroManticore can is empty." << endl;
+            
+            }
         }
         else if (foodchoice == 3) {
-            cout << "Cold, wilted lettuce, stiff synthbeef patty. Still hits the spot." << endl;
+            if (!burgereaten) {
+                cout << "Cold, wilted lettuce, stiff synthbeef patty. Still hits the spot." << endl;
+                burgereaten = true;
+            } else {
+                cout << "You must be desperate if youre willing to eat a hamburger wrapper." << endl;
+            }
+        }
+        else if (foodchoice == 4) {
+            cout << "You close the fridge door." << endl;
+            break; // lets them leave the fridge early
         }
         else {
             cout << "\nInvalid. Try again.\n\n";
         }
 
 
+    }
+    
+
 }
 
 void checkemail(){
+    
+    int emailchoice; 
+
     cout << endl;
     cout << endl;
     cout << "You sit down at your computer and click open your email" << endl;
@@ -133,6 +177,7 @@ void backtobed(){
     cout << endl;
     cout << endl;
     cout << "You shut your eyes again and drift back to sleep" << endl;
+    cout << "Wake the fuck up Samurai..." << endl;
 }
 
 

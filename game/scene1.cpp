@@ -190,11 +190,14 @@ void checkemail(){
             cout << "\nInvalid or already read. Try again.\n\n";
         }
     }
+}
+    
 
 void backtobed(){
     cout << endl;
     cout << endl;
-    cout << "You shut your eyes again and drift back to sleep" << endl;
+    cout << "You return to bed and shut your eyes again. Slowly, you drift back to sleep..." << endl;
+    cout << endl;
     cout << "Wake the fuck up Samurai..." << endl;
 }
 

@@ -205,9 +205,9 @@ void backtobed(){
 void leaveapartment(){
     cout << endl;
     cout << endl;
-    cout << "You return to bed and shut your eyes again. Slowly, you drift back to sleep..." << endl;
+    cout << "You open the door to your apartment. The sounds (and smells) of Night City fill your senses.";
     cout << endl;
-    cout << "Wake the fuck up Samurai..." << endl;
+    cout << endl;
 }
 
 
@@ -224,7 +224,7 @@ void scene1(){
 
     int scene1choice;
 
-    cout << "The sounds of bustling Night City wake you up from your sleep. With a yawn, your eyes fully open to meet a " << endl;
+    cout << "The sound of your alarm wakes you up from your sleep. With a yawn, your eyes fully open to meet a " << endl;
     cout << "yellowing stain on the celing above the bed. You remind yourself to clean that later and to always make sure " << endl;
     cout << "to open your NiCola orange in the kitchen and *not* in the bed.";
     cout << endl;

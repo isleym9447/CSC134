@@ -6,6 +6,7 @@ using namespace std;
 // GLOBAL VARIABLES F0R GAME
 
 //character
+string playername;
 int haircolorchoice;
 int hairstylechoice;
 int eyecolorchoice;
@@ -77,6 +78,9 @@ void charcreate(){
 
     cout << "<<>><<>><<>><<>><<>><<>>\n" << endl;
     cout << "CHARACTER CREATOR INITIATED" << endl;
+
+    cout << "What is your alias? " << endl;
+    cin >> playername;
 
     
     //hair color

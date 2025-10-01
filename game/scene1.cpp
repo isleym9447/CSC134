@@ -119,12 +119,14 @@ void checkemail(){
         if (!email2read) unread++;
         if (!email3read) unread++;
         
-
+        cout << endl;
         cout << "┎━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┐" << endl;
         cout << "│       You have [" << unread << "] new emails          │" << endl;
         cout << "└━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚" << endl;
+        cout << endl;
 
         if (!email1read) {
+            cout << endl;
             cout << "1" << endl;
             cout << "┎━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┐" << endl;
             cout << "│**SANDEVISTAN FOR CHEAP** **NO SCAM**   │" << endl;
@@ -132,6 +134,7 @@ void checkemail(){
             cout << "└━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚" << endl;
         }
         if (!email2read) {
+            cout << endl;
             cout << "2" << endl;
             cout << "┎━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┐" << endl;
             cout << "│**NEW MESSAGE FROM FIXER**              │" << endl;
@@ -139,6 +142,7 @@ void checkemail(){
             cout << "└━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┚" << endl;
         }
         if (!email3read) {
+            cout << endl;
             cout << "3" << endl;
             cout << "┎━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┐" << endl;
             cout << "│**[AD] New Drinks @ Lizzie’s**          │" << endl;
@@ -151,6 +155,7 @@ void checkemail(){
         cin >> emailchoice;
 
         if (emailchoice == 1 && !email1read) {
+            cout << endl;
             cout << "┎━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┐" << endl;
             cout << "│From: WATSONGIRL7855                    │" << endl;
             cout << "│Subject: **SANDEVISTAN FOR CHEAP**      │" << endl;
@@ -162,6 +167,7 @@ void checkemail(){
             email1read = true;
         }
         else if (emailchoice == 2 && !email2read) {
+            cout << endl;
             cout << "┎━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┐" << endl;
             cout << "│From: [REDACTED]                        │" << endl;
             cout << "│Subject: **Job in Japantown**           │" << endl;
@@ -173,6 +179,7 @@ void checkemail(){
             email2read = true;
         }
         else if (emailchoice == 3 && !email3read) {
+            cout << endl;
             cout << "┎━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┐" << endl;
             cout << "│From: LIZZIES_PROMO                     │" << endl;
             cout << "│Subject: **Half Off Braindances**       │" << endl;

@@ -202,6 +202,15 @@ void backtobed(){
 }
 
 
+void leaveapartment(){
+    cout << endl;
+    cout << endl;
+    cout << "You return to bed and shut your eyes again. Slowly, you drift back to sleep..." << endl;
+    cout << endl;
+    cout << "Wake the fuck up Samurai..." << endl;
+}
+
+
 
 
 
@@ -236,7 +245,9 @@ void scene1(){
         cout << "2. Check inventory\n";
         cout << "3. Eat something\n";
         cout << "4. Check Email\n";
-        cout << "5. Go back to bed\n";
+        cout << "5. Leave apartment\n";
+        cout << " ";
+        cout << "6. Go back to bed\n";
       
         cout << "<<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<" << endl;
 
@@ -256,8 +267,11 @@ void scene1(){
             checkemail(); 
         }
         else if (scene1choice == 5) {
+           leaveapartment(); 
+        }
+        else if (scene1choice == 6) {
             backtobed();
-            break; 
+            break;
         }
         else {
             cout << "\nInvalid. Try again.\n\n";

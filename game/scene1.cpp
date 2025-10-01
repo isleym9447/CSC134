@@ -15,8 +15,9 @@ void mirror(){
 void baginventory(){
     cout << endl;
     cout << endl;
-    cout << "Walking to your kitchen counter where you unload your pockets, crumbled " << endl;
-    cout << "beside an old burrito wrapper is: \n" << endl;
+    cout << "Walking to your kitchen counter where you unload your pockets, " << endl;
+    cout << "beside an old crumpled burrito wrapper is: \n" << endl;
+    
     // list inventory (will change based on lifepath selection)
     for (const auto& str : inventory) {
         cout << str << endl;

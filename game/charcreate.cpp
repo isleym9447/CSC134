@@ -112,11 +112,11 @@ void charcreate(){
     do {
         cout << "<<>><<>><<>><<>><<>><<>>\n" << endl;
         cout << "Choose your hair style" << endl;
-        cout << "1. Short" << endl;
-        cout << "2. Long" << endl;
+        cout << "1. Short hair" << endl;
+        cout << "2. Long hair" << endl;
         cout << "3. Braids" << endl;
         cout << "4. Mohawk" << endl;
-        cout << "5. Buzzed" << endl;
+        cout << "5. Buzzed cut" << endl;
 
         cout << "Enter choice" << endl;
         cin >> hairstylechoice;

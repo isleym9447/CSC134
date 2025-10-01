@@ -9,11 +9,13 @@
 using namespace std;
 
 // ===== GLOBAL VARIABLES =====
-extern string playername;
+
 extern int haircolorchoice;
 extern int eyecolorchoice;
 extern int hairstylechoice;
 extern int lifepathchoice;
+extern string playername;
+
 
 extern int streetcred;
 extern int eddies;

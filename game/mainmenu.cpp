@@ -25,10 +25,10 @@ void newgame(){
     cout << endl;
     cout << endl;
 
-    //character creation 
+    //character creation and game start
     charcreate();
     scene1();
-    scene2();
+    //scene2();
     
 }
 

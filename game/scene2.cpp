@@ -1,5 +1,6 @@
 //beginning with the magic words
  
+/*
 #include <iostream>
 #include "charcreate.h"
 #include <thread>
@@ -75,6 +76,6 @@ void declinecall(){
 
 
 
-
+*/
 
 

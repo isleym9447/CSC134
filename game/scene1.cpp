@@ -45,6 +45,7 @@ void eatsomething(){
             break; // exit eatsomething once all food is gone
         }
 
+        cout << endl;
         cout << "What's inside:" << endl;
         if (!appleeaten) cout << "1. Apple" << endl;
         if (!chromanticoreeaten) cout << "2. Half empty ChroManticore" << endl;
@@ -246,7 +247,6 @@ void scene1(){
         cout << "3. Eat something\n";
         cout << "4. Check Email\n";
         cout << "5. Leave apartment\n";
-        cout << " ";
         cout << "6. Go back to bed\n";
       
         cout << "<<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<" << endl;

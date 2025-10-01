@@ -6,6 +6,7 @@
 void scene2();
 
 //scene2 functions
-
+void acceptcall();
+void declinecall();
 
 #endif

@@ -1,6 +1,6 @@
 //beginning with the magic words
  
-/*
+
 #include <iostream>
 #include "charcreate.h"
 #include <thread>
@@ -11,35 +11,7 @@ using namespace std;
 
 
 
-void scene2(){
 
-    int answercall;
-
-
-    cout << "Walk outside so on and so fourth" << endl;
-    cout << endl;
-
-    cout << "[INCOMING CALL]" << endl;
-    cout << endl;
-    cout << "[1] Accept" << endl;
-    cout << "[2] Decline" << endl;
-    cout << endl;
-    cin >> answercall;
-
-    if (answercall == 1){
-        acceptcall()
-    }
-    else if (answercall == 2){
-        declinecall()
-    }
-    else {
-            cout << "\nInvalid. Try again.\n\n";
-        }
-
-
-
-
-}
 
 
 
@@ -57,13 +29,13 @@ void acceptcall(){
     cout << "However, that dont mean you should let your iron go empty- use some descretion if you can choom- for me.";
     cout << "Gig info attached." << endl;
 
-    cout << "*NEW MESSAGE**" >> endl;
+    cout << "*NEW MESSAGE**" << endl;
     cout << endl;
     cout << "Gig type: Asset recovery" << endl;
-    cout << "Client: Christopher Maldonado"
+    cout << "Client: Christopher Maldonado";
     cout << "Location: Garcia Auto Repair, Santo Domingo" << endl;
     cout << "Get the data shard back from the wherever the Valentinos squirreled it away. Client not concerned with bloodshed amout";
-    cout << "Good luck"
+    cout << "Good luck " << playername << "." << endl;
 
 
 
@@ -84,10 +56,41 @@ void declinecall(){
 
 
 
+void scene2(){
+
+    int answercall;
+    bool accepted_call;
+
+
+    cout << "Walk outside so on and so fourth" << endl;
+    cout << endl;
+
+    cout << "[INCOMING CALL]" << endl;
+    cout << endl;
+    cout << "[1] Accept" << endl;
+    cout << "[2] Decline" << endl;
+    cout << endl;
+    cin >> answercall;
+
+    if (answercall == 1){
+        accepted_call = true;
+        acceptcall();
+    }
+    else if (answercall == 2){
+        accepted_call = false;
+        declinecall();
+    }
+    else {
+            cout << "\nInvalid. Try again.\n\n";
+    }
 
 
 
 
-*/
+}
+
+
+
+
 
 

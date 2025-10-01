@@ -28,7 +28,7 @@ void newgame(){
     //character creation and game start
     charcreate();
     scene1();
-    //scene2();
+    scene2();
     
 }
 

@@ -17,7 +17,7 @@ void baginventory(){
     cout << endl;
     cout << "Walking to your kitchen counter where you unload your pockets, " << endl;
     cout << "beside an old crumpled burrito wrapper is: \n" << endl;
-    
+
     // list inventory (will change based on lifepath selection)
     for (const auto& str : inventory) {
         cout << str << endl;
@@ -275,7 +275,8 @@ void scene1(){
             checkemail(); 
         }
         else if (scene1choice == 5) {
-           leaveapartment(); 
+           leaveapartment();
+           break;
         }
         else if (scene1choice == 6) {
             backtobed();

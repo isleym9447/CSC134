@@ -1,9 +1,7 @@
 /*
-
-
 CSC 134
 Mattea Isley
- / /
+10/6/2025
 
  
 INPUT: 
@@ -12,7 +10,7 @@ OUTPUT:
 return 0 (no error)
 SPECIAL FX:
 
-
+*/
 
 
 
@@ -50,4 +48,3 @@ int main()
     
     
 }
- */

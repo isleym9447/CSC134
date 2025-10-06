@@ -32,4 +32,14 @@ string lifepath(int lifepathchoice);
 // ===== CHARACTER CREATOR =====
 void charcreate();
 
+
+// ===== PLAYER UTILITIES =====
+void checkstats();     // show player stats
+void quitgame();       // clean exit
+int getplayerchoice(); // wrapper for inputs (handles 0 & 9)
+
+
+
+
+
 #endif

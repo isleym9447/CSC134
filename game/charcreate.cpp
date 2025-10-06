@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+
 using namespace std;
 
 // GLOBAL VARIABLES F0R GAME
@@ -255,4 +256,45 @@ void charcreate(){
 
 
 
+}
+
+
+
+
+///////////////////////////////////////////////////////////////
+// UNIVERSAL MENU FUNCTIONS
+
+void checkStats() {
+    cout << "\n=== PLAYER STATS ===\n";
+    cout << "Alias: " << playername << "\n";
+    cout << "Hair: " << haircolor(haircolorchoice) << " " 
+         << hairstyle(hairstylechoice) << "\n";
+    cout << "Eyes: " << eyecolor(eyecolorchoice) << "\n";
+    cout << "Life Path: " << lifepath(lifepathchoice) << "\n";
+    cout << "Street Cred: " << streetcred << "\n";
+    cout << "Eddies: " << eddies << "\n";
+    cout << "Vehicle: " << vehicle << "\n";
+    cout << "Inventory: ";
+    for (auto &item : inventory) cout << item << ", ";
+    cout << "\n====================\n";
+}
+
+void quitGame() {
+    cout << "\n>>> QUITTING GAME <<<\n";
+    exit(0);
+}
+
+int getPlayerChoice() {
+    int choice;
+    cin >> choice;
+
+    if (choice == 0) {
+        checkStats();
+        return -1; // flag to repeat the current menu
+    }
+    if (choice == 9) {
+        quitGame();
+    }
+
+    return choice; // normal choice
 }

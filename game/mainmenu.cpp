@@ -7,10 +7,13 @@ Mattea Isley
  //beginning with the magic words
  
  #include <iostream>
+ #include "player.h"
  #include "charcreate.h"
  #include "scene1.h"
  #include "scene2.h"
  using namespace std;
+
+ player currentPlayer; // define the global player instance
 
 
 void newgame(){
@@ -26,9 +29,9 @@ void newgame(){
     cout << endl;
 
     //character creation and game start
-    charcreate();
-    scene1();
-    scene2();
+    currentPlayer = charcreate();  // assign the player created in charcreate()
+    scene1();                      // start first scene
+    scene2();                      // move to second scene
     
 }
 

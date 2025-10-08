@@ -1,300 +1,157 @@
 #include <iostream>
 #include <string>
 #include <vector>
-
+#include "player.h"
+#include "charcreate.h"
 using namespace std;
 
-// GLOBAL VARIABLES F0R GAME
-
-//character
-string playername;
-int haircolorchoice;
-int hairstylechoice;
-int eyecolorchoice;
-int lifepathchoice;
-
-// stats and inventory
-int streetcred;
-int eddies;
-vector<string> inventory;
-string vehicle;
-
-//influence
-bool corpoinfluence = false; //flag for corpo life path
-
-//////////////////////////////////////////////////////////
-//helpers
-string haircolor(int haircolorchoice){
-    switch (haircolorchoice){
-        case 1: return "black";
-        case 2: return "blonde";
-        case 3: return "brown";
-        case 4: return "pink";
-        case 5: return "purple";
-        case 6: return "green";
-        default: return "unknown";
+// helper functions
+string haircolor(int haircolorchoice) {
+    switch (haircolorchoice) {
+        case 1: return "Black";
+        case 2: return "Blonde";
+        case 3: return "Brown";
+        case 4: return "Pink";
+        case 5: return "Purple";
+        case 6: return "Green";
+        default: return "Unknown";
     }
 }
 
-string hairstyle(int hairstylechoice){
-    switch (hairstylechoice){
-        case 1: return "short";
-        case 2: return "long";
-        case 3: return "braids";
-        case 4: return "mohawk";
-        case 5: return "buzzed";
-        default: return "unknown";
+string hairstyle(int hairstylechoice) {
+    switch (hairstylechoice) {
+        case 1: return "Short";
+        case 2: return "Long";
+        case 3: return "Braids";
+        case 4: return "Mohawk";
+        case 5: return "Buzzed";
+        default: return "Unknown";
     }
 }
 
-
-string eyecolor(int eyecolorchoice){
-    switch (eyecolorchoice){
-        case 1: return "brown";
-        case 2: return "cyber silver";
-        case 3: return "neon green";
-        case 4: return "black w/ pink hearts";
-        default: return "unknown";
+string eyecolor(int eyecolorchoice) {
+    switch (eyecolorchoice) {
+        case 1: return "Brown";
+        case 2: return "Cyber Silver";
+        case 3: return "Neon Green";
+        case 4: return "Black w/ pink hearts";
+        default: return "Unknown";
     }
 }
 
-string lifepath(int lifepathchoice){
-    switch (lifepathchoice){
+string lifepath(int lifepathchoice) {
+    switch (lifepathchoice) {
         case 1: return "Nomad";
         case 2: return "Streetkid";
         case 3: return "Corpo";
+        default: return "Unknown";
     }
 }
 
+// character creator
+player charcreate() {
+    string playername;
+    int haircolorchoice, hairstylechoice, eyecolorchoice, lifepathchoice;
+    vector<string> inventory;
+    string vehicle;
+    bool corpoinfluence = false;
+    int streetcred = 0;
+    int eddies = 0;
 
-
-
-
-
-
-///////////////////////////////////////////////////////////////
-
-void charcreate(){
-    int choice;
-
-    cout << "<<>><<>><<>><<>><<>><<>>\n" << endl;
-    cout << "CHARACTER CREATOR INITIATED" << endl;
-
-    cout << "What is your alias? " << endl;
+    cout << "\nCHARACTER CREATOR INITIATED\n";
+    cout << "What is your alias? ";
     cin >> playername;
 
-    
-    //hair color
+    // hair color
     do {
-        cout << "<<>><<>><<>><<>><<>><<>>\n" << endl;
-        cout << "Choose your hair color" << endl;
-        cout << "1. Black" << endl;
-        cout << "2. Blonde" << endl;
-        cout << "3. Brown" << endl;
-        cout << "4. Pink" << endl;
-        cout << "5. Purple" << endl;
-        cout << "6. Green" << endl;
-
-        cout << "Enter choice" << endl;
+        cout << "\nChoose your hair color\n";
+        cout << "1. Black\n2. Blonde\n3. Brown\n4. Pink\n5. Purple\n6. Green\n";
+        cout << "Enter choice: ";
         cin >> haircolorchoice;
-
-        if (haircolorchoice < 1 || haircolorchoice > 6) {
-            cout << endl;
-            cout << "!!!!!!!!!!!!!!" << endl;
-            cout << ">ERROR<" << endl;
-            cout << "INVALID ENTRY. TRY AGAIN." << endl;
-            cout << endl;
-        }
     } while (haircolorchoice < 1 || haircolorchoice > 6);
 
-
-
-    //hair style
+    // hairstyle
     do {
-        cout << "<<>><<>><<>><<>><<>><<>>\n" << endl;
-        cout << "Choose your hair style" << endl;
-        cout << "1. Short hair" << endl;
-        cout << "2. Long hair" << endl;
-        cout << "3. Braids" << endl;
-        cout << "4. Mohawk" << endl;
-        cout << "5. Buzzed cut" << endl;
-
-        cout << "Enter choice" << endl;
+        cout << "\nChoose your hair style\n";
+        cout << "1. Short\n2. Long\n3. Braids\n4. Mohawk\n5. Buzzed\n";
+        cout << "Enter choice: ";
         cin >> hairstylechoice;
-
-         if (hairstylechoice < 1 || hairstylechoice > 5) {
-            cout << endl;
-            cout << "!!!!!!!!!!!!!!" << endl;
-            cout << ">ERROR<" << endl;
-            cout << "INVALID ENTRY. TRY AGAIN." << endl;
-            cout << endl;
-        }
-
     } while (hairstylechoice < 1 || hairstylechoice > 5);
 
-
-
-    //eye color
+    // eye color
     do {
-        cout << "<<>><<>><<>><<>><<>><<>>\n" << endl;
-        cout << "Choose your eye color" << endl;
-        cout << "1. Brown" << endl;
-        cout << "2. Cyber silver" << endl;
-        cout << "3. Neon green" << endl;
-        cout << "4. Black w/ pink hearts" << endl;
-
-        cout << "Enter choice" << endl;
+        cout << "\nChoose your eye color\n";
+        cout << "1. Brown\n2. Cyber Silver\n3. Neon Green\n4. Black w/ pink hearts\n";
+        cout << "Enter choice: ";
         cin >> eyecolorchoice;
-
-        if (eyecolorchoice < 1 || eyecolorchoice > 4) {
-            cout << endl;
-            cout << "!!!!!!!!!!!!!!" << endl;
-            cout << ">ERROR<" << endl;
-            cout << "INVALID ENTRY. TRY AGAIN." << endl;
-            cout << endl;
-        }
-
     } while (eyecolorchoice < 1 || eyecolorchoice > 4);
 
-
-
-    
-    //life path
-
+    // life path
     do {
-        cout << "<<>><<>><<>><<>><<>><<>>\n" << endl;
-        cout << "Choose your life path\n\n" << endl;
-
-        cout << "1. Nomad =============\n";
+        cout << "\n================ LIFE PATH SELECTION ================\n\n";
+        cout << "1. Nomad\n";
         cout << "\tRoaming the Badlands. Looting scrapyards. Raiding fuel depots.\n";
         cout << "\tLife on the road wasn't easy. But growing up in a nomad clan\n";
-        cout << "\thas its perks: honesty, integrity, and a love of freedom—\n";
-        cout << "\tqualities that few in Night City possess, and no amount of\n";
-        cout << "\tmoney can buy.\n\n";
+        cout << "\thas its perks: honesty, integrity, and a love of freedom.\n\n";
 
-        cout << "2. Streetkid =============\n";
+        cout << "2. Streetkid\n";
         cout << "\tThey say if you wanna understand the streets, you gotta live 'em.\n";
-        cout << "\tGangs. Fixers. Dolls. Small-time pushers—you were raised by them all.\n";
-        cout << "\tDown here, the law of the jungle dictates the weak serve the strong—\n";
-        cout << "\tthe only law in Night City you have yet to break.\n\n";
+        cout << "\tGangs. Fixers. Dolls. Small-time pushers—you were raised by them all.\n\n";
 
-        cout << "3. Corpo =============\n";
+        cout << "3. Corpo\n";
         cout << "\tFew leave the corporate world with their lives—fewer still with\n";
         cout << "\ttheir souls intact. You've been there: bent the rules, exploited\n";
-        cout << "\tsecrets, and weaponized information. There's no such thing as a\n";
-        cout << "\tfair game, only winners and losers.\n\n";
+        cout << "\tsecrets, and weaponized information.\n\n";
 
-        cout << "Enter choice" << endl;
+        cout << "======================================================\n";
+        cout << "Enter choice: ";
         cin >> lifepathchoice;
-
-        //inventory
-        inventory.clear();
-        inventory.push_back("Airhypo");
-        inventory.push_back("Apartment keycard");
-        corpoinfluence = false; //reset
-
-         if (lifepathchoice < 1 || lifepathchoice > 3) {
-            cout << endl;
-            cout << "!!!!!!!!!!!!!!" << endl;
-            cout << ">ERROR<" << endl;
-            cout << "INVALID ENTRY. TRY AGAIN." << endl;
-            cout << endl;
-        }
-
     } while (lifepathchoice < 1 || lifepathchoice > 3);
-    
 
-    //lifepath specific inventory and stats
-    switch(lifepathchoice){
-        case 1: //nomad
+    // lifepath setup
+    inventory.clear();
+    inventory.push_back("Airhypo");
+    inventory.push_back("Apartment keycard");
+    corpoinfluence = false;
+
+    switch (lifepathchoice) {
+        case 1: // Nomad
             streetcred = 0;
             eddies = 100;
             inventory.push_back("Car Keys");
             vehicle = "Quadra Type-66 Avenger";
             break;
-        case 2: //streetkid
+        case 2: // Streetkid
             streetcred = 10;
             eddies = 1000;
-            vehicle = "None";
             inventory.push_back("M-10AF Lexington Pistol");
+            vehicle = "None";
             break;
-        case 3: //corpo
+        case 3: // Corpo
             streetcred = 0;
             eddies = 5000;
-            vehicle = "None";
             inventory.push_back("Arasaka Office Keycard");
+            vehicle = "None";
             corpoinfluence = true;
             break;
-        default:
-            streetcred = 0;
-            eddies = 0;
-            vehicle = "None";
-            break;
-
-    
-
     }
 
-    /////////////////////////////////////////////////////////////////////////////////////////////////
-    // SUMMARY
-    cout << endl;
-    cout << "<<>><<>><<>><<>><<>><<>>\n" << endl;
-    cout << ">>>Character Summary<<<" << endl;
-    cout << "Hair: " << haircolor(haircolorchoice) << " " << hairstyle(hairstylechoice) << endl;
-    cout << "Eyes: " << eyecolor(eyecolorchoice) << endl;
-    cout << "Life Path: " << lifepath(lifepathchoice) << endl;
-    cout << "<<>><<>><<>><<>><<>><<>>\n" << endl;
+    // build player object
+    player newPlayer(playername, lifepath(lifepathchoice));
+    newPlayer.seteddies(eddies);
+    newPlayer.setstreetcred(streetcred);
+    newPlayer.sethaircolor(haircolor(haircolorchoice));
+    newPlayer.sethairstyle(hairstyle(hairstylechoice));
+    newPlayer.seteyecolor(eyecolor(eyecolorchoice));
+    newPlayer.setvehicle(vehicle);
 
+    for (const auto& item : inventory)
+        newPlayer.additem(item);
 
+    // summary
+    cout << "\n>>> CHARACTER SUMMARY <<<\n";
+    newPlayer.showstats();
+    newPlayer.showinventory();
 
-
-
-
-
-
-
-
-
-
-}
-
-
-
-
-///////////////////////////////////////////////////////////////
-// UNIVERSAL MENU FUNCTIONS
-
-void checkStats() {
-    cout << "\n=== PLAYER STATS ===\n";
-    cout << "Alias: " << playername << "\n";
-    cout << "Hair: " << haircolor(haircolorchoice) << " " 
-         << hairstyle(hairstylechoice) << "\n";
-    cout << "Eyes: " << eyecolor(eyecolorchoice) << "\n";
-    cout << "Life Path: " << lifepath(lifepathchoice) << "\n";
-    cout << "Street Cred: " << streetcred << "\n";
-    cout << "Eddies: " << eddies << "\n";
-    cout << "Vehicle: " << vehicle << "\n";
-    cout << "Inventory: ";
-    for (auto &item : inventory) cout << item << ", ";
-    cout << "\n====================\n";
-}
-
-void quitGame() {
-    cout << "\n>>> QUITTING GAME <<<\n";
-    exit(0);
-}
-
-int getPlayerChoice() {
-    int choice;
-    cin >> choice;
-
-    if (choice == 0) {
-        checkStats();
-        return -1; // flag to repeat the current menu
-    }
-    if (choice == 9) {
-        quitGame();
-    }
-
-    return choice; // normal choice
+    return newPlayer;
 }

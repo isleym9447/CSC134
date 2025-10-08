@@ -28,23 +28,46 @@ void acceptcall() {
          << "Client wants the shard back and doesn’t care about the chooms protectin’ it.\n"
          << "However, that don’t mean you should let your iron go empty — "
          << "use some discretion if you can, choom… for me.\n\n";
+         cout << "Gig info attached." << endl;
 
-    this_thread::sleep_for(chrono::milliseconds(800));
+         cout << "CALL ENDED" << endl;
 
-    cout << "*NEW MESSAGE RECEIVED*\n\n";
+    this_thread::sleep_for(chrono::milliseconds(1000));
+
+    cout << "\n╔══════════════════════════════════════════════════════╗" << endl;
+    cout << "                ✉️  *NEW MESSAGE*                        " << endl;
+    cout << "╚══════════════════════════════════════════════════════╝" << endl;
+    cout << endl;
     cout << "Gig type: Asset Recovery\n";
     cout << "Client: Christopher Maldonado\n";
     cout << "Location: Garcia Auto Repair, Santo Domingo\n\n";
-    cout << "Retrieve the stolen data shard from wherever the Valentinos squirreled it away.\n";
-    cout << "Client not concerned with collateral damage.\n\n";
-    cout << "Good luck, " << currentPlayer.getname() << ".\n";
-}
+    cout << endl;
+    cout << "────────────────────────────────────────────────────────" << endl;
+    cout << "Retrieve the stolen data shard from wherever the Valentinos" << endl;
+    cout << "squirreled it away. Client not concerned with collateral damage." << endl;
+    cout << "────────────────────────────────────────────────────────" << endl;
+    cout << endl;
+
+    cout << "💾  Good luck, " << currentPlayer.getname() << "." << endl;
+    cout << "────────────────────────────────────────────────────────" << endl;
+    cout << endl;
 
 // ----------------------------------------------------------
 
 void declinecall() {
-    cout << "\nYou decline the call.\n";
-    cout << "No job = no eddies.\n";
+    cout << "You swipe the holo notification away.\n";
+    cout << "No job = no eddies." << endl;
+    cout << "..." << endl;
+    cout << "A few seconds pass. The silence feels heavier than usual." << endl;
+    cout << "You sigh and call the fixer back." << endl;
+    cout << "──────────────────────────────────────────────" << endl;
+
+    // simulate a short pause before calling back
+    this_thread::sleep_for(chrono::milliseconds(1000));
+
+    // now trigger the same call content as acceptcall()
+    acceptcall();
+    
 }
 
 // ----------------------------------------------------------

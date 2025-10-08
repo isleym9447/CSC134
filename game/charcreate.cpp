@@ -3,6 +3,8 @@
 #include <vector>
 #include "player.h"
 #include "charcreate.h"
+#include <thread>
+#include <chrono>
 using namespace std;
 
 // helper functions
@@ -58,13 +60,17 @@ player charcreate() {
     int streetcred = 0;
     int eddies = 0;
 
-    cout << "\nCHARACTER CREATOR INITIATED\n";
-    cout << "What is your alias? ";
+    cout << "\n═══════════════════════════════════════════════════════" << endl;
+    cout << "            >>> CHARACTER CREATOR INITIATED <<<" << endl;
+    cout << "═══════════════════════════════════════════════════════" << endl;
+    cout << "\nWhat is your alias? ";
     cin >> playername;
 
     // hair color
     do {
-        cout << "\nChoose your hair color\n";
+        cout << "\n><><><><><><><><><><><><><><><><><><><><><><><><><><><" << endl;
+        cout << "Choose your hair color" << endl;
+        cout << "><><><><><><><><><><><><><><><><><><><><><><><><><><><" << endl;
         cout << "1. Black\n2. Blonde\n3. Brown\n4. Pink\n5. Purple\n6. Green\n";
         cout << "Enter choice: ";
         cin >> haircolorchoice;
@@ -72,16 +78,20 @@ player charcreate() {
 
     // hairstyle
     do {
-        cout << "\nChoose your hair style\n";
-        cout << "1. Short\n2. Long\n3. Braids\n4. Mohawk\n5. Buzzed\n";
+        cout << "\n><><><><><><><><><><><><><><><><><><><><><><><><><><><" << endl;
+        cout << "Choose your hair style" << endl;
+        cout << "><><><><><><><><><><><><><><><><><><><><><><><><><><><" << endl;
+        cout << "1. Short hair\n2. Long hair\n3. Braids\n4. Mohawk\n5. Buzzed cut\n";
         cout << "Enter choice: ";
         cin >> hairstylechoice;
     } while (hairstylechoice < 1 || hairstylechoice > 5);
 
     // eye color
     do {
-        cout << "\nChoose your eye color\n";
-        cout << "1. Brown\n2. Cyber Silver\n3. Neon Green\n4. Black w/ pink hearts\n";
+        cout << "\n><><><><><><><><><><><><><><><><><><><><><><><><><><><" << endl;
+        cout << "Choose your eye color" << endl;
+        cout << "><><><><><><><><><><><><><><><><><><><><><><><><><><><" << endl;
+        cout << "1. Brown\n2. Cyber Silver\n3. Neon Green\n4. Black w/ pink heart pupils\n";
         cout << "Enter choice: ";
         cin >> eyecolorchoice;
     } while (eyecolorchoice < 1 || eyecolorchoice > 4);
@@ -106,6 +116,37 @@ player charcreate() {
         cout << "======================================================\n";
         cout << "Enter choice: ";
         cin >> lifepathchoice;
+
+
+        // ===============================================================
+    // ✨ IMMERSIVE BOOT-UP LOADING SEQUENCE ✨
+    cout << "\nInitializing player data";
+    for (int i = 0; i < 3; ++i) {
+        cout << "." << flush;
+        this_thread::sleep_for(chrono::milliseconds(400));
+    }
+    cout << " Done." << endl;
+
+    cout << "Syncing neural profile";
+    for (int i = 0; i < 4; ++i) {
+        cout << "." << flush;
+        this_thread::sleep_for(chrono::milliseconds(400));
+    }
+    cout << " Complete." << endl;
+
+    cout << "Deploying consciousness to Night City";
+    for (int i = 0; i < 5; ++i) {
+        cout << "." << flush;
+        this_thread::sleep_for(chrono::milliseconds(300));
+    }
+    cout << " Welcome, " << playername << "." << endl;
+
+    cout << "═══════════════════════════════════════════════════════" << endl;
+    cout << "                CHARACTER CREATION COMPLETE" << endl;
+    cout << "═══════════════════════════════════════════════════════" << endl;
+    cout << endl;
+
+
     } while (lifepathchoice < 1 || lifepathchoice > 3);
 
     // lifepath setup
@@ -134,7 +175,13 @@ player charcreate() {
             vehicle = "None";
             corpoinfluence = true;
             break;
+
+
+
+            
     }
+
+    
 
     // build player object
     player newPlayer(playername, lifepath(lifepathchoice));
@@ -151,7 +198,7 @@ player charcreate() {
     // summary
     cout << "\n>>> CHARACTER SUMMARY <<<\n";
     newPlayer.showstats();
-    newPlayer.showinventory();
+    //newPlayer.showinventory();  //only when player asks for it will inventory be shown
 
     return newPlayer;
 }

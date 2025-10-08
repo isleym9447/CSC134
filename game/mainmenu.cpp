@@ -6,12 +6,14 @@ Mattea Isley
  
  //beginning with the magic words
  
- #include <iostream>
- #include "player.h"
- #include "charcreate.h"
- #include "scene1.h"
- #include "scene2.h"
- using namespace std;
+#include <iostream>
+#include "player.h"
+#include "charcreate.h"
+#include "scene1.h"
+#include "scene2.h"
+#include <thread>
+#include <chrono>
+using namespace std;
 
  player currentPlayer; // define the global player instance
 
@@ -19,20 +21,72 @@ Mattea Isley
 void newgame(){
 
     cout << endl;
-    cout << endl;
-    cout << endl;
-
-    cout << ">>NEW GAME START<<" << endl;
-
-    cout << endl;
-    cout << endl;
+    cout << "═══════════════════════════════════════════════════════" << endl;
+    cout << "                     >> NEW GAME START <<" << endl;
+    cout << "═══════════════════════════════════════════════════════" << endl;
     cout << endl;
 
-    //character creation and game start
-    currentPlayer = charcreate();  // assign the player created in charcreate()
+    // Simulated loading animation
+    cout << "Boot sequence initializing";
+    for (int i = 0; i < 3; ++i) {
+        cout << "." << flush;
+        this_thread::sleep_for(chrono::milliseconds(400));
+    }
+    cout << " Done." << endl;
+
+    cout << "Loading player profile";
+    for (int i = 0; i < 4; ++i) {
+        cout << "." << flush;
+        this_thread::sleep_for(chrono::milliseconds(350));
+    }
+    cout << " OK." << endl;
+
+    cout << "Loading world assets";
+    for (int i = 0; i < 5; ++i) {
+        cout << "." << flush;
+        this_thread::sleep_for(chrono::milliseconds(300));
+    }
+    cout << " Ready." << endl;
+
+    cout << endl;
+    this_thread::sleep_for(chrono::milliseconds(500));
+
+    cout << "><><><><><><><><><><><><><><><><><><><><><><><><><><><" << endl;
+    cout << "   CHARACTER CREATION SEQUENCE BEGIN" << endl;
+    cout << "><><><><><><><><><><><><><><><><><><><><><><><><><><><" << endl;
+    cout << endl;
+
+    // run your character creator
+    currentPlayer = charcreate();
+
+    cout << endl;
+    cout << "><><><><><><><><><><><><><><><><><><><><><><><><><><><" << endl;
+    cout << "   CHARACTER PROFILE CONFIRMED" << endl;
+    cout << "   Initializing first scene";
+    for (int i = 0; i < 3; ++i) {
+        cout << "." << flush;
+        this_thread::sleep_for(chrono::milliseconds(400));
+    }
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////// MAIN GAME RUNS THROUGH THIS SECTION!!!!!!!!!
+
+
+
+
+
+    cout << endl;
+    cout << "><><><><><><><><><><><><><><><><><><><><><><><><><><><" << endl;
+    cout << endl;
     scene1();                      // start first scene
     scene2();                      // move to second scene
+    warehousegig();
     
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////// MAIN GAME RUNS THROUGH THIS SECTION!!!!!!!!!   
 }
 
 void settings(){
@@ -81,7 +135,7 @@ void quitgame(){
 
     while (true) {
 
-      
+        cout << "\n\n\n\n\n";
         cout << "<<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<" << endl;
        
         cout << "\t1. New Game\n";

@@ -45,6 +45,7 @@ void player::additem(const string& item) {
     inventory.push_back(item);
 }
 
+
 void player::showinventory() const {
     cout << "\n--- Inventory ---\n";
     for (const auto& item : inventory)
@@ -61,7 +62,7 @@ void player::showstats() const {
     cout << "Street Cred: " << streetcred << endl;
     cout << "Eddies: " << eddies << endl;
     cout << "Vehicle: " << vehicle << endl;
-    cout << "Romance Points: " << romancepoints << endl;
+    //cout << "Romance Points: " << romancepoints << endl;      //dont want seen by player 
     cout << "=====================\n";
 }
 

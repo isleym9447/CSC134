@@ -2,7 +2,7 @@
 #include <vector>
 using namespace std;
 
-int main() {
+int hackingminigame() {
     vector<string> buffer = {"BD", "55", "1C", "E9", "7A"};
     vector<string> target = {"55", "1C", "E9"}; // kept for reference
     vector<string> input;

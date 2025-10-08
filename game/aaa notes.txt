@@ -6,7 +6,7 @@ compiling and structuring: ai buddy
 
 
 
-
+https://stackoverflow.com/questions/73275183/gcc-assembly-x86-relocation-warning-creating-dt-textrel-in-a-pie
 
 
 

@@ -10,7 +10,8 @@
 
 # Compiler and flags
 CXX = g++
-CXXFLAGS = -Wall -g -I scenes -I .    # include subfolder + root
+CXXFLAGS = -Wall -g -I . -I scenes -I locations_and_gigs -I character_images
+    # include subfolder + root
 
 # Output program name
 TARGET = game

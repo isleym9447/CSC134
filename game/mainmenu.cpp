@@ -11,6 +11,8 @@ Mattea Isley
 #include "charcreate.h"
 #include "scene1.h"
 #include "scene2.h"
+#include "warehousegig.h"
+
 #include <thread>
 #include <chrono>
 using namespace std;

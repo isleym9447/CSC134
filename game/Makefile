@@ -17,8 +17,10 @@ CXXFLAGS = -Wall -g -I . -I scenes -I locations_and_gigs -I character_images
 TARGET = game
 
 # Source files (all .cpp files in this folder + subfolders)
-SRCS = $(wildcard *.cpp scenes/*.cpp)
+# Source files (all .cpp files in this folder + subfolders)
+SRCS = $(wildcard *.cpp scenes/*.cpp locations_and_gigs/*.cpp)
 OBJS = $(SRCS:.cpp=.o)
+
 
 # ==========================================================
 # Default target

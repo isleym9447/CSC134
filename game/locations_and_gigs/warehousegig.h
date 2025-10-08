@@ -11,7 +11,6 @@ extern int health;
 extern int streetcred;
 extern int eddies;
 extern string weapon;
-extern string lifepath;
 extern vector<string> inventory;
 
 // warehouse gig sections

@@ -93,14 +93,10 @@ class Blob:
         smile_rect.center = (self.x, self.y + self.radius // 4 * scale_y)
 
         # If the blob is happy, draw a smiling arc; otherwise, a sad one
-               
         if self.happy:
-            # Make the smile much happier (arc upwards)
-            pygame.draw.arc(screen, (50, 50, 50), smile_rect, -math.pi/3, math.pi/3, 3)  # Happy, more curved up
+            pygame.draw.arc(screen, (50, 50, 50), smile_rect, math.pi/6, 5*math.pi/6, 3)  # Happy smile
         else:
-            # Sad frown
-            pygame.draw.arc(screen, (50, 50, 50), smile_rect, math.pi/6, 5*math.pi/6, 3)  # Sad frown
-
+            pygame.draw.arc(screen, (50, 50, 50), smile_rect, -math.pi/6, -5*math.pi/6, 3)  # Sad frown
 
 
 # Create blobs

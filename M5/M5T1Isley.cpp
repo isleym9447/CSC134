@@ -27,7 +27,7 @@ void say_hello(); //says hi
 
 int get_answer(); //provides answer
 
-double double_a_number(); //num times 2
+double double_a_number(double); //num times 2
 
 
 int main()
@@ -36,12 +36,13 @@ int main()
     double my_num;
     int another_num;
 
-    cout << "Welcome to the best program ever!" << endl;
+    say_hello();
     cout << "Please enter a number (with or without decimal place)." << endl;
 
     cin >> my_num;
-    
-    my_num = my_num * 2;
+
+    // my_num = my_num * 2;
+    my_num = double_a_number(my_num);
     cout << "Double the number is: " << my_num << endl;
 
 
@@ -55,3 +56,20 @@ int main()
     
 }
 
+
+
+void say_hello() {
+    //says hi
+    cout << "Welcome to the best program ever!" << endl;
+}
+
+int get_answer() {
+    //provides answer
+}
+
+
+double double_a_number(double the_num) {
+    //num times 2
+    double answer = the_num * 2;
+    return answer;
+}

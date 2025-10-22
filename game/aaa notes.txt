@@ -6,6 +6,24 @@ compiling and structuring: ai buddy
 
 
 
+
+
+
+basic style for options 
+
+    cout << "╔════════════════════════════════════════════════════════════╗" << endl;
+    cout << "║                [1]                                         ║" << endl;
+    cout << "║                [2]                                         ║" << endl;
+    cout << "║                [3]                                         ║" << endl;
+    cout << "╚════════════════════════════════════════════════════════════╝" << endl;
+
+    int choice;
+    cout << "> ";
+    cin >> choice;
+
+
+
+
 https://stackoverflow.com/questions/73275183/gcc-assembly-x86-relocation-warning-creating-dt-textrel-in-a-pie
 
 
@@ -54,7 +72,7 @@ Global Systems: (active after scene1())
 ***************************************************************
 mainmenu()
 
-    - New Game → charcreate()
+    - 1 New Game → charcreate()
 
     - 2 Settings (flavor/immersion):
 
@@ -64,9 +82,9 @@ mainmenu()
 
         “Difficulty” labels (Streetrat/Merc/Cyberpsycho) — can be cosmetic
 
-    - Credits (fan work disclaimer; CD PROJEKT RED IP note; your authorship)
+    - 3 Credits (fan work disclaimer; CD PROJEKT RED IP note; your authorship)
 
-    - Exit (quit)
+    - 4 Exit (quit)
 
 ***************************************************************
 
@@ -74,15 +92,17 @@ charcreate()
 
     - Appearance:
 
-        Hair color, Hairstyle, Eye color (can be randomized for mirror scenes)
+        Hair color, 
+        Hairstyle, 
+        Eye color 
 
         Life Path (affects starting state):
 
-        Streetkid → pistol, some eddies, +street cred
+            Streetkid → pistol, some eddies, +street cred
 
-        Corpo → more eddies, corpo influence, no weapon
+            Corpo → more eddies, corpo influence, no weapon
 
-        Nomad → vehicle, 0 street cred, no weapon
+            Nomad → vehicle, 0 street cred, no weapon
 
 → proceed to scene1()
 
@@ -110,9 +130,9 @@ scene1()
 
         3 Eat something (limited uses)
 
-            1st: “Synth-noodle cup. Warm and salty.” → HEALTH + small
+            1st: “Synth-noodle cup. Warm and salty.” 
 
-            2nd: “Another meal? Guess you were hungrier than you thought.” → HEALTH + tiny
+            2nd: “Another meal? Guess you were hungrier than you thought.” 
 
             3rd+: “You rummage around but realize you’re out of food.”
 
@@ -123,7 +143,7 @@ scene1()
 
         6 Leave apartment → scene2()
 
-***************************************************************
+***************************************************************////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 *** From here onward: 0 = Check Stats, 9 = Quit Game always available. ***
 
@@ -133,7 +153,7 @@ scene2()
 
         Accept → travel choices → scene3()
 
-        Deny → (TBD: currently returns/loops; you can later route to free-roam/downtime if desired)
+        Deny → no jobs no eddies, call automatically calls fixer back
 
 
 

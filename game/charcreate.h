@@ -12,6 +12,10 @@ string hairstyle(int hairstylechoice);
 string eyecolor(int eyecolorchoice);
 string lifepath(int lifepathchoice);
 
+//tattoo
+extern vector<string> inventory;
+
+
 // ===== CHARACTER CREATOR =====
 player charcreate();
 

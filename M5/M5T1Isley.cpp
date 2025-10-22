@@ -65,6 +65,7 @@ void say_hello() {
 
 int get_answer() {
     //provides answer
+    return 42;
 }
 
 

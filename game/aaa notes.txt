@@ -56,7 +56,7 @@ mainmenu()
 
     - New Game → charcreate()
 
-    - Settings (flavor/immersion):
+    - 2 Settings (flavor/immersion):
 
         “Kiroshi Overlay Prefs” (HUD glow on/off, voice: female/male/silent, text speed, display mode)
 

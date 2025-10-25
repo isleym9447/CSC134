@@ -68,52 +68,87 @@ player charcreate() {
 
     // hair color
     do {
-        cout << "\n><><><><><><><><><><><><><><><><><><><><><><><><><><><" << endl;
+        
         cout << "Choose your hair color" << endl;
-        cout << "><><><><><><><><><><><><><><><><><><><><><><><><><><><" << endl;
-        cout << "1. Black\n2. Blonde\n3. Brown\n4. Pink\n5. Purple\n6. Green\n";
+        cout << "╔════════════════════════════════════════════════════════════╗" << endl;
+        cout << "║                [1] Black                                   ║" << endl;
+        cout << "║                [2] Blonde                                  ║" << endl;
+        cout << "║                [3] Brown                                   ║" << endl;
+        cout << "║                [4] Pink                                    ║" << endl;
+        cout << "║                [5] Purple                                  ║" << endl;
+        cout << "║                [6] Green                                   ║" << endl;
+        cout << "╚════════════════════════════════════════════════════════════╝" << endl;
         cout << "Enter choice: ";
+        cout << "> ";
         cin >> haircolorchoice;
     } while (haircolorchoice < 1 || haircolorchoice > 6);
 
     // hairstyle
     do {
-        cout << "\n><><><><><><><><><><><><><><><><><><><><><><><><><><><" << endl;
-        cout << "Choose your hair style" << endl;
-        cout << "><><><><><><><><><><><><><><><><><><><><><><><><><><><" << endl;
-        cout << "1. Short hair\n2. Long hair\n3. Braids\n4. Mohawk\n5. Buzzed cut\n";
+        cout << "Choose your haircut" << endl;
+        cout << "╔════════════════════════════════════════════════════════════╗" << endl;
+        cout << "║                [1] Short hair                              ║" << endl;
+        cout << "║                [2] Long hair                               ║" << endl;
+        cout << "║                [3] Braids                                  ║" << endl;
+        cout << "║                [4] Mohawk                                  ║" << endl;
+        cout << "║                [5] Buzzed cut                              ║" << endl;
+        cout << "╚════════════════════════════════════════════════════════════╝" << endl;
         cout << "Enter choice: ";
+        cout << "> ";
         cin >> hairstylechoice;
     } while (hairstylechoice < 1 || hairstylechoice > 5);
 
     // eye color
     do {
-        cout << "\n><><><><><><><><><><><><><><><><><><><><><><><><><><><" << endl;
         cout << "Choose your eye color" << endl;
-        cout << "><><><><><><><><><><><><><><><><><><><><><><><><><><><" << endl;
-        cout << "1. Brown\n2. Cyber Silver\n3. Neon Green\n4. Black w/ pink heart pupils\n";
+        cout << "╔════════════════════════════════════════════════════════════╗" << endl;
+        cout << "║                [1] Brown                                   ║" << endl;
+        cout << "║                [2] Cyber Silver                            ║" << endl;
+        cout << "║                [3] Neon Green                              ║" << endl;
+        cout << "║                [4] Black w/ pink heart pupils              ║" << endl;
+        cout << "╚════════════════════════════════════════════════════════════╝" << endl;
         cout << "Enter choice: ";
+        cout << "> ";
         cin >> eyecolorchoice;
     } while (eyecolorchoice < 1 || eyecolorchoice > 4);
 
     // life path
     do {
         cout << "\n================ LIFE PATH SELECTION ================\n\n";
-        cout << "1. Nomad\n";
-        cout << "\tRoaming the Badlands. Looting scrapyards. Raiding fuel depots.\n";
-        cout << "\tLife on the road wasn't easy. But growing up in a nomad clan\n";
-        cout << "\thas its perks: honesty, integrity, and a love of freedom.\n\n";
+        cout << "╔════════════════════════════════════════════════════════════╗" << endl;
+        cout << "║                          Nomad                             ║" << endl;
+        cout << "╚════════════════════════════════════════════════════════════╝" << endl;
+        cout << "╔════════════════════════════════════════════════════════════╗" << endl;
+        cout << "║ Roaming the Badlands, looting scrapyards, raiding fuel     ║" << endl;
+        cout << "║ depots – life on the road wasn’t easy. But growing up in a ║" << endl;
+        cout << "║ nomad clan has its perks. Honesty, integrity, and a love of║" << endl;
+        cout << "║ freedom – qualities that few in Night City possess, and no ║" << endl;
+        cout << "║ amount of money can buy.                                   ║" << endl;
+        cout << "╚════════════════════════════════════════════════════════════╝" << endl;
 
-        cout << "2. Streetkid\n";
-        cout << "\tThey say if you wanna understand the streets, you gotta live 'em.\n";
-        cout << "\tGangs. Fixers. Dolls. Small-time pushers—you were raised by them all.\n\n";
 
-        cout << "3. Corpo\n";
-        cout << "\tFew leave the corporate world with their lives—fewer still with\n";
-        cout << "\ttheir souls intact. You've been there: bent the rules, exploited\n";
-        cout << "\tsecrets, and weaponized information.\n\n";
+        cout << "╔════════════════════════════════════════════════════════════╗" << endl;
+        cout << "║                        Streetkid                           ║" << endl;
+        cout << "╚════════════════════════════════════════════════════════════╝" << endl;
+        cout << "╔════════════════════════════════════════════════════════════╗" << endl;
+        cout << "║ They say if you wanna understand the streets, you gotta    ║" << endl;
+        cout << "║ live 'em. Gangs, fixers, dolls, small-time pushers – you   ║" << endl;
+        cout << "║ were raised by them all. Down here the law of the jungle   ║" << endl;
+        cout << "║ dictates the weak serve the strong – the only law in Night ║" << endl;
+        cout << "║ City you have yet to break.                                ║" << endl;
+        cout << "╚════════════════════════════════════════════════════════════╝" << endl;
 
-        cout << "======================================================\n";
+        
+        cout << "╔════════════════════════════════════════════════════════════╗" << endl;
+        cout << "║                          Corpo                             ║" << endl;
+        cout << "╚════════════════════════════════════════════════════════════╝" << endl;
+        cout << "╔════════════════════════════════════════════════════════════╗" << endl;
+        cout << "║ Few leave the corporate world with their lives – fewer     ║" << endl;
+        cout << "║ still with their souls intact. You've been there – you've  ║" << endl;
+        cout << "║ bent the rules, exploited secrets and weaponized            ║" << endl;
+        cout << "║ information. There's no such thing as a fair game, only     ║" << endl;
+        cout << "║ winners and losers.                                         ║" << endl;
+        cout << "╚════════════════════════════════════════════════════════════╝" << endl;
         cout << "Enter choice: ";
         cin >> lifepathchoice;
 

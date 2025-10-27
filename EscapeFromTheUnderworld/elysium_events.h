@@ -1,3 +1,3 @@
 #pragma once
 #include "intro.h"
-bool elysiumRandomEvent(Player& p);q
+bool elysiumRandomEvent(Player& p);

@@ -1,7 +1,7 @@
 #include "intro.h"
-#include "Asphodel.h"
-#include "Elysium.h"
-#include "Tartarus.h"
+#include "asphodel.h"
+#include "elysium.h"
+#include "tartarus.h"
 #include "ending.h"
 #include <iostream>
 #include <string>

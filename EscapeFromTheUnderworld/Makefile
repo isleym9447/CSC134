@@ -2,12 +2,12 @@ CXX := g++
 CXXFLAGS := -std=c++17 -O2 -Wall -Wextra
 
 SRC := main.cpp intro.cpp ending.cpp oracle.cpp \
-       Asphodel.cpp asphodel_events.cpp \
-       Elysium.cpp elysium_events.cpp \
-       Tartarus.cpp tartarus_events.cpp
+	asphodel.cpp asphodel_events.cpp \
+	elysium.cpp elysium_events.cpp \
+	tartarus.cpp tartarus_events.cpp
 
 OBJ := $(SRC:.cpp=.o)
-BIN := hades_game
+BIN := EscapeFromTheUnderworld
 
 all: $(BIN)
 

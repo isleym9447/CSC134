@@ -1,4 +1,4 @@
-#include "Asphodel.h"
+#include "asphodel.h"
 #include "asphodel_events.h"
 #include "ending.h"
 #include <iostream>

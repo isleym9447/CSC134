@@ -1,4 +1,4 @@
-#include "Tartarus.h"
+#include "tartarus.h"
 #include "tartarus_events.h"
 #include "ending.h"
 #include <iostream>

@@ -17,6 +17,6 @@ Features
 	•	Modular Code: Each region has its own chapter + events file for easy expansion.
 
 
-cd workspaces/CSC134/Escape from The Underworld
+cd /workspaces/CSC134/EscapeFromTheUnderworld
 make
-./Escape from The Underworld
+./EscapeFromTheUnderworld

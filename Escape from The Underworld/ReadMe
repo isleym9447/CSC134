@@ -1,1 +1,22 @@
 Escape from The Underworld
+
+
+
+A simple, modular text-based roguelite inspired by Greek mythology and Hades.
+You play a demigod with a randomly assigned god parent (passive bonus + one-use god item).
+Travel through Asphodel, Elysium, and Tartarus, face random events, solve an Oracle of Delphi puzzle for buffs, and reach one of multiple endings based on Health, Soul, and Alignment.
+
+⸻
+
+Features
+	•	God Parent System: Random parent (Athena, Ares, Hermes, Poseidon, Hades, Artemis, Zeus) with a passive bonus and a one-use item.
+	•	Dice Checks: Most actions use 2d6 + bonuses (god passive, Oracle boons, optional one-use item).
+	•	Stats: HP, Soul, Alignment (Merciful / Neutral / Vengeful).
+	•	Random Events: Combat, shrines, deity encounters, resting, and Oracle puzzle.
+	•	Multiple Endings: Trapped, Reborn (Neutral/Vengeful), or Ascend to Elysium.
+	•	Modular Code: Each region has its own chapter + events file for easy expansion.
+
+
+cd workspaces/CSC134/Escape from The Underworld
+make
+./Escape from The Underworld

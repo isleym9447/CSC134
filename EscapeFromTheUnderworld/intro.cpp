@@ -1,4 +1,12 @@
 #include "intro.h"
+#include <iostream>
+#include <string>
+#include <vector>
+#include <chrono>
+#include <random>
+#include <algorithm>
+
+using namespace std;
 
 RNG R;
 

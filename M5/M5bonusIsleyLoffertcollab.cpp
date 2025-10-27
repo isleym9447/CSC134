@@ -1,3 +1,12 @@
+//im a first year c++ student help me write a battleship board game inspired game
+
+//make the ships placed randomly on the user's and the opponent's board.
+
+//why is there only 2 ships?
+
+//help me make this c++ code into a battleship board game inspired game that can run in a browser with graphics
+
+
 #include <iostream>
 #include <vector>
 #include <cstdlib>  // rand(), srand()

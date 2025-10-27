@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Battleship: Naval Clash</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind for custom colors and font -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1a2b; /* Dark Navy Background */
+            color: #e5e7eb; /* Light Gray Text */
+        }
+        .board-cell {
+            /* Shared cell styling */
+            width: 100%;
+            padding-top: 100%; /* Creates a perfect square aspect ratio */
+            position: relative;
+            cursor: pointer;
+            transition: all 0.15s ease-in-out;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .board-cell-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        /* State-specific styling for the player's board (visible ships) */
+        .player-ship {
+            background-color: #2c3e50; /* Darker blue for placed ships */
+        }
+        .player-hit {
+            background-color: #e74c3c; /* Red for hits */
+            animation: pulse-hit 0.5s 2;
+        }
+        .player-miss {
+            background-color: #34495e; /* Gray-blue for misses */
+        }
+        .player-water {
+            background-color: #1a324b; /* Default water color */
+        }
+
+        /* State-specific styling for the enemy's board (hidden ships) */
+        .enemy-targetable {
+            background-color: #1a324b; /* Targetable water */
+        }
+        .enemy-targetable:hover:not(.enemy-miss):not(.enemy-hit) {
+            background-color: #2980b9; /* Brighter blue hover */
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(41, 128, 185, 0.7);
+        }
+        .enemy-hit {
+            background-color: #e74c3c; /* Red for hits */
+            animation: pulse-hit 0.5s 2;
+        }
+        .enemy-miss {
+            background-color: #34495e; /* Gray-blue for misses */
+        }
+
+        /* Animation for hits */
+        @keyframes pulse-hit {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        /* Custom modal styles */
+        .custom-modal {
+            transition: opacity 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-8">
+
+    <div class="max-w-6xl mx-auto">
+        <header class="text-center mb-8">
+            <h1 class="text-5xl font-extrabold text-[#3498db] drop-shadow-lg">
+                Naval Clash
+            </h1>
+            <p class="text-xl mt-2 text-gray-400">Sink the Enemy Fleet!</p>
+        </header>
+
+        <!-- Game Message/Status Area -->
+        <div id="message-area" class="bg-gray-700/50 p-4 mb-6 rounded-lg shadow-xl text-center min-h-[4rem] flex items-center justify-center">
+            <p id="game-message" class="text-lg font-semibold text-white">
+                Placing ships... Click START GAME to begin your attack!
+            </p>
+        </div>
+
+        <!-- Main Game Area -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Player Board -->
+            <div class="bg-gray-800/70 p-4 rounded-xl shadow-2xl">
+                <h2 class="text-2xl font-bold mb-4 text-center text-green-400">YOUR FLEET (10x10)</h2>
+                <div id="player-board-container" class="grid grid-cols-10 border border-gray-500 rounded-lg overflow-hidden">
+                    <!-- Player grid cells will be injected here -->
+                </div>
+            </div>
+
+            <!-- Enemy Target Board -->
+            <div class="bg-gray-800/70 p-4 rounded-xl shadow-2xl">
+                <h2 class="text-2xl font-bold mb-4 text-center text-red-400">TARGET ENEMY (10x10)</h2>
+                <div id="enemy-board-container" class="grid grid-cols-10 border border-gray-500 rounded-lg overflow-hidden">
+                    <!-- Enemy grid cells will be injected here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="text-center mt-8">
+            <button id="start-game-btn" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-200 uppercase tracking-wider disabled:opacity-50">
+                Start Game
+            </button>
+            <button id="reset-game-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-200 uppercase tracking-wider ml-4">
+                Reset
+            </button>
+        </div>
+    </div>
+
+    <!-- Custom Modal for Game End/Messages (Hidden by Default) -->
+    <div id="modal-backdrop" class="custom-modal fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center hidden">
+        <div class="bg-gray-800 p-8 rounded-xl shadow-2xl max-w-sm w-full text-center border-t-4 border-yellow-500">
+            <h3 id="modal-title" class="text-3xl font-extrabold mb-4 text-yellow-300">Game Over</h3>
+            <p id="modal-body" class="text-lg text-gray-200 mb-6">
+                You won the battle!
+            </p>
+            <button id="modal-close-btn" class="bg-yellow-600 hover:bg-yellow-700 text-gray-900 font-bold py-2 px-6 rounded-full transition duration-200">
+                Play Again
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // --- GAME CONSTANTS & STATE ---
+        const BOARD_SIZE = 10;
+        const SHIPS = [
+            { symbol: 'A', length: 5, name: 'Aircraft Carrier' },
+            { symbol: 'B', length: 4, name: 'Battleship' },
+            { symbol: 'C', length: 3, name: 'Cruiser' },
+            { symbol: 'D', length: 3, name: 'Destroyer' },
+            { symbol: 'S', length: 2, name: 'Submarine' }
+        ];
+
+        let playerBoard = []; // '~' for water, ship symbols (A-S), 'O' for miss, 'X' for hit
+        let enemyBoard = [];
+        let isPlayerTurn = false;
+        let isGameReady = false;
+        let turnDelay = 500; // Delay in ms for AI turn
+
+        // DOM Elements
+        const playerBoardEl = document.getElementById('player-board-container');
+        const enemyBoardEl = document.getElementById('enemy-board-container');
+        const messageEl = document.getElementById('game-message');
+        const startBtn = document.getElementById('start-game-btn');
+        const resetBtn = document.getElementById('reset-game-btn');
+        const modalEl = document.getElementById('modal-backdrop');
+        const modalTitleEl = document.getElementById('modal-title');
+        const modalBodyEl = document.getElementById('modal-body');
+        const modalCloseBtn = document.getElementById('modal-close-btn');
+
+        // --- CORE GAME LOGIC (Translation from C++) ---
+
+        /**
+         * Initializes a 10x10 board with water symbols ('~').
+         * @returns {Array<Array<string>>} The initialized board.
+         */
+        function initializeBoard() {
+            const board = [];
+            for (let i = 0; i < BOARD_SIZE; i++) {
+                board.push(Array(BOARD_SIZE).fill('~'));
+            }
+            return board;
+        }
+
+        /**
+         * Attempts to place a single ship on the board.
+         * @returns {boolean} True if placement was successful.
+         */
+        function placeShip(board, x, y, length, symbol, isHorizontal) {
+            // Check boundaries
+            if (isHorizontal) {
+                if (y + length > BOARD_SIZE) return false;
+            } else {
+                if (x + length > BOARD_SIZE) return false;
+            }
+
+            // Check for collision
+            for (let i = 0; i < length; i++) {
+                const checkX = isHorizontal ? x : x + i;
+                const checkY = isHorizontal ? y + i : y;
+                if (board[checkX][checkY] !== '~') return false;
+            }
+
+            // Place the ship
+            for (let i = 0; i < length; i++) {
+                const placeX = isHorizontal ? x : x + i;
+                const placeY = isHorizontal ? y + i : y;
+                board[placeX][placeY] = symbol;
+            }
+            return true;
+        }
+
+        /**
+         * Places all ships randomly on the board, retrying until successful.
+         */
+        function placeAllShipsRandomly(board) {
+            let success = false;
+            while (!success) {
+                const tempBoard = initializeBoard();
+                success = true;
+
+                for (const ship of SHIPS) {
+                    let placed = false;
+                    let attempts = 0;
+                    while (!placed && attempts < 500) {
+                        const x = Math.floor(Math.random() * BOARD_SIZE);
+                        const y = Math.floor(Math.random() * BOARD_SIZE);
+                        const isHorizontal = Math.random() < 0.5;
+                        placed = placeShip(tempBoard, x, y, ship.length, ship.symbol, isHorizontal);
+                        attempts++;
+                    }
+
+                    if (!placed) {
+                        success = false; // Restart placement for all ships
+                        break;
+                    }
+                }
+
+                if (success) {
+                    // Deep copy the successful placement to the actual board
+                    for (let i = 0; i < BOARD_SIZE; i++) {
+                        board[i] = [...tempBoard[i]];
+                    }
+                }
+            }
+        }
+
+        /**
+         * Processes a guess at a given coordinate.
+         * @returns {boolean} True if it was a hit, false otherwise.
+         */
+        function makeGuess(board, x, y) {
+            const cell = board[x][y];
+            if (cell === 'O' || cell === 'X') {
+                return null; // Already guessed, treat as a neutral move
+            } else if (cell === '~') {
+                board[x][y] = 'O'; // Miss
+                return false;
+            } else {
+                const shipSymbol = cell;
+                board[x][y] = 'X'; // Hit
+                checkIfShipSunk(board, shipSymbol);
+                return true;
+            }
+        }
+
+        /**
+         * Checks if a specific ship has been completely sunk.
+         */
+        function checkIfShipSunk(board, symbol) {
+            let isSunk = true;
+            for (let i = 0; i < BOARD_SIZE; i++) {
+                for (let j = 0; j < BOARD_SIZE; j++) {
+                    if (board[i][j] === symbol) {
+                        isSunk = false;
+                        break;
+                    }
+                }
+                if (!isSunk) break;
+            }
+
+            if (isSunk) {
+                const shipName = SHIPS.find(s => s.symbol === symbol)?.name || 'a ship';
+                updateMessage(`🎯 The ${shipName} was sunk!`);
+            }
+        }
+
+        /**
+         * Checks if all ships on the board are sunk.
+         * @returns {boolean} True if no ship symbols remain.
+         */
+        function allShipsSunk(board) {
+            for (let i = 0; i < BOARD_SIZE; i++) {
+                for (let j = 0; j < BOARD_SIZE; j++) {
+                    const cell = board[i][j];
+                    // If any cell contains a ship symbol (A-S), ships remain
+                    if (SHIPS.map(s => s.symbol).includes(cell)) {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        /**
+         * Generates a random, unguessed move for the AI.
+         * @returns {{x: number, y: number}} The coordinates.
+         */
+        function getRandomMove(board) {
+            let x, y;
+            let attempts = 0;
+            do {
+                x = Math.floor(Math.random() * BOARD_SIZE);
+                y = Math.floor(Math.random() * BOARD_SIZE);
+                attempts++;
+                // Emergency break in case of an unlikely infinite loop
+                if (attempts > BOARD_SIZE * BOARD_SIZE + 10) return {x: -1, y: -1};
+            } while (board[x][y] === 'O' || board[x][y] === 'X');
+            return { x, y };
+        }
+
+        // --- UI & GAME FLOW FUNCTIONS ---
+
+        /**
+         * Renders the HTML grid for a given board state.
+         * @param {HTMLElement} containerEl - The DOM container for the board.
+         * @param {Array<Array<string>>} board - The board state array.
+         * @param {boolean} isEnemyBoard - True if rendering the enemy (hidden) board.
+         */
+        function renderBoard(containerEl, board, isEnemyBoard) {
+            containerEl.innerHTML = '';
+            for (let i = 0; i < BOARD_SIZE; i++) {
+                for (let j = 0; j < BOARD_SIZE; j++) {
+                    const cellValue = board[i][j];
+                    const cell = document.createElement('div');
+                    cell.classList.add('board-cell', 'rounded-md', 'shadow-inner');
+                    cell.dataset.row = i;
+                    cell.dataset.col = j;
+                    
+                    const content = document.createElement('div');
+                    content.classList.add('board-cell-content');
+                    
+                    let displayChar = '';
+                    let stateClass = '';
+
+                    if (isEnemyBoard) {
+                        // Enemy Board (Targeting)
+                        if (cellValue === 'X') {
+                            displayChar = '💥';
+                            stateClass = 'enemy-hit';
+                        } else if (cellValue === 'O') {
+                            displayChar = '💧';
+                            stateClass = 'enemy-miss';
+                        } else {
+                            displayChar = ''; // Hide ships
+                            stateClass = 'enemy-targetable';
+                        }
+                        // Add click listener only if it's the enemy board and it's player's turn
+                        cell.addEventListener('click', () => isPlayerTurn && handlePlayerAttack(i, j));
+
+                    } else {
+                        // Player Board (Defending)
+                        if (cellValue === 'X') {
+                            displayChar = '🔥';
+                            stateClass = 'player-hit';
+                        } else if (cellValue === 'O') {
+                            displayChar = '💧';
+                            stateClass = 'player-miss';
+                        } else if (cellValue === '~') {
+                            displayChar = '';
+                            stateClass = 'player-water';
+                        } else {
+                            // Ship symbol (A, B, C, D, S)
+                            displayChar = '🚢';
+                            stateClass = 'player-ship';
+                        }
+                        cell.style.cursor = 'default';
+                    }
+
+                    cell.classList.add(stateClass);
+                    content.textContent = displayChar;
+                    cell.appendChild(content);
+                    containerEl.appendChild(cell);
+                }
+            }
+        }
+
+        /**
+         * Updates the main game message.
+         */
+        function updateMessage(message, isImportant = false) {
+            messageEl.textContent = message;
+            if (isImportant) {
+                messageEl.classList.remove('bg-gray-700/50');
+                messageEl.classList.add('bg-yellow-700/80');
+            } else {
+                messageEl.classList.remove('bg-yellow-700/80');
+                messageEl.classList.add('bg-gray-700/50');
+            }
+        }
+
+        /**
+         * Displays the custom modal for game end.
+         */
+        function showModal(title, message, isWin) {
+            modalTitleEl.textContent = title;
+            modalBodyEl.textContent = message;
+
+            const color = isWin ? 'green' : 'red';
+            modalEl.querySelector('div').classList.remove('border-yellow-500', 'border-red-500', 'border-green-500');
+            modalEl.querySelector('div').classList.add(`border-${color}-500`);
+            modalTitleEl.classList.remove('text-yellow-300', 'text-red-300', 'text-green-300');
+            modalTitleEl.classList.add(`text-${color}-300`);
+            modalCloseBtn.classList.remove('bg-yellow-600', 'bg-red-600', 'bg-green-600');
+            modalCloseBtn.classList.add(`bg-${color}-600`, 'hover:bg-gray-700', 'text-gray-900');
+            modalCloseBtn.textContent = 'Restart Game';
+            modalEl.classList.remove('hidden');
+        }
+
+        /**
+         * Handles the player's attack turn.
+         */
+        function handlePlayerAttack(x, y) {
+            if (!isGameReady || !isPlayerTurn) return;
+
+            const result = makeGuess(enemyBoard, x, y);
+
+            if (result === null) {
+                updateMessage("You already fired at that spot! Choose another target.", true);
+                return;
+            }
+
+            renderBoard(enemyBoardEl, enemyBoard, true); // Re-render the enemy board
+
+            if (result) {
+                updateMessage("🔥 Direct Hit! Player takes another turn.", true);
+                // If it's a hit, player gets another shot (Standard Battleship rule variant)
+                if (allShipsSunk(enemyBoard)) {
+                    endGame(true);
+                }
+            } else {
+                updateMessage("💦 Miss! Preparing for enemy counter-attack...", true);
+                isPlayerTurn = false;
+                startBtn.disabled = true;
+                setTimeout(handleAITurn, turnDelay);
+            }
+        }
+
+        /**
+         * Handles the AI's attack turn.
+         */
+        function handleAITurn() {
+            if (allShipsSunk(enemyBoard)) return; // Already checked, but safety first
+
+            const { x, y } = getRandomMove(playerBoard);
+            const result = makeGuess(playerBoard, x, y);
+
+            renderBoard(playerBoardEl, playerBoard, false); // Re-render the player board
+
+            const status = result ? 'Hit' : 'Miss';
+            const message = result
+                ? `Enemy attacked (${x}, ${y}) and scored a **HIT!**`
+                : `Enemy attacked (${x}, ${y}) and **MISSED!**`;
+
+            updateMessage(message, true);
+
+            if (allShipsSunk(playerBoard)) {
+                endGame(false);
+            } else {
+                // Wait briefly, then switch back to player turn
+                setTimeout(() => {
+                    isPlayerTurn = true;
+                    startBtn.disabled = false;
+                    updateMessage("Your turn! Click a square on the TARGET ENEMY board.", true);
+                }, turnDelay);
+            }
+        }
+
+        /**
+         * Sets up the initial game state.
+         */
+        function initializeGame() {
+            playerBoard = initializeBoard();
+            enemyBoard = initializeBoard();
+            placeAllShipsRandomly(playerBoard);
+            placeAllShipsRandomly(enemyBoard);
+
+            renderBoard(playerBoardEl, playerBoard, false);
+            renderBoard(enemyBoardEl, enemyBoard, true);
+
+            isGameReady = false;
+            isPlayerTurn = false;
+            startBtn.textContent = "START GAME";
+            startBtn.disabled = false;
+            updateMessage("Click START GAME when you are ready to deploy your strategy.");
+        }
+
+        /**
+         * Starts the game loop.
+         */
+        function startGame() {
+            if (isGameReady) return; // Prevent double start
+            isGameReady = true;
+            isPlayerTurn = true;
+            startBtn.textContent = "YOUR TURN";
+            startBtn.disabled = false;
+            updateMessage("Your turn! Click a square on the TARGET ENEMY board.", true);
+        }
+
+        /**
+         * Ends the game and displays the result.
+         */
+        function endGame(playerWon) {
+            isGameReady = false;
+            isPlayerTurn = false;
+            startBtn.disabled = true;
+
+            const title = playerWon ? 'VICTORY!' : 'DEFEAT!';
+            const message = playerWon
+                ? 'Congratulations, Admiral! You have destroyed the entire enemy fleet.'
+                : 'All your ships have been sunk! Better luck next time.';
+
+            updateMessage(title, true);
+            showModal(title, message, playerWon);
+        }
+
+        // --- EVENT LISTENERS ---
+
+        startBtn.addEventListener('click', startGame);
+        resetBtn.addEventListener('click', initializeGame);
+        modalCloseBtn.addEventListener('click', () => {
+            modalEl.classList.add('hidden');
+            initializeGame();
+        });
+
+        // Initialize on window load
+        window.onload = initializeGame;
+
+    </script>
+</body>
+</html>

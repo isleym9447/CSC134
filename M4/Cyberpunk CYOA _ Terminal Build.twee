@@ -1,0 +1,412 @@
+:: StoryTitle
+Cyberpunk CYOA — Terminal Build
+
+
+:: StoryData
+{
+  "ifid": "CBP-2077-CYOA-TWEE",
+  "format": "SugarCube",
+  "format-version": "2.37.3",
+  "start": "Start",
+  "zoom": 1
+}
+
+
+:: Start {"position":"25,25","size":"100,100"}
+<<set $health = 100>>
+<<set $streetcred = 0>>
+<<set $eddies = 500>>
+<<set $vehicle = "None">>
+<<set $romJuno = 0>>
+<<set $romRafe = 0>>
+<<set $romVik = 0>>
+<<set $visitsVik = 0>>
+<<set $kiroshi = false>>
+<<set $lifePath = "None">>
+
+You boot into the neon hum of **Night City**.
+
+[[New Game|charcreate]]
+[[Settings|settings]]
+[[Credits|credits]]
+[[Exit|quit]]
+
+---
+
+
+:: barhub {"position":"25,400","size":"100,100"}
+Choose your vibe:
+* Lizzie’s — Mox neon, dancers, synthwave hum.
+* Totentanz — chaos, chrome, gun oil.
+* Afterlife — where legends drink.
+[[Back|scene4]]
+
+---
+
+
+:: charcreate {"position":"775,25","size":"100,100"}
+You stand before your reflection in a cracked mirror. Time to decide who you are.
+
+Choose your life path:
+
+* [[Streetkid|streetkid]]
+* [[Corpo|corpo]]
+* [[Nomad|nomad]]
+
+---
+
+
+:: combat {"position":"275,275","size":"100,100"}
+<<if $lifePath is "Streetkid">>
+You go loud — pistol roaring, smoke rising.  
+<<set $health -= 20>>
+<<set $streetcred += 2>>
+<<set $eddies += 500>>
+[[Shard Acquired|postjob]]
+<<else>>
+You don’t have a weapon for this. Stealth it is.
+[[Stealth|stealth]]
+<</if>>
+
+---
+
+
+:: corpo {"position":"1025,25","size":"100,100"}
+<<set $lifePath = "Corpo">>
+<<set $eddies += 500>>
+You’re **Corpo** — slick suit, silver tongue. No weapon, but plenty of influence.
+
+<<set $corpoinfluence = true>>
+
+[[Continue|scene1]]
+
+---
+
+
+:: credits {"position":"650,25","size":"100,100"}
+*Cyberpunk CYOA — fan-built project*  
+Based on the IP by **CD PROJEKT RED**  
+Original characters and code by *Nova & Echo*
+
+[[Back to Menu|Start]]
+
+---
+
+
+:: dayoff {"position":"775,400","size":"100,100"}
+You’re home again. The hum of the city feels almost kind.
+What do you do?
+
+* Watch a BD
+* Practice with a katana
+* Play with Nibbles 🐱
+* Check email
+* [[Go to Sleep (End Game)|credits]]
+
+---
+
+
+:: delamain_check {"position":"1150,150","size":"100,100"}
+<<if $eddies >= 200>>
+    <<set $eddies -= 200>>
+    You slide into a Delamain cab. Synthetic politeness, soothing jazz.  
+    [[Arrive at warehouse|scene3]]
+<<else>>
+    You don’t have enough eddies, choom.  
+    [[Back|travel]]
+<</if>>
+
+---
+
+
+:: drive_check {"position":"25,275","size":"100,100"}
+<<if $lifePath is "Nomad">>
+    You rev your ride and hit the asphalt.  
+    [[Arrive at warehouse|scene3]]
+<<else>>
+    “You don’t own a car, choom.”  
+    [[Back|travel]]
+<</if>>
+
+---
+
+
+:: eat1 {"position":"400,150","size":"100,100"}
+You slurp a synth-noodle cup. Warm, salty, comforting.
+<<set $health += 5>>
+[[Back|scene1]]
+
+---
+
+
+:: email1 {"position":"525,150","size":"100,100"}
+You have [3] new emails:
+1. **Sandevistan for Cheap — No Scam!**
+2. **Trauma Team Promo**
+3. **New Fixer Opportunity**
+[[Back|scene1]]
+
+---
+
+
+:: gameover {"position":"650,150","size":"100,100"}
+“Wake the fuck up, Samurai.”
+<<goto "credits">>
+
+---
+
+
+:: hud {"position":"150,25","size":"100,100"}
+╔════════════════════════════════════════════════════════════╗
+║ HP [<<= $health>>%] | Street Cred: <<= $streetcred>> | Eddies: €$<<= $eddies>> | Vehicle: <<= $vehicle>> ║
+╚════════════════════════════════════════════════════════════╝
+
+<<link "0 - Check Stats">><<goto "stats">><</link>>
+<<link "9 - Quit Game">><<goto "quit">><</link>>
+<hr>
+
+---
+
+
+:: inventory1 {"position":"275,150","size":"100,100"}
+Basic kit, nothing fancy.
+[[Back|scene1]]
+
+---
+
+
+:: kaiacheckup {"position":"1025,275","size":"100,100"}
+<<set $health = 100>>
+<<set $eddies -= 500>>
+<<set $kiroshi = true>>
+Kaia installs the Kiroshi with professional detachment.
+> “All done. Try not to get shot in the next 24 hours.”
+[[Back|scene4]]
+
+---
+
+
+:: mirror1 {"position":"150,150","size":"100,100"}
+“You look in the mirror. Your hair is messy but salvageable.”
+[[Back|scene1]]
+
+---
+
+
+:: nomad {"position":"1150,25","size":"100,100"}
+<<set $lifePath = "Nomad">>
+<<set $vehicle = "Shion Coyote">>
+You’re **Nomad** — freedom in your veins, sand in your teeth. You’ve got a ride, but no rep yet.
+
+[[Continue|scene1]]
+
+---
+
+
+:: postjob {"position":"525,275","size":"100,100"}
+<<include "hud">>
+You grab the glowing shard and deliver it to the fixer.
+
+<<set $eddies += 500>>
+<<set $streetcred += 1>>
+
+If your health is low, he smirks:  
+> “Might wanna see a ripper, choom.”
+
+[[Continue|scene4]]
+
+---
+
+
+:: quit {"position":"400,25","size":"100,100"}
+The terminal fades to black.
+> “See you in the Afterlife, choom.”
+<<end>>
+
+---
+
+
+:: rippermenu {"position":"775,275","size":"100,100"}
+Choose your doc:
+* [[Viktor Vektor (discount)|vikcheckup]]
+* [[Kaia Gregory (full price)|kaiacheckup]]
+[[Back|scene4]]
+
+---
+
+
+:: scene1 {"position":"25,150","size":"100,100"}
+<<include "hud">>
+Your apartment hums with static and citylight.
+
+Menu:
+* [[Look in mirror|mirror1]]
+* [[Check inventory|inventory1]]
+* [[Eat something|eat1]]
+* [[Check email|email1]]
+* [[Go back to bed|gameover]]
+* [[Leave apartment|scene2]]
+
+---
+
+
+:: scene2 {"position":"775,150","size":"100,100"}
+<<include "hud">>
+Your fixer calls. Job: recover data from a warehouse in Watson.
+
+* [[Accept|travel]]
+* [[Decline|scene2_decline]]
+
+---
+
+
+:: scene2_decline {"position":"900,150","size":"100,100"}
+No job, no eddies. A few minutes later, your phone buzzes again — same fixer, same tone.
+> “You sure you wanna starve, choom?”
+[[Accept the job|travel]]
+
+---
+
+
+:: scene3 {"position":"150,275","size":"100,100"}
+<<include "hud">>
+Warehouse perimeter: neon cams, patrolling guards, locked doors.
+
+Approach:
+* [[Guns Blazing|combat]]
+* [[Stealth|stealth]]
+
+---
+
+
+:: scene4 {"position":"650,275","size":"100,100"}
+<<include "hud">>
+Night City hums around you. The job’s done, but the night’s not over.
+
+What now?
+
+* [[Visit a Ripperdoc|rippermenu]]
+* [[Go to a Bar|barhub]]
+* [[Get a Tattoo|tattoo]]
+* [[Return to Apartment|dayoff]]
+
+---
+
+
+:: settings {"position":"525,25","size":"100,100"}
+Kiroshi Overlay Preferences:
+- HUD Glow: [on/off]
+- Voice: [female/male/silent]
+- Difficulty: Streetrat / Merc / Cyberpsycho (cosmetic)
+
+[[Back|Start]]
+
+---
+
+
+:: stats {"position":"275,25","size":"100,100"}
+╔════════════════════════════════════════╗
+║ HEALTH: <<= $health>>%                 ║
+║ STREET CRED: <<= $streetcred>>         ║
+║ EDDIES: €$<<= $eddies>>                ║
+║ VEHICLE: <<= $vehicle>>                ║
+║ ROMANCES:                             ║
+║  - Juno: <<= $romJuno>>                ║
+║  - Rafe: <<= $romRafe>>                ║
+║  - Viktor: <<= $romVik>>               ║
+╚════════════════════════════════════════╝
+
+[[Back|$previous]]
+
+---
+
+
+:: stealth {"position":"400,275","size":"100,100"}
+The shadows swallow you as you circle the warehouse.
+Choose your method:
+* [[Hack cameras (future mini-game)|postjob]]
+* [[Distract guards|postjob]]
+* [[Crawl through vents|postjob]]
+
+---
+
+
+:: streetkid {"position":"900,25","size":"100,100"}
+<<set $lifePath = "Streetkid">>
+<<set $streetcred += 2>>
+<<set $eddies += 200>>
+You’re a **Streetkid** — born in the alleys, living by instinct and charm. You’ve got a pistol, a rep, and a dream.
+
+<<set $weapon = "Pistol">>
+
+[[Continue|scene1]]
+
+---
+
+
+:: tattoo {"position":"150,400","size":"100,100"}
+Choose design:
+* [[Flower|tattooflower]]
+* [[Lion|tattoolion]]
+* [[Butterfly|tattoobutterfly]]
+* [[Heart|tattooheart]]
+
+---
+
+
+:: tattoobutterfly {"position":"525,400","size":"100,100"}
+Tattoo: Butterfly — “Freedom through transformation.”  
+[[Back|scene4]]
+
+
+:: tattooflower {"position":"275,400","size":"100,100"}
+Tattoo: Flower — “Soft edges under hard light.”  
+[[Back|scene4]]
+
+
+:: tattooheart {"position":"650,400","size":"100,100"}
+Tattoo: Heart — “Beat by beat, still human.”  
+[[Back|scene4]]
+
+---
+
+
+:: tattoolion {"position":"400,400","size":"100,100"}
+Tattoo: Lion — “Courage in chrome.”  
+[[Back|scene4]]
+
+
+:: travel {"position":"1025,150","size":"100,100"}
+Choose how you’ll get there:
+* Metro (free; flavor)
+* [[Delamain (cost €$200)|delamain_check]]
+* Walk (flavor)
+* [[Drive (Nomad only)|drive_check]]
+
+---
+
+
+:: vikcheckup {"position":"900,275","size":"100,100"}
+<<set $visitsVik += 1>>
+Viktor checks your optics, cracks a rare smile.
+<<set $health = 100>>
+<<set $eddies -= 300>>
+<<set $kiroshi = true>>
+> “Kiroshi V2, installed. Try not to fry ‘em.”
+
+<<if $visitsVik gte 5>>
+    Viktor: “...startin’ to think you come here for more than cyberware.”
+    * [[Flirt (“Is it that obvious, doc?”)|vikromance_start]]
+    * [[Brush it off (“Cheap work, that’s all.”)|scene4]]
+<</if>>
+[[Back|scene4]]
+
+---
+
+
+:: vikromance_start {"position":"1150,275","size":"100,100"}
+<<set $romVik += 1>>
+You see warmth flicker in his eyes — something deeper.
+[[Back|scene4]]
+
+---

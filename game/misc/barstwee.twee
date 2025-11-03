@@ -1,0 +1,183 @@
+:: Start [start]
+Night City after dark. Neon bleeds through the rain and music spills into the streets.
+You check your holo-map — three hotspots still alive tonight.
+
+* [[1. Lizzie’s Bar — Mox neon, dancers, and braindance haze.->Lizzie’s Bar]]
+* [[2. Afterlife — the mercs’ sanctuary, where legends never die.->Afterlife]]
+* [[3. Totentanz — chaos, metal, Maelstrom territory.->Totentanz]]
+* [[4. Leave — maybe another night.->Leave]]
+
+:: Lizzie’s Bar
+You push through Lizzie’s violet glow. Moxes laugh over the thump of bass,
+dancers spin under pink holograms, and braindance rigs hum from upstairs.
+
+What do you do?
+* [[1. Get a drink->Lizzie’s: Drinks]]
+* [[2. Dance->Lizzie’s: Dance]]
+* [[3. Watch a BD->Lizzie’s: BD]]
+* [[4. Leave->Street Exit]]
+
+:: Lizzie’s: Drinks
+You lean on the bar. The bartender eyes you with a smirk.
+“**What’ll it be, choom?**”
+
+* [[Tequila Especial — smooth and fiery.->Lizzie’s: Tequila]]
+* [[Chateau Delen 2012 — overpriced, imported, and barely real.->Lizzie’s: Wine]]
+* [[Broseph Ale — cheap, bitter, and familiar.->Lizzie’s: Ale]]
+* [[Never mind. Maybe later.->Lizzie’s: No Drink]]
+
+:: Lizzie’s: Tequila
+The tequila burns clean — sweet aftertaste, like synthetic lime and regret.
+
+* [[Back to the floor->Lizzie’s Bar]]
+* [[Head back out->Street Exit]]
+
+:: Lizzie’s: Wine
+You sip the fake vintage wine. For a second, you almost believe the label.
+
+* [[Back to the floor->Lizzie’s Bar]]
+* [[Head back out->Street Exit]]
+
+:: Lizzie’s: Ale
+Broseph Ale — the Night City classic. Warm, flat, comforting in its own way.
+
+* [[Back to the floor->Lizzie’s Bar]]
+* [[Head back out->Street Exit]]
+
+:: Lizzie’s: No Drink
+You wave the bartender off. Maybe later.
+
+* [[Back to the floor->Lizzie’s Bar]]
+* [[Head back out->Street Exit]]
+
+:: Lizzie’s: Dance
+You let the music take you — pulse synced to the bass, lights strobed across your chrome.
+
+* [[Keep exploring Lizzie’s->Lizzie’s Bar]]
+* [[Head back out->Street Exit]]
+
+:: Lizzie’s: BD
+Upstairs, a BD chair hums softly. You slot in for a short run — someone else’s memories, someone else’s night.
+
+* [[Shake it off and return downstairs->Lizzie’s Bar]]
+* [[Head back out->Street Exit]]
+
+:: Afterlife
+You step into the Afterlife — cold light, steel walls, and whispers of legends.
+Mercs talk shop under holo-names of the fallen, and the air smells like old gun oil and money.
+
+What do you do?
+* [[1. Get a drink->Afterlife: Drinks]]
+* [[2. Talk to the Queen of the Afterlife (Rogue)->Afterlife: Rogue]]
+* [[3. Sit at a booth->Afterlife: Booth]]
+* [[4. Leave->Street Exit]]
+
+:: Afterlife: Drinks
+The bartender nods. “**What’s your poison?**”
+
+* [[The Johnny Silverhand — tequila old fashioned with a splash of beer and a chili garnish.->Afterlife: Johnny]]
+* [[The Jackie Welles — vodka, lime juice, ginger beer, and a splash of love.->Afterlife: Jackie]]
+* [[The David Martinez — vodka on the rocks, topped with NiCola.->Afterlife: David]]
+* [[On second thought, just water.->Afterlife: No Drink]]
+
+:: Afterlife: Johnny
+The Johnny burns your throat and memories alike.
+
+* [[Back to the floor->Afterlife]]
+* [[Head back out->Street Exit]]
+
+:: Afterlife: Jackie
+The Jackie is smooth and warm. Just like the proud son of Heywood himself was.
+
+* [[Back to the floor->Afterlife]]
+* [[Head back out->Street Exit]]
+
+:: Afterlife: David
+The David hits hard and fades fast — just like the man himself.
+
+* [[Back to the floor->Afterlife]]
+* [[Head back out->Street Exit]]
+
+:: Afterlife: No Drink
+You change your mind. Maybe just water.
+
+* [[Back to the floor->Afterlife]]
+* [[Head back out->Street Exit]]
+
+:: Afterlife: Rogue
+Rogue’s at her usual spot — sharp gaze, sharper words. She looks you up and down.\
+**Rogue:** “You got biz, or you’re just another tourist?”\
+You talk for a bit — small talk mixed with subtle threats. Classic Rogue.
+
+* [[Return to the main room->Afterlife]]
+* [[Head back out->Street Exit]]
+
+:: Afterlife: Booth
+You take a booth alone. Mercs talk shop nearby — contracts, chrome, death. Feels like history.
+
+* [[Return to the bar floor->Afterlife]]
+* [[Head back out->Street Exit]]
+
+:: Totentanz
+You descend into Totentanz — a fortress of noise and flashing red light.
+The floor shakes from the bass, Maelstrom gangoons throwing themselves into each other like cybernetic storms.
+
+What do you do?
+* [[1. Get a drink->Totentanz: Drinks]]
+* [[2. Crowdwatch (Maelstrom’s always up to something)->Totentanz: Crowdwatch]]
+* [[3. Slip into the backroom->Totentanz: Backroom]]
+* [[4. Leave->Street Exit]]
+
+:: Totentanz: Drinks
+The bartender’s face is half steel, half tattoos. “**Pick fast, choom.**”
+
+* [[21st Stout — black and bitter.->Totentanz: Stout]]
+* [[Calavera Feliz — neon sugar and synthetic lime.->Totentanz: Calavera]]
+* [[Calavera Feliz — yeah, there’s two taps of it. Don’t ask.->Totentanz: Calavera]]
+* [[Actually, I’ll pass.->Totentanz: No Drink]]
+
+:: Totentanz: Stout
+The stout is thick, metallic, and strong enough to knock a borg offline.
+
+* [[Back to the floor->Totentanz]]
+* [[Head back out->Street Exit]]
+
+:: Totentanz: Calavera
+The Calavera Feliz tastes like chemical summer and regret — classic Totentanz.
+
+* [[Back to the floor->Totentanz]]
+* [[Head back out->Street Exit]]
+
+:: Totentanz: No Drink
+You change your mind and step away before the bartender changes *your* mind.
+
+* [[Back to the floor->Totentanz]]
+* [[Head back out->Street Exit]]
+
+:: Totentanz: Crowdwatch
+You stay near the wall, watching Maelstrom run their chaos routine — new chrome on display, blood in the lights.
+
+* [[Keep moving->Totentanz]]
+* [[Head back out->Street Exit]]
+
+:: Totentanz: Backroom
+You slip into the backroom. A few edgerunners are arguing over shards and eddies — better not interrupt.
+
+* [[Back to the main floor->Totentanz]]
+* [[Head back out->Street Exit]]
+
+:: Leave
+You decide to skip the nightlife. Night City still hums, waiting for your next bad idea.
+
+* [[Call it a night->Night Stretch]]
+
+:: Street Exit
+You step away from the neon and back into the city’s pulse.
+
+* [[Keep roaming->Night Stretch]]
+* [[Check the map again->Start]]
+
+:: Night Stretch
+The night stretches on — another corner, another story waiting to happen.
+
+* [[Back to the map->Start]]

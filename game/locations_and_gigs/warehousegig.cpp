@@ -152,8 +152,30 @@ void warehousegig() {
     travelmenu();
 
     displayhud();
-    cout << "Neon light bleeds across cracked pavement as you arrive at the warehouse.\n";
-    cout << "Security cameras sweep the lot, guards pacing behind fences.\n";
+    cout << endl;
+    cout << "Santo Domingo. The air here hums with heat and static — like the whole district’s ready to blow.\n";
+    cout << "You reach the coordinates, boots crunching over shattered glass and sun-bleached asphalt.\n";
+    cout << "The warehouse squats at the end of a dead service road, its steel siding stained with oil and rust.\n";
+    cout << endl;
+    cout << "An old sign flickers overhead, half the neon burned out, leaving only a sickly gold 'VA' buzzing in the dark.\n";
+    cout << "A chain-link fence runs the perimeter, topped with makeshift coils of barbed wire and prayer tags fluttering in the dry wind.\n";
+    cout << endl;
+    cout << "Cameras mounted to the corners sweep the yard in lazy arcs — cheap optics, but still deadly if they catch you.\n";
+    cout << "Each lens whirs as it pivots, servo motors grinding, searching for something — or someone — that doesn’t belong.\n";
+    cout << endl;
+    cout << "Two Valentinos hold post near the loading bay — chrome glinting beneath their gold jewelry, jackets unzipped to show inked saints\n";
+    cout << "and half-finished devotionals. One leans against a crate, flipping a butterfly knife open and shut. The other smokes, eyes hidden\n";
+    cout << "behind mirrored optics. Their laughter cuts through the hum of a nearby power transformer.\n";
+    cout << endl;
+    cout << "You duck behind a pile of scrap metal as a delivery drone descends, its thrusters kicking up dust and heat. It drops off a crate,\n";
+    cout << "then vanishes into the sky, leaving the smell of ozone in its wake.\n";
+    cout << endl;
+    cout << "The warehouse lights flicker, shadows crawling across the yard. Somewhere inside, a generator coughs to life.\n";
+    cout << "It’s loud, bright, and crawling with Valentinos — but the data you’re after is in there.\n";
+    cout << endl;
+    cout << "No alarms. No witnesses. Get in, grab the shard, and ghost out before anyone notices.\n";
+    cout << endl;
+
     
     do {
         cout << "1. Go in guns blazing\n";

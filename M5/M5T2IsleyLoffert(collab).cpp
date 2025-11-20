@@ -33,67 +33,34 @@ a printAnswerLine() function that prints one line of the answer (void)
 using namespace std;
 
 
-
-
-
-void printanswerline(double num, double sqr){
-    // prints line of numbers
-
-    /* hard coding no bueno
-    cout << "1\n";
-    cout << "2\n";
-    cout << "3\n";
-    cout << "4\n";
-    cout << "5\n";
-    cout << "6\n";
-    cout << "7\n";
-    cout << "8\n";
-    cout << "9\n";
-    cout << "10\n";
-    */
-
-    for (int i = 1; i <= 10; i++) {
-        int sq = square(i);
-        printanswerline(i, sq);
-    }
-
-
-
-
-
-}
-
-
-double square(double num){
+int square(int num){
     // squares the number 
     return num * num;
 
 
 
-
-
 }
 
 
+
+void printanswerline(int num, int sqr){
+
+    cout << num << "    " << sqr << endl;
+
+    
+}
 
 
 int main()
 {
  //calculations and printing 
 
-    cout << "Numbers: " << endl;
-    printanswerline(num, sqr);
+    cout << "Number    Square\n" << endl;
 
-    cout << "Squares: " << endl;
-
-
-
-
-
-
-//output
-    return 0; //no errors
-    
+    for (int i = 1; i <= 10; i++) {
+        int sq = square(i);
+        printanswerline(i, sq);
+    }
     
     
 }

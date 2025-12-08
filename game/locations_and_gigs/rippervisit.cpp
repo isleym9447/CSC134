@@ -122,3 +122,4 @@ void rippervisit() {
             cout << "You stare at your map, unsure which ripper to trust.\n";
             break;
     }
+}

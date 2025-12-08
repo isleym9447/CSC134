@@ -3,21 +3,13 @@
 
 #include <iostream>
 #include <string>
-#include <vector>
-using namespace std;
-
-// shared player data from charcreate.cpp
-extern int health;
-extern int streetcred;
-extern int eddies;
-extern string weapon;
-extern vector<string> inventory;
+#include "player.h"
 
 // warehouse gig sections
-void warehousegig();     // main entry
-void travelmenu();       // travel phase
-void gunsblazing();      // combat path
-void stealthpath();      // stealth path
-void displayhud();       // HUD banner
+void warehousegig(player& currentPlayer);        // main entry
+void travelmenu(player& currentPlayer);          // travel phase
+void gunsblazing(player& currentPlayer);         // combat path
+void stealthpath(player& currentPlayer);         // stealth path
+void displayhud(const player& currentPlayer);    // HUD banner
 
 #endif

@@ -1,17 +1,14 @@
-// beginning with the magic words
 #include <iostream>
 #include <string>
 #include "player.h"
 #include "charcreate.h"
 #include "scenes/scene1.h"
-using namespace std;
 
-// access your player
-extern player currentPlayer;
+using namespace std;
 
 // ====================================================================
 // LOOK IN MIRROR
-void mirror() {
+void mirror(player& currentPlayer) {
 
     cout << "\n\n";
     cout << "You enter the bathroom and look into the dimly lit mirror. Your "
@@ -26,7 +23,7 @@ void mirror() {
 
 // ====================================================================
 // CHECK INVENTORY
-void baginventory() {
+void baginventory(player& currentPlayer) {
     cout << "\n\n";
     cout << "Walking to your kitchen counter where you unload your pockets," << endl;
     cout << "beside an old crumpled burrito wrapper is: \n" << endl;
@@ -36,7 +33,7 @@ void baginventory() {
 
 // ====================================================================
 // EAT SOMETHING
-void eatsomething() {
+void eatsomething(player& /*currentPlayer*/) {
     static bool appleeaten = false;
     static bool chromanticoreeaten = false;
     static bool burgereaten = false;
@@ -56,9 +53,9 @@ void eatsomething() {
 
         cout << endl;
         cout << "What's inside:" << endl;
-        if (!appleeaten) cout << "1. Apple" << endl;
-        if (!chromanticoreeaten) cout << "2. Half-empty ChroManticore" << endl;
-        if (!burgereaten) cout << "3. Last night’s hamburger" << endl;
+        if (!appleeaten)          cout << "1. Apple" << endl;
+        if (!chromanticoreeaten)  cout << "2. Half-empty ChroManticore" << endl;
+        if (!burgereaten)         cout << "3. Last night’s hamburger" << endl;
         cout << "4. Close fridge" << endl;
         cout << endl << "What do you reach for?" << endl;
         cin >> foodchoice;
@@ -76,7 +73,7 @@ void eatsomething() {
                 cout << "Yep. Flat ChroManticore. It probably was better when it was still carbonated." << endl;
                 chromanticoreeaten = true;
             } else {
-                cout << "The ChroManticore can is empty." << endl;
+                cout << "The ChroManticoree can is empty." << endl;
             }
         }
         else if (foodchoice == 3) {
@@ -99,7 +96,7 @@ void eatsomething() {
 
 // ====================================================================
 // CHECK EMAIL
-void checkemail() {
+void checkemail(player& /*currentPlayer*/) {
     static bool email1read = false;
     static bool email2read = false;
     static bool email3read = false;
@@ -196,25 +193,23 @@ void checkemail() {
 
 // ====================================================================
 // BACK TO BED
-void backtobed() {
+void backtobed(player& /*currentPlayer*/) {
     cout << endl << endl;
     cout << "You return to bed and shut your eyes again. Slowly, you drift back to sleep..." << endl;
     cout << "Wake the fuck up, Samurai..." << endl;
-
 }
 
 // ====================================================================
 // LEAVE APARTMENT
-void leaveapartment() {
+void leaveapartment(player& /*currentPlayer*/) {
     cout << endl << endl;
     cout << "You open the door to your apartment. The sounds (and smells) of Night City fill your senses." << endl;
     cout << endl;
-    
 }
 
 // ====================================================================
 // SCENE 1 MENU LOOP
-void scene1() {
+void scene1(player& currentPlayer) {
     int scene1choice;
 
     cout << "The sound of your alarm wakes you up from your sleep. With a yawn, your eyes fully open to meet a " << endl;
@@ -237,12 +232,12 @@ void scene1() {
         cin >> scene1choice;
 
         switch (scene1choice) {
-            case 1: mirror(); break;
-            case 2: baginventory(); break;
-            case 3: eatsomething(); break;
-            case 4: checkemail(); break;
-            case 5: leaveapartment(); return;
-            case 6: backtobed(); break;
+            case 1: mirror(currentPlayer);       break;
+            case 2: baginventory(currentPlayer); break;
+            case 3: eatsomething(currentPlayer); break;
+            case 4: checkemail(currentPlayer);   break;
+            case 5: leaveapartment(currentPlayer); return;
+            case 6: backtobed(currentPlayer);    break;
             default: cout << "\nInvalid. Try again.\n"; break;
         }
     }

@@ -1,26 +1,23 @@
 /*
 CSC 134
 Mattea Isley
- / /
- */
- 
- //beginning with the magic words
- 
-#include <iostream>
-#include "player.h"
-#include "charcreate.h"
-#include "scene1.h"
-#include "scene2.h"
-#include "warehousegig.h"
+*/
 
+#include <iostream>
 #include <thread>
 #include <chrono>
+
+#include "player.h"
+#include "charcreate.h"
+#include "scenes/scene1.h"
+#include "scenes/scene2.h"
+#include "warehousegig.h"   // make sure this declares: void warehousegig(player&);
+
 using namespace std;
 
- player currentPlayer; // define the global player instance
+// ========================= NEW GAME =========================
 
-
-void newgame(){
+void newgame() {
 
     cout << endl;
     cout << "═══════════════════════════════════════════════════════" << endl;
@@ -59,7 +56,7 @@ void newgame(){
     cout << endl;
 
     // run your character creator
-    currentPlayer = charcreate();
+    player currentPlayer = charcreate();   // ← no global, local player instance 33333333333333333333333333333333333333333333333333333333
 
     cout << endl;
     cout << "><><><><><><><><><><><><><><><><><><><><><><><><><><><" << endl;
@@ -69,29 +66,20 @@ void newgame(){
         cout << "." << flush;
         this_thread::sleep_for(chrono::milliseconds(400));
     }
-
-
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////// MAIN GAME RUNS THROUGH THIS SECTION!!!!!!!!!
-
-
-
-
-
     cout << endl;
-    cout << "><><><><><><><><><><><><><><><><><><><><><><><><><><><" << endl;
-    cout << endl;
-    scene1();                      // start first scene
-    scene2();                      // move to second scene
-    warehousegig();
-    
 
+    // ================== MAIN GAME FLOW ==================
 
-///////////////////////////////////////////////////////////////////////////////////////////////// MAIN GAME RUNS THROUGH THIS SECTION!!!!!!!!!   
+    scene1(currentPlayer);        // start first scene
+    scene2(currentPlayer);        // move to second scene
+    warehousegig(currentPlayer);  // warehouse gig (update this function to take player&)
+
+    // ====================================================
 }
 
-void settings(){
+// ========================= SETTINGS =========================
+
+void settings() {
     cout << endl;
 
     cout << "╔══════════════════════════════════╗" << endl;
@@ -100,12 +88,12 @@ void settings(){
     cout << "║     RAY TRACING:   [ULTRA]       ║" << endl;
     cout << "║     SAMURAI:       [WOKEN TF UP] ║" << endl;
     cout << "╚══════════════════════════════════╝" << endl;
-
-
 }
 
-void credits(){
-   
+// ========================= CREDITS ==========================
+
+void credits() {
+
    cout << "\n\n===== CREDITS =====\n\n";
    cout << "This project is a fan-made game inspired by the world of *Cyberpunk 2077* © CD PROJEKT RED" << endl;
    cout << "." << endl;
@@ -117,37 +105,37 @@ void credits(){
    cout << "." << endl;
    cout << "Codebase: 100% written from scratch by a solo dev with synth-coffee and grit" << endl;
    cout << "." << endl;
-   cout << "No corpos were harmed in the making of this game." << endl;
+   cout << "No corpos were harmed in the making of this game. Mostly" << endl;
    cout << "." << endl;
    cout << "============================================================================================================================\n\n" << endl;
 
 }
 
-void quitgame(){
+// ========================== QUIT ============================
+
+void quitgame() {
    cout << endl;
    cout << "<<>><<>><<>><<>><<>><<>><<" << endl;
    cout << "Thanks for playing chooms!" << endl;
    cout << "<<>><<>><<>><<>><<>><<>><<" << endl;
    cout << endl;
-
 }
 
+// ======================== MAIN MENU =========================
 
-
- 
- void mainmenu(){
+void mainmenu() {
     int mmchoice;
 
     while (true) {
 
         cout << "\n\n\n\n\n";
         cout << "<<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<" << endl;
-       
+
         cout << "\t1. New Game\n";
         cout << "\t\t2. Settings\n";
         cout << "\t\t\t3. Credits\n";
         cout << "\t\t\t\t4. Quit\n";
-      
+
         cout << "<<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<" << endl;
 
         cout << ">> Enter choice: ";
@@ -164,7 +152,7 @@ void quitgame(){
         }
         else if (mmchoice == 4) {
             quitgame();
-            break; 
+            break;
         }
         else {
             cout << "\nInvalid. Try again.\n\n";

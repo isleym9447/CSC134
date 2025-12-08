@@ -4,19 +4,18 @@
 #include <iostream>
 #include <string>
 #include <vector>
-using namespace std;
 
 class player {
 
 private:
     // core identity
-    string name;
-    string lifepath;
+    std::string name;
+    std::string lifepath;
 
     // appearance
-    string hairstyle;
-    string haircolor;
-    string eyecolor;
+    std::string hairstyle;
+    std::string haircolor;
+    std::string eyecolor;
 
     // stats
     int body;
@@ -28,23 +27,24 @@ private:
     // resources
     int eddies;
     int streetcred;
-    string vehicle;
-    vector<string> inventory;
+    std::string vehicle;
+    std::vector<std::string> inventory;
 
     // relationships/morality
     int romancepoints;
 
 public:
     // constructor
-    player(string playername = "unknown", string life = "drifter");
+    player(const std::string& playername = "unknown",
+           const std::string& life = "drifter");
 
     // getters
-    string getname() const;
-    string getlifepath() const;
-    string gethaircolor() const;
-    string gethairstyle() const;
-    string geteyecolor() const;
-    string getvehicle() const;
+    std::string getname() const;
+    std::string getlifepath() const;
+    std::string gethaircolor() const;
+    std::string gethairstyle() const;
+    std::string geteyecolor() const;
+    std::string getvehicle() const;
 
     int getbody() const;
     int getreflex() const;
@@ -56,23 +56,30 @@ public:
     int getstreetcred() const;
     int getromancepoints() const;
 
-    vector<string> getinventory() const;
+    std::vector<std::string> getinventory() const;
 
     // setters
-    void setname(const string& newname);
-    void setlifepath(const string& newlifepath);
-    void sethaircolor(const string& newhaircolor);
-    void sethairstyle(const string& newhairstyle);
-    void seteyecolor(const string& neweyecolor);
-    void setvehicle(const string& newvehicle);
+    void setname(const std::string& newname);
+    void setlifepath(const std::string& newlifepath);
+    void sethaircolor(const std::string& newhaircolor);
+    void sethairstyle(const std::string& newhairstyle);
+    void seteyecolor(const std::string& neweyecolor);
+    void setvehicle(const std::string& newvehicle);
     void seteddies(int amount);
     void setstreetcred(int cred);
 
+    // stat setters
+    void setbody(int value);
+    void setreflex(int value);
+    void settech(int value);
+    void setcode(int value);
+    void setcool(int value);
+
     // methods
-    void additem(const string& item);
+    void additem(const std::string& item);
     void showinventory() const;
     void showstats() const;
     void addromancepoints(int points);
 };
 
-#endif
+#endif // PLAYER_H

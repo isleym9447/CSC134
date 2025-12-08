@@ -2,21 +2,15 @@
 #define CHARCREATE_H
 
 #include <string>
-#include <vector>
 #include "player.h"
-using namespace std;
 
 // ===== HELPER FUNCTIONS =====
-string haircolor(int haircolorchoice);
-string hairstyle(int hairstylechoice);
-string eyecolor(int eyecolorchoice);
-string lifepath(int lifepathchoice);
-
-//tattoo
-extern vector<string> inventory;
-
+std::string haircolor(int haircolorchoice);
+std::string hairstyle(int hairstylechoice);
+std::string eyecolor(int eyecolorchoice);
+std::string lifepath(int lifepathchoice);
 
 // ===== CHARACTER CREATOR =====
 player charcreate();
 
-#endif
+#endif // CHARCREATE_H

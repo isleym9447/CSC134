@@ -1,10 +1,12 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "player.h"
-#include "charcreate.h"
 #include <thread>
 #include <chrono>
+
+#include "player.h"
+#include "charcreate.h"
+
 using namespace std;
 
 // helper functions
@@ -226,6 +228,8 @@ player charcreate() {
     newPlayer.sethairstyle(hairstyle(hairstylechoice));
     newPlayer.seteyecolor(eyecolor(eyecolorchoice));
     newPlayer.setvehicle(vehicle);
+
+    newPlayer.setbody(100);
 
     for (const auto& item : inventory)
         newPlayer.additem(item);

@@ -1,20 +1,18 @@
-//beginning with the magic words
+// beginning with the magic words
 
 #include <iostream>
 #include <thread>
 #include <chrono>
 #include "player.h"
 #include "scenes/scene2.h"
-using namespace std;
 
-// access the same global player as scene1
-extern player currentPlayer;
+using namespace std;
 
 // ----------------------------------------------------------
 
-void acceptcall() {
+void acceptcall(player& currentPlayer) {
     cout << "Connecting";
-    for (int i = 0; i < 3; i++) {          // fixed loop
+    for (int i = 0; i < 3; i++) {
         cout << "." << flush;
         this_thread::sleep_for(chrono::milliseconds(400));
     }
@@ -28,9 +26,9 @@ void acceptcall() {
          << "Client wants the shard back and doesn’t care about the chooms protectin’ it.\n"
          << "However, that don’t mean you should let your iron go empty — "
          << "use some discretion if you can, choom… for me.\n\n";
-         cout << "Gig info attached." << endl;
+    cout << "Gig info attached." << endl;
 
-         cout << "CALL ENDED" << endl;
+    cout << "CALL ENDED" << endl;
 
     this_thread::sleep_for(chrono::milliseconds(1000));
 
@@ -52,9 +50,10 @@ void acceptcall() {
     cout << "────────────────────────────────────────────────────────" << endl;
     cout << endl;
 }
+
 // ----------------------------------------------------------
 
-void declinecall() {
+void declinecall(player& currentPlayer) {
     cout << "You swipe the holo notification away.\n";
     cout << "No job = no eddies." << endl;
     cout << "..." << endl;
@@ -62,19 +61,16 @@ void declinecall() {
     cout << "You sigh and call the fixer back." << endl;
     cout << "──────────────────────────────────────────────" << endl;
 
-    // simulate a short pause before calling back
     this_thread::sleep_for(chrono::milliseconds(1000));
 
     // now trigger the same call content as acceptcall()
-    acceptcall();
-    
+    acceptcall(currentPlayer);
 }
 
 // ----------------------------------------------------------
 
-void scene2() {
+void scene2(player& currentPlayer) {
     int answercall;
-    bool accepted_call = false;
 
     cout << "\nYou step out into the hazy glow of Night City’s morning.\n";
     cout << "Your holo implant flickers — an incoming call from your fixer.\n\n";
@@ -85,11 +81,9 @@ void scene2() {
     cin >> answercall;
 
     if (answercall == 1) {
-        accepted_call = true;
-        acceptcall();
+        acceptcall(currentPlayer);
     } else if (answercall == 2) {
-        accepted_call = false;
-        declinecall();
+        declinecall(currentPlayer);
     } else {
         cout << "\nInvalid choice. Try again next time.\n";
     }

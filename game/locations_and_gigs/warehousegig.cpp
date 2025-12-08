@@ -1,32 +1,28 @@
 #include "warehousegig.h"
 #include "hackingminigame.h"
 #include "player.h"
-#include "charcreate.h"
 #include <thread>
 #include <chrono>
 using namespace std;
 
-extern player currentPlayer;
-
-
 // ======================================
-// hud
+// HUD
 // ======================================
-void displayhud() {
+void displayhud(const player& currentPlayer) {
     cout << "╔════════════════════════════════════════════════════════════╗" << endl;
     cout << "║ HP [██████████░░] "
          << currentPlayer.getbody()
          << " | Street Cred: " << currentPlayer.getstreetcred()
          << " | Eddies: €$" << currentPlayer.geteddies()
-         << " | Weapon: " << currentPlayer.getvehicle() << " ║" << endl;
+         << " | Vehicle: " << currentPlayer.getvehicle() << " ║" << endl;
     cout << "╚════════════════════════════════════════════════════════════╝" << endl;
     cout << endl;
 }
 
 // ======================================
-// stealthpath
+// STEALTH PATH
 // ======================================
-void stealthpath() {
+void stealthpath(player& currentPlayer) {
     int stealthchoice;
 
     cout << "You melt into the shadows around the warehouse perimeter.\n\n";
@@ -48,20 +44,26 @@ void stealthpath() {
             case 2:
                 cout << "You toss a nearby can; guards investigate the sound, giving you a chance to slip by.\n\n";
                 break;
-            case 3:
-                cout << "Reaching up to the vent plate, it comes off with a sharp *crack*. Carefully, you set it\n"; 
-                cout << "on the ground against the wall. With a small hop you enter the vent and crawl through,\n"; 
+            case 3: {
+                cout << "Reaching up to the vent plate, it comes off with a sharp *crack*. Carefully, you set it\n";
+                cout << "on the ground against the wall. With a small hop you enter the vent and crawl through,\n";
                 cout << "scraping your arm on the metal.\n";
-                health -= 5;
-                cout << ">> Health reduced to " << health << "%\n\n";
+
+                int hp = currentPlayer.getbody();
+                hp -= 5;
+                if (hp < 0) hp = 0;
+                currentPlayer.setbody(hp);
+
+                cout << ">> Health reduced to " << hp << "%\n\n";
                 break;
+            }
             default:
                 cout << "Invalid input.\n\n";
         }
 
         if (stealthchoice >= 1 && stealthchoice <= 3) {
             cout << "Inside, you find the glowing shard beneath a workbench.\n";
-            inventory.push_back("Data shard: [confidential warehouse records]");
+            currentPlayer.additem("Data shard: [confidential warehouse records]");
             cout << ">> Item added: Data shard [confidential warehouse records]\n\n";
             break;
         }
@@ -70,29 +72,38 @@ void stealthpath() {
 }
 
 // ======================================
-// gunsblazing
+// GUNS BLAZING
 // ======================================
-void gunsblazing() {
+void gunsblazing(player& currentPlayer) {
     if (currentPlayer.getlifepath() == "Streetkid") {
-        cout << "You grip your " << weapon << " and kick the door in.\n";
+        cout << "You grip your pistol and kick the door in.\n";
         cout << "Gunfire explodes through the night — chaos, smoke, blood.\n";
         cout << "You take a few hits but make it through.\n\n";
-        health -= 25;
-        streetcred += 2;
-        cout << ">> Health reduced to " << health << "%\n";
-        cout << ">> Street cred increased to " << streetcred << "\n\n";
-        inventory.push_back("Data shard: [confidential warehouse records]");
+
+        int hp = currentPlayer.getbody();
+        hp -= 25;
+        if (hp < 0) hp = 0;
+        currentPlayer.setbody(hp);
+
+        int cred = currentPlayer.getstreetcred();
+        cred += 2;
+        currentPlayer.setstreetcred(cred);
+
+        cout << ">> Health reduced to " << hp << "%\n";
+        cout << ">> Street cred increased to " << cred << "\n\n";
+
+        currentPlayer.additem("Data shard: [confidential warehouse records]");
         cout << ">> Item added: Data shard [confidential warehouse records]\n\n";
     } else {
         cout << "You don’t have a weapon for this. Stealth it is, choom.\n\n";
-        stealthpath();
+        stealthpath(currentPlayer);
     }
 }
 
 // ======================================
-// travelmenu
+// TRAVEL MENU
 // ======================================
-void travelmenu() {
+void travelmenu(player& currentPlayer) {
     int travelchoice;
 
     do {
@@ -110,9 +121,12 @@ void travelmenu() {
             case 1:
                 cout << "You swipe into the metro. The train hums through flickering tunnels.\n\n";
                 return;
-            case 2:
+            case 2: {
+                int eddies = currentPlayer.geteddies();
                 if (eddies >= 200) {
                     eddies -= 200;
+                    currentPlayer.seteddies(eddies);
+
                     cout << "A Delamain cab stops at the curb in front of you, door swinging open.\n";
                     cout << ">> Eddies -200 (now €$" << eddies << ")\n\n";
                     return;
@@ -120,6 +134,7 @@ void travelmenu() {
                     cout << "Delamain declines your request — insufficient funds.\n\n";
                     break;
                 }
+            }
             case 3:
                 cout << "You walk the cracked streets toward Santo Domingo.\n";
                 cout << "The neon fades to rust, the air thick with smog.\n\n";
@@ -143,40 +158,38 @@ void travelmenu() {
 }
 
 // ======================================
-// warehousegig
+// WAREHOUSE GIG
 // ======================================
-void warehousegig() {
+void warehousegig(player& currentPlayer) {
     int approachchoice;
 
-    displayhud();
-    travelmenu();
+    displayhud(currentPlayer);
+    travelmenu(currentPlayer);
 
-    displayhud();
+    displayhud(currentPlayer);
     cout << endl;
     cout << "Santo Domingo. The air here hums with heat and static — like the whole district’s ready to blow.\n";
     cout << "You reach the coordinates, boots crunching over shattered glass and sun-bleached asphalt.\n";
-    cout << "The warehouse squats at the end of a dead service road, its steel siding stained with oil and rust.\n";
-    cout << endl;
+    cout << "The warehouse squats at the end of a dead service road, its steel siding stained with oil and rust.\n\n";
+
     cout << "An old sign flickers overhead, half the neon burned out, leaving only a sickly gold 'VA' buzzing in the dark.\n";
-    cout << "A chain-link fence runs the perimeter, topped with makeshift coils of barbed wire and prayer tags fluttering in the dry wind.\n";
-    cout << endl;
+    cout << "A chain-link fence runs the perimeter, topped with makeshift coils of barbed wire and prayer tags fluttering in the dry wind.\n\n";
+
     cout << "Cameras mounted to the corners sweep the yard in lazy arcs — cheap optics, but still deadly if they catch you.\n";
-    cout << "Each lens whirs as it pivots, servo motors grinding, searching for something — or someone — that doesn’t belong.\n";
-    cout << endl;
+    cout << "Each lens whirs as it pivots, servo motors grinding, searching for something — or someone — that doesn’t belong.\n\n";
+
     cout << "Two Valentinos hold post near the loading bay — chrome glinting beneath their gold jewelry, jackets unzipped to show inked saints\n";
     cout << "and half-finished devotionals. One leans against a crate, flipping a butterfly knife open and shut. The other smokes, eyes hidden\n";
-    cout << "behind mirrored optics. Their laughter cuts through the hum of a nearby power transformer.\n";
-    cout << endl;
-    cout << "You duck behind a pile of scrap metal as a delivery drone descends, its thrusters kicking up dust and heat. It drops off a crate,\n";
-    cout << "then vanishes into the sky, leaving the smell of ozone in its wake.\n";
-    cout << endl;
-    cout << "The warehouse lights flicker, shadows crawling across the yard. Somewhere inside, a generator coughs to life.\n";
-    cout << "It’s loud, bright, and crawling with Valentinos — but the data you’re after is in there.\n";
-    cout << endl;
-    cout << "No alarms. No witnesses. Get in, grab the shard, and ghost out before anyone notices.\n";
-    cout << endl;
+    cout << "behind mirrored optics. Their laughter cuts through the hum of a nearby power transformer.\n\n";
 
-    
+    cout << "You duck behind a pile of scrap metal as a delivery drone descends, its thrusters kicking up dust and heat. It drops off a crate,\n";
+    cout << "then vanishes into the sky, leaving the smell of ozone in its wake.\n\n";
+
+    cout << "The warehouse lights flicker, shadows crawling across the yard. Somewhere inside, a generator coughs to life.\n";
+    cout << "It’s loud, bright, and crawling with Valentinos — but the data you’re after is in there.\n\n";
+
+    cout << "No alarms. No witnesses. Get in, grab the shard, and ghost out before anyone notices.\n\n";
+
     do {
         cout << "1. Go in guns blazing\n";
         cout << "2. Sneak in quietly\n";
@@ -187,16 +200,14 @@ void warehousegig() {
 
         switch (approachchoice) {
             case 1:
-                gunsblazing();
+                gunsblazing(currentPlayer);
                 break;
             case 2:
-                stealthpath();
+                stealthpath(currentPlayer);
                 break;
             case 3:
                 cout << "Your current inventory:\n";
-                for (size_t i = 0; i < inventory.size(); ++i) {
-                    cout << "- " << inventory[i] << endl;
-                }
+                currentPlayer.showinventory();
                 cout << endl;
                 break;
             default:
@@ -207,9 +218,13 @@ void warehousegig() {
 
     cout << "\nYou exfiltrate and ping the fixer.\n";
     cout << "Fixer: “Good work, choom. Shard’s clean. Sending your eddies now.”\n\n";
+
+    int eddies = currentPlayer.geteddies();
     eddies += 500;
+    currentPlayer.seteddies(eddies);
+
     cout << ">> Eddies +500 (total: " << eddies << ")\n";
-    cout << ">> Data shard removed from inventory\n\n";
+    cout << ">> Data shard removed from inventory (the client takes it off your hands).\n\n";
 
     cin.ignore();
     cin.get();

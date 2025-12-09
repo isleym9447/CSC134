@@ -9,13 +9,13 @@ using namespace std;
 // HUD
 // ======================================
 void displayhud(const player& currentPlayer) {
-    cout << "╔════════════════════════════════════════════════════════════╗" << endl;
-    cout << "║ HP [██████████░░] "
+    cout << "═════════════════════════════════════════════════════════════════════════════════════════" << endl;
+    cout << " HP [██████████░░] "
          << currentPlayer.getbody()
-         << " | Street Cred: " << currentPlayer.getstreetcred()
-         << " | Eddies: €$" << currentPlayer.geteddies()
-         << " | Vehicle: " << currentPlayer.getvehicle() << " ║" << endl;
-    cout << "╚════════════════════════════════════════════════════════════╝" << endl;
+         << "  Street Cred: " << currentPlayer.getstreetcred()
+         << "  Eddies: €$" << currentPlayer.geteddies()
+         << "  Vehicle: " << currentPlayer.getvehicle() << " " << endl;
+    cout << "═════════════════════════════════════════════════════════════════════════════════════════" << endl;
     cout << endl;
 }
 

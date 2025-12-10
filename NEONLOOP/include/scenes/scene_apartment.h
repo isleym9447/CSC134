@@ -1,13 +1,22 @@
-#pragma once
-#include <SFML/Graphics.hpp>
-#include <string>
-#include <vector>
+#ifndef SCENE_APARTMENT_H
+#define SCENE_APARTMENT_H
 
-#include "scenemanager.h"     
-#include "player.h"
+#include <SFML/Graphics.hpp>
+#include <vector>
+#include <functional>
+#include <string>
+
+#include "scene.hpp"
 #include "ui/ui_button.h"
 #include "ui/ui_textbox.h"
 
+// Which background of the apartment we're showing
+enum class AptBg {
+    Default,
+    Mirror,
+    Kitchen,
+    Computer
+};
 
 class SceneApartment : public Scene {
 public:
@@ -16,58 +25,38 @@ public:
     void handleEvent(const sf::Event& event) override;
     void update(float dt) override;
     void draw(sf::RenderWindow& window) override;
-    bool isFinished() const override { return finished; }
+    bool isFinished() const override { return sceneFinished; }
 
 private:
-    enum class View {
-        Default,
-        Computer,
-        Mirror,
-        Kitchen
-    };
-
-    enum class Action {
-        Mirror,
-        Inventory,
-        Eat,
-        Email,
-        Leave,
-        Bed
-    };
-
-    struct ActionButton {
-        Action action;
-        UIButton button;
-    };
-
-    void initButtons();
-    void handleClick(float x, float y);
-    void performAction(Action action);
-
-    void advanceIntro();
-    void setView(View v);
-
-    sf::Sprite  bgSprite;
-    sf::Texture texDefault;
-    sf::Texture texComputer;
-    sf::Texture texMirror;
-    sf::Texture texKitchen;
-
     UITextBox textbox;
-    sf::Font uiFont;
+    sf::Sprite bgSprite;
+    sf::Font uiFont;   // font for buttons
 
-    struct Line {
-        std::string speaker;
-        std::string text;
+    struct ApartmentButton {
+        UIButton button;
+        std::function<void()> onClick;
     };
 
-    std::vector<Line> introScript;
-    int currentIndex = 0;
-    bool finished = false;
+    std::vector<ApartmentButton> apartmentButtons;
+    bool choicesActive;
+    bool buttonsCreated;
+    float buttonAppearDelay;
+    bool sceneFinished;
+    AptBg currentBg;
 
-    View currentView = View::Default;
+    void updateButtonsAfterTextReveal(float dt);
+    void drawButtons(sf::RenderWindow& window);
 
-    std::vector<ActionButton> menuButtons;
+    // Logic for each option
+    void mirrorDesc();
+    void bagDesc();
+    void eatDesc();
+    void emailDesc();
+    void goToStreet();
+    void goBackToSleep();
 
-    bool showButtons = false;   // 👈 NEW: only draw/handle buttons when true
+    // Helper to set background + dialogue and reset button timing
+    void setBgAndText(const std::string& speaker, const std::string& text);
 };
+
+#endif // SCENE_APARTMENT_H

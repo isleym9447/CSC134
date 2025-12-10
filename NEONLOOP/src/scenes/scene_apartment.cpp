@@ -1,256 +1,307 @@
 #include "scenes/scene_apartment.h"
 #include <iostream>
 
-// Helper: scale a sprite to fit a target resolution
-static void fitSpriteToWindow(sf::Sprite& sprite, const sf::Texture& tex,
-                              float targetW, float targetH) {
+// Simple helper to scale a sprite to fit the window
+static void fitSpriteToWindow(sf::Sprite& sprite,
+                              const sf::Texture& tex,
+                              float targetW,
+                              float targetH)
+{
     sf::Vector2u size = tex.getSize();
-    if (size.x == 0 || size.y == 0) return;
-    float scaleX = targetW / size.x;
-    float scaleY = targetH / size.y;
-    sprite.setScale(scaleX, scaleY);
+    if (size.x == 0 || size.y == 0) {
+        sprite.setScale(1.f, 1.f);
+        return;
+    }
+    float scaleX = targetW / static_cast<float>(size.x);
+    float scaleY = targetH / static_cast<float>(size.y);
+    float scale  = std::max(scaleX, scaleY);
+    sprite.setScale(scale, scale);
 }
 
-SceneApartment::SceneApartment() {
-    // Load backgrounds
-    if (!texDefault.loadFromFile("assets/backgrounds/apartment.png")) {
-        std::cerr << "Failed to load: assets/backgrounds/apartment.png\n";
-    }
-    if (!texComputer.loadFromFile("assets/backgrounds/apartmentcomputer.png")) {
-        std::cerr << "Failed to load: assets/backgrounds/apartmentcomputer.png\n";
-    }
-    if (!texMirror.loadFromFile("assets/backgrounds/apartmentmirror.png")) {
-        std::cerr << "Failed to load: assets/backgrounds/apartmentmirror.png\n";
-    }
-    if (!texKitchen.loadFromFile("assets/backgrounds/apartmentkitchen.png")) {
-        std::cerr << "Failed to load: assets/backgrounds/apartmentkitchen.png\n";
-    }
+// Apartment backgrounds (loaded once per program)
+static sf::Texture texApartment;
+static sf::Texture texApartmentMirror;
+static sf::Texture texApartmentKitchen;
+static sf::Texture texApartmentComputer;
+static bool apartmentTexturesLoaded = false;
 
-    setView(View::Default);
+static void ensureApartmentTextures()
+{
+    if (apartmentTexturesLoaded) return;
 
-    // Load UI font
-    if (!uiFont.loadFromFile("assets/fonts/cyberpunk.ttf")) { // or .ttf
-        std::cerr << "Failed to load font: assets/fonts/cyberpunk.ttf\n";
-    }
-
-    // Textbox font
-    textbox.loadFont("assets/fonts/cyberpunk.ttf");
-
-    // Intro script, then we hand control to buttons
-    introScript.push_back({"Narrator",
-        "The sound of your alarm wakes you up. Another day in Night City."});
-    introScript.push_back({"Narrator",
-        "You drag yourself out of bed and look around your tiny apartment."});
-    introScript.push_back({"System",
-        "What do you do? (Use the buttons below to choose.)"});
-
-    advanceIntro();
-
-    // Create clickable buttons
-    initButtons();
-}
-
-void SceneApartment::initButtons() {
-    menuButtons.clear();
-
-    // Smaller buttons
-    const float buttonWidth  = 180.f;
-    const float buttonHeight = 36.f;
-
-    // Layout: 3 buttons per row, 2 rows
-    const int buttonsPerRow = 3;
-
-    const float startX = 60.f;
-    const float startY = 720.f - 120.f; // first row a bit above bottom
-    const float gapX  = 20.f;
-    const float gapY  = 10.f;
-
-    auto makeButton = [&](const std::string& label, Action action, int index) {
-        ActionButton ab;
-        ab.action = action;
-        ab.button = UIButton();
-        ab.button.setFont(uiFont);
-        ab.button.setSize(buttonWidth, buttonHeight);
-
-        int row = index / buttonsPerRow;
-        int col = index % buttonsPerRow;
-
-        float x = startX + col * (buttonWidth + gapX);
-        float y = startY + row * (buttonHeight + gapY);
-
-        ab.button.setPosition(x, y);
-        ab.button.setColors(
-            sf::Color(20, 20, 40, 230),         // normal
-            sf::Color(0, 255, 180, 230),        // hover
-            sf::Color::White,                   // text
-            sf::Color(0, 255, 180, 200)         // outline
-        );
-        ab.button.setText(label);
-        menuButtons.push_back(ab);
+    auto loadTex = [](sf::Texture& t, const std::string& path) {
+        if (!t.loadFromFile(path)) {
+            std::cerr << "Failed to load apartment background: " << path << std::endl;
+        }
     };
 
-    // Matches your earlier choices
-    makeButton("Look in mirror",   Action::Mirror,    0);
-    makeButton("Check inventory",  Action::Inventory, 1);
-    makeButton("Eat something",    Action::Eat,       2);
-    makeButton("Check email",      Action::Email,     3);
-    makeButton("Leave apartment",  Action::Leave,     4);
-    makeButton("Go back to bed",   Action::Bed,       5);
+    loadTex(texApartment,         "assets/backgrounds/apartment.png");
+    loadTex(texApartmentMirror,   "assets/backgrounds/apartmentmirror.png");
+    loadTex(texApartmentKitchen,  "assets/backgrounds/apartmentkitchen.png");
+    loadTex(texApartmentComputer, "assets/backgrounds/apartmentcomputer.png");
+
+    apartmentTexturesLoaded = true;
 }
 
+// Apply background according to AptBg
+static void applyBackground(AptBg bg, sf::Sprite& sprite)
+{
+    ensureApartmentTextures();
 
-void SceneApartment::handleEvent(const sf::Event& event) {
-    if (event.type == sf::Event::MouseMoved) {
-        if (!showButtons) return;    // 🔒 no hover until intro done
-
-        float mx = static_cast<float>(event.mouseMove.x);
-        float my = static_cast<float>(event.mouseMove.y);
-
-        for (auto& ab : menuButtons) {
-            bool hov = ab.button.contains(mx, my);
-            ab.button.setHovered(hov);
-        }
+    const sf::Texture* tex = &texApartment;
+    switch (bg) {
+        case AptBg::Default:  tex = &texApartment;         break;
+        case AptBg::Mirror:   tex = &texApartmentMirror;   break;
+        case AptBg::Kitchen:  tex = &texApartmentKitchen;  break;
+        case AptBg::Computer: tex = &texApartmentComputer; break;
     }
 
-    if (event.type == sf::Event::MouseButtonPressed &&
-        event.mouseButton.button == sf::Mouse::Left) {
+    sprite.setTexture(*tex, true);
+    fitSpriteToWindow(sprite, *tex, 1280.f, 720.f);
+}
 
+// ------------------------------------------------------------
+// SceneApartment implementation
+// ------------------------------------------------------------
+
+SceneApartment::SceneApartment()
+    : choicesActive(false)
+    , buttonsCreated(false)
+    , buttonAppearDelay(3.0f)   // <- wait longer so intro text can be read
+    , sceneFinished(false)
+    , currentBg(AptBg::Default)
+{
+    ensureApartmentTextures();
+    applyBackground(currentBg, bgSprite);
+
+    // Load font for textbox and buttons
+    if (!uiFont.loadFromFile("assets/fonts/cyberpunk.ttf")) {
+        std::cerr << "Failed to load assets/fonts/cyberpunk.ttf in SceneApartment\n";
+    }
+
+    textbox.loadFont("assets/fonts/cyberpunk.ttf");
+
+    // Intro text + menu
+    setBgAndText(
+        "System",
+        ">>> Wake the fuck up, choom. You're still in Night City. <<<\n\n"
+        "What do you do before stepping out of your safe apartment?\n"
+        
+    );
+}
+
+void SceneApartment::setBgAndText(const std::string& speaker,
+                                  const std::string& text)
+{
+    applyBackground(currentBg, bgSprite);
+    textbox.setDialogue(speaker, text);
+
+    // For the very first intro, we want the delay.
+    // For later choices, we still give a tiny delay so text can appear cleanly.
+    choicesActive     = false;
+    buttonAppearDelay = 0.8f;
+}
+
+// ------------------------------------------------------------
+// Event handling
+// ------------------------------------------------------------
+void SceneApartment::handleEvent(const sf::Event& event)
+{
+    if (event.type == sf::Event::KeyPressed &&
+        event.key.code == sf::Keyboard::Escape)
+    {
+        // ESC closes scene (let the game decide what to do)
+        sceneFinished = true;
+        return;
+    }
+
+    if (!choicesActive) return;
+
+    if (event.type == sf::Event::MouseButtonPressed &&
+        event.mouseButton.button == sf::Mouse::Left)
+    {
         float mx = static_cast<float>(event.mouseButton.x);
         float my = static_cast<float>(event.mouseButton.y);
 
-        // While intro is still going: click acts like "advance/skip"
-        if (currentIndex < static_cast<int>(introScript.size())) {
-            if (!textbox.isFinished()) {
-                textbox.revealAll();
-            } else {
-                advanceIntro();
-            }
-            return;
-        }
-
-        // After intro: buttons actually work
-        if (showButtons) {
-            handleClick(mx, my);
-        }
-    }
-
-    // Optional: Space/Enter also advance intro
-    if (event.type == sf::Event::KeyPressed) {
-        if (event.key.code == sf::Keyboard::Space ||
-            event.key.code == sf::Keyboard::Enter) {
-
-            if (!textbox.isFinished()) {
-                textbox.revealAll();
-            } else {
-                advanceIntro();
+        for (auto& ab : apartmentButtons) {
+            if (ab.button.contains(mx, my)) {
+                if (ab.onClick) {
+                    ab.onClick();
+                }
+                break;
             }
         }
     }
-}
 
+    if (event.type == sf::Event::MouseMoved) {
+        float mx = static_cast<float>(event.mouseMove.x);
+        float my = static_cast<float>(event.mouseMove.y);
 
-void SceneApartment::handleClick(float x, float y) {
-    if (!showButtons)
-        return;
-
-    for (auto& ab : menuButtons) {
-        if (ab.button.contains(x, y)) {
-            performAction(ab.action);
-            return;
+        for (auto& ab : apartmentButtons) {
+            ab.button.setHovered(ab.button.contains(mx, my));
         }
     }
 }
 
-
-void SceneApartment::performAction(Action action) {
-    switch (action) {
-        case Action::Mirror:
-            setView(View::Mirror);
-            textbox.setDialogue("Emiko",
-                "You step into the bathroom and stare into the dimly lit mirror. Still alive. Still you.");
-            break;
-
-        case Action::Inventory:
-            setView(View::Default);
-            textbox.setDialogue("Narrator",
-                "You rummage through your stuff on the counter. You'll hook the full inventory system in later.");
-            break;
-
-        case Action::Eat:
-            setView(View::Kitchen);
-            textbox.setDialogue("Emiko",
-                "You wander into the kitchen. The fridge hums quietly, daring you to open it.");
-            break;
-
-        case Action::Email:
-            setView(View::Computer);
-            textbox.setDialogue("Emiko",
-                "You sit down at your computer and open your inbox. Time to see who wants something from you now.");
-            break;
-
-        case Action::Leave:
-            setView(View::Default);
-            textbox.setDialogue("Narrator",
-                "You head toward the door. The sounds and smells of Night City leak in from the hallway.");
-            // Later: trigger scene transition here using SceneManager
-            break;
-
-        case Action::Bed:
-            setView(View::Default);
-            textbox.setDialogue("Narrator",
-                "You collapse back onto the bed. Just five more minutes... right?");
-            break;
-    }
-}
-
-void SceneApartment::update(float dt) {
+// ------------------------------------------------------------
+// Update + draw
+// ------------------------------------------------------------
+void SceneApartment::update(float dt)
+{
     textbox.update(dt);
+    updateButtonsAfterTextReveal(dt);
 }
 
-void SceneApartment::draw(sf::RenderWindow& window) {
+void SceneApartment::draw(sf::RenderWindow& window)
+{
     window.draw(bgSprite);
     textbox.draw(window);
+    drawButtons(window);
+}
 
-    if (showButtons) {
-        for (auto& ab : menuButtons) {
-            ab.button.draw(window);
-        }
+// ------------------------------------------------------------
+// Button layout & drawing
+// ------------------------------------------------------------
+void SceneApartment::updateButtonsAfterTextReveal(float dt)
+{
+    // We don't have isFullyRevealed, so just use a timer.
+    buttonAppearDelay -= dt;
+    if (buttonAppearDelay > 0.f) return;
+
+    choicesActive = true;
+
+    if (!buttonsCreated) {
+        buttonsCreated = true;
+
+        apartmentButtons.clear();
+        apartmentButtons.resize(6);
+
+        // ---- HORIZONTAL LAYOUT AT BOTTOM ----
+        const float btnWidth   = 190.f;
+        const float btnHeight  = 40.f;
+        const float spacing    = 10.f;
+        const float totalWidth = 6 * btnWidth + 5 * spacing;
+        const float startX     = (1280.f - totalWidth) / 2.f;
+        const float y          = 720.f - 70.f;  // near bottom of window
+
+        auto makeButton = [&](int index,
+                              const std::string& label,
+                              std::function<void()> fn)
+        {
+            ApartmentButton& ab = apartmentButtons[index];
+            ab.button.setFont(uiFont);
+            ab.button.setSize(sf::Vector2f(btnWidth, btnHeight));
+
+            float x = startX + index * (btnWidth + spacing);
+            ab.button.setPosition(x, y);
+
+            ab.button.setText(label);
+            ab.button.setColors(
+                sf::Color(10, 10, 25, 230),   // normal
+                sf::Color(0, 255, 180, 230),  // hover
+                sf::Color::White,             // text
+                sf::Color(0, 255, 180, 200)   // outline
+            );
+
+            ab.onClick = std::move(fn);
+        };
+
+        makeButton(0, "Look in the mirror", [this]() { mirrorDesc();    });
+        makeButton(1, "Check inventory",    [this]() { bagDesc();       });
+        makeButton(2, "Eat something",      [this]() { eatDesc();       });
+        makeButton(3, "Check email",        [this]() { emailDesc();     });
+        makeButton(4, "Leave apartment",    [this]() { goToStreet();    });
+        makeButton(5, "Go back to bed",     [this]() { goBackToSleep(); });
     }
 }
 
+void SceneApartment::drawButtons(sf::RenderWindow& window)
+{
+    if (!choicesActive) return;
 
-void SceneApartment::advanceIntro() {
-    if (currentIndex >= static_cast<int>(introScript.size())) {
-        // Intro is fully done → enable buttons
-        showButtons = true;
-        return;
+    for (auto& ab : apartmentButtons) {
+        ab.button.draw(window);
     }
-
-    const Line& line = introScript[currentIndex];
-    textbox.setDialogue(line.speaker, line.text);
-    currentIndex++;
 }
 
+// ------------------------------------------------------------
+// Logic for each choice
+// ------------------------------------------------------------
+void SceneApartment::mirrorDesc()
+{
+    currentBg = AptBg::Mirror;
+    setBgAndText(
+        "Narrator",
+        "You shuffle into the bathroom and face the dimly lit mirror.\n"
+        "Your own tired eyes stare back at you, ringed with neon fatigue.\n"
+        "The light above you flickers, buzzing like a cheap braindance rig.\n"
+        "Another day in Night City. Same ghost in the glass."
+    );
+}
 
-void SceneApartment::setView(View v) {
-    currentView = v;
+void SceneApartment::bagDesc()
+{
+    currentBg = AptBg::Kitchen;
+    setBgAndText(
+        "Narrator",
+        "You drag your bag across the counter and flick it open.\n"
+        "Gear, meds, half-crumpled receipts — the usual mess of a Night City merc.\n"
+        "Everything's still where you left it.\n"
+        "For now, at least, nothing's gone missing."
+    );
+}
 
-    switch (currentView) {
-        case View::Default:
-            bgSprite.setTexture(texDefault, true);
-            fitSpriteToWindow(bgSprite, texDefault, 1280.f, 720.f);
-            break;
-        case View::Computer:
-            bgSprite.setTexture(texComputer, true);
-            fitSpriteToWindow(bgSprite, texComputer, 1280.f, 720.f);
-            break;
-        case View::Mirror:
-            bgSprite.setTexture(texMirror, true);
-            fitSpriteToWindow(bgSprite, texMirror, 1280.f, 720.f);
-            break;
-        case View::Kitchen:
-            bgSprite.setTexture(texKitchen, true);
-            fitSpriteToWindow(bgSprite, texKitchen, 1280.f, 720.f);
-            break;
-    }
+void SceneApartment::eatDesc()
+{
+    currentBg = AptBg::Kitchen;
+    setBgAndText(
+        "Narrator",
+        "You crack open the fridge. A wave of cold air — and questionable smells — hits you.\n"
+        "Half a donut in a takeout box. An I-Fruit that probably violates three health codes.\n"
+        "You grab something vaguely edible and call it breakfast.\n"
+        "It won't kill you. Probably."
+    );
+}
+
+void SceneApartment::emailDesc()
+{
+    currentBg = AptBg::Computer;
+    setBgAndText(
+        "Narrator",
+        "You sit at the desk and wake the ancient terminal.\n"
+        "New messages blink at you in angry neon:\n\n"
+        "- A fixer reminding you about \"opportunities\" you keep dodging.\n"
+        "- A debt notice from some corpo you don't remember owing.\n"
+        "- And one soft ping from an old contact, just asking if you're still alive.\n\n"
+        "You stare at the screen a little longer than you mean to."
+    );
+}
+
+void SceneApartment::goToStreet()
+{
+    currentBg = AptBg::Default;
+    setBgAndText(
+        "Narrator",
+        "You grab your gear and head for the door.\n"
+        "The locks disengage with a mechanical sigh.\n"
+        "Night City waits outside — humming, hungry, and already two steps ahead.\n"
+        "Time to see what kind of trouble the day has queued up for you."
+    );
+
+    sceneFinished = true;
+}
+
+void SceneApartment::goBackToSleep()
+{
+    currentBg = AptBg::Default;
+    setBgAndText(
+        "Narrator",
+        "You flop back onto the bed and let the city noise fade to a distant roar.\n"
+        "The world outside keeps moving — gigs, creds, glory, all slipping past.\n"
+        "But not today.\n"
+        "Today, Night City can run without you.\n"
+        ">>> GAME OVER: You chose sleep over glory. Respect. <<<"
+    );
+
+    sceneFinished = true;
 }

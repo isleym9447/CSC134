@@ -49,22 +49,22 @@ int main() {
     cout << "Breakfast:" << endl;
     breakfast_place.printInfo();
     cout << "Review:" << endl;
-    cout << "A cozy spot with a retro vibe. The pancakes are out of this world!" << endl;
+    cout << "A cozy spot with a retro vibe. The pancakes are out of this world! Tom is a cool dude." << endl;
 
     cout << "\nLunch:" << endl;
     lunch_place.printInfo();
     cout << "Review:" << endl;
-    cout << "Authentic Mexican flavors that pack a punch. Don't miss the tacos!" << endl;
+    cout << "Authentic Mexican flavors that pack a punch. Don't miss the tacos! Mama Welles' pozole will cure every heartbreak youve ever had." << endl;
 
     cout << "\nDinner:" << endl;
     dinner_place.printInfo();
     cout << "Review:" << endl;
-    cout << "A fusion of traditional and futuristic cuisine. The cybernetic enhancements make everything taste better!" << endl;
+    cout << "A fusion of traditional and futuristic cuisine. The cybernetic enhancements make everything taste better! Arasaka goons kinda freak me out tho." << endl;
 
     cout << "\nDessert:" << endl;
     dessert_place.printInfo(); 
     cout << "Review:" << endl;
-    cout << "The cheesecake tastes like grafted soy-paste and the “chocolate” is 30% chocolate, 70% questionable polymer." << endl;
+    cout << "The cheesecake tastes like grafted soy-paste and the “chocolate” is 30% chocolate, 70% questionable polymer. They should stick to BDs" << endl;
 
     return 0;
 }
